@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenNest — A Plant Shopping & Daily Care Platform</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./shop.html">
+  <link rel="stylesheet" href="./care.html">
+  <link rel="stylesheet" href="./about.html">
+  <link rel="stylesheet" href="./contact.html">
+  <link rel="stylesheet" href="./categories.html">
+</head>
+<body>
+
+  <h1 id="bsm">GreenNest 🌿</h1>
+
+  <header>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop Plants</a>
+      <a href="categories.html">Categories</a>
+      <a href="care.html">Plant Care</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="stories.html">Plant Stories</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h2>Welcome to <span>GreenNest</span></h2>
+        <h3>Your one-stop platform for plants, trees & daily care 🌱</h3>
+        <div class="hero-image">
+          <img src="./images/hero_plants.jpg" alt="Plants Showcase">
+        </div>
+      </div>
+
+      <div class="hero-categories">
+        <h4>Plant Categories</h4>
+        <ul>
+          <li>🌳 Trees
+            <ul>
+              <li><a href="tree1.html">Fruit Trees</a></li>
+              <li><a href="tree2.html">Ornamental Trees</a></li>
+            </ul>
+          </li>
+          <li>🌿 Indoor Plants
+            <ul>
+              <li><a href="indoor1.html">Succulents</a></li>
+              <li><a href="indoor2.html">Ferns</a></li>
+            </ul>
+          </li>
+          <li>🌸 Flowers
+            <ul>
+              <li><a href="flowers1.html">Seasonal Flowers</a></li>
+              <li><a href="flowers2.html">Perennials</a></li>
+            </ul>
+          </li>
+          <li>🌾 Herbs & Veggies
+            <ul>
+              <li><a href="herbs.html">Herbs</a></li>
+              <li><a href="veggies.html">Vegetables</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section id="shop">
+    <h2>Featured Plants 🌿</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="./images/plant1.jpg" alt="Ficus Tree">
+        <h3>Ficus Tree</h3>
+        <p>Indoor tree, requires moderate sunlight.</p>
+        <p>Price: $25</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="./images/plant2.jpg" alt="Rose Plant">
+        <h3>Rose Plant</h3>
+        <p>Blooms with beautiful red roses.</p>
+        <p>Price: $15</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="./images/plant3.jpg" alt="Aloe Vera">
+        <h3>Aloe Vera</h3>
+        <p>Easy to maintain succulent plant.</p>
+        <p>Price: $10</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plant Care Section -->
+  <section id="care">
+    <h2>Daily Plant Care 🌱</h2>
+    <div class="care-cards">
+      <div class="card">
+        <h3>Watering</h3>
+        <p>Different plants need different amounts of water. Know your plant!</p>
+      </div>
+      <div class="card">
+        <h3>Sunlight</h3>
+        <p>Indoor plants require indirect sunlight, while outdoor plants need full sunlight.</p>
+      </div>
+      <div class="card">
+        <h3>Fertilization</h3>
+        <p>Use organic fertilizers weekly to keep plants healthy and green.</p>
+      </div>
+      <div class="card">
+        <h3>Pest Control</h3>
+        <p>Use natural remedies to prevent insects without harming the plant.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Share Your Plant Story -->
+  <section id="share-story">
+    <div class="container">
+      <h2>Share Your Plant Story 💌</h2>
+      <p>Share your favorite plant stories or growth journey with us!</p>
+      <form action="#" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="story">Story</label>
+          <textarea id="story" name="story" rows="5" placeholder="Write your story..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="media">Upload Image/Video</label>
+          <input type="file" id="media" name="media" accept="image/*,video/*">
+        </div>
+        <button type="submit">Submit 🌿</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <h2 style="color: black;">Follow Us</h2>
+    <div class="social-buttons">
+      <a href="#" class="btn">Facebook</a>
+      <a href="#" class="btn">Instagram</a>
+      <a href="#" class="btn">YouTube</a>
+    </div>
+    <br>
+    <p>© 2025 GreenNest. All rights reserved.</p>
+    <p>Source code: <a href="#" target="_blank">GitHub</a></p>
+  </footer>
+
+</body>
+</html>
