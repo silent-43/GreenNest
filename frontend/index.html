@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenNest 🌿 Home</title>
+<style>
+body { font-family: 'Poppins', sans-serif; margin:0; background: linear-gradient(120deg, #E3FDFD, #C1EFFF, #A6E3E9); color:#333; overflow-x:hidden; }
+header { background: linear-gradient(90deg,#00BFA6,#00C897,#00E7B0); padding:15px 30px; display:flex; justify-content: space-between; align-items:center; position: sticky; top:0; z-index:100; }
+.nav a { color:white; text-decoration:none; margin:0 15px; font-weight:600; }
+.nav a:hover, .nav a.active { text-decoration:underline; }
+#logoutBtn { background:white; color:#00BFA6; border:none; border-radius:20px; padding:8px 18px; font-weight:600; cursor:pointer; }
+#logoutBtn:hover { background:#00BFA6; color:white; transform:scale(1.05); }
+#hero { display:flex; flex-wrap:wrap; justify-content:space-around; align-items:flex-start; width:90%; max-width:1200px; margin:20px auto; gap:30px; }
+.hero-content h2 span { color:#00BFA6; }
+.hero-image img { width:100%; max-width:400px; border-radius:20px; }
+.product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; width:90%; margin:20px auto; }
+.product-card { background:white; border-radius:20px; padding:15px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition: transform 0.3s; }
+.product-card:hover { transform: translateY(-5px); }
+.product-card img { width:100%; height:180px; object-fit:cover; border-radius:15px; margin-bottom:10px; }
+.product-card button { margin-top:10px; background:linear-gradient(90deg,#00BFA6,#00E7B0); border:none; color:white; padding:8px 15px; border-radius:15px; font-weight:600; cursor:pointer; transition:0.3s; }
+.product-card button:hover { transform:scale(1.05); background:linear-gradient(90deg,#00E7B0,#00BFA6); }
+footer { text-align:center; background:#00BFA6; color:white; padding:30px 20px; margin-top:50px; border-radius:25px 25px 0 0; }
+footer h2 { margin-bottom:10px; }
+.social-buttons a { display:inline-block; background:white; color:#00BFA6; padding:8px 15px; margin:5px; border-radius:10px; text-decoration:none; font-weight:600; transition:0.3s; }
+.social-buttons a:hover { background:#003C3C; color:white; transform:scale(1.05); }
+</style>
+
+
+<style>
+  /* ---------- Care Section ---------- */
+#care {
+    background: #e6f7f1; /* soft green background */
+    padding: 60px 20px;
+}
+
+#care h2 {
+    text-align: center;
+    color: #007a5e;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.care-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.card h3 {
+    color: #00bfa6;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* ---------- Share Story Section ---------- */
+#share-story {
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#share-story h2 {
+    color: #007a5e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#share-story p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+#share-story form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #007a5e;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #00bfa6;
+    box-shadow: 0 0 8px rgba(0,191,166,0.2);
+    outline: none;
+}
+
+button[type="submit"] {
+    background: #00bfa6;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #00e7b0;
+    transform: translateY(-3px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    #care h2,
+    #share-story h2 {
+        font-size: 1.7rem;
+    }
+
+    .card {
+        padding: 20px 15px;
+    }
+}
+
+</style>
+
+
+
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="./shop.html">Shop Plants</a>
+    <a href="./categories.html">Categories</a>
+    <a href="./care.html">Plant Care</a>
+    <a href="./about.html">About</a>
+    <a href="./contact.html">Contact Us</a>
+    <a href="./profile.html">My Profile</a>
+  </nav>
+  <button id="logoutBtn">Logout</button>
+</header>
+
+<h1 style="text-align:center; margin:40px 0 20px 0;">GreenNest 🌿</h1>
+
+<section id="hero">
+  <div class="hero-content">
+    <h2>Welcome to <span>GreenNest</span></h2>
+    <h3>Your one-stop platform for plants, trees & daily care 🌱</h3>
+  </div>
+  <div class="hero-image">
+    <img src="./pictures of index/GreenNest plant Showcase.webp" alt="Plants Showcase">
+  </div>
+</section>
+
+<section id="shop">
+  <h2 style="text-align:center;">Featured Plants 🌿</h2>
+<div class="product-grid">
+
+  <div class="product-card">
+    <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
+    <h3>Ficus Tree</h3>
+    <p>Indoor tree, moderate sunlight.</p>
+    <p>Price: $25</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":25,"image":"./pictures of index/ficus tree.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/rose plants.avif" alt="Rose Plant">
+    <h3>Rose Plant</h3>
+    <p>Blooms with beautiful red roses.</p>
+    <p>Price: $15</p>
+    <button class="addToCartBtn" data-product='{"name":"Rose Plant","price":15,"image":"./pictures of index/rose plants.avif"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
+    <h3>Aloe Vera</h3>
+    <p>Easy to maintain succulent plant.</p>
+    <p>Price: $10</p>
+    <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":10,"image":"./pictures of index/aloe vera.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/money plant.webp" alt="Money Plant">
+    <h3>Money Plant</h3>
+    <p>Brings prosperity and purifies air.</p>
+    <p>Price: $12</p>
+    <button class="addToCartBtn" data-product='{"name":"Money Plant","price":12,"image":"./pictures of index/money plant.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/tulsi plant.png" alt="Tulsi Plant">
+    <h3>Tulsi Plant</h3>
+    <p>Sacred plant known for its medicinal properties.</p>
+    <p>Price: $8</p>
+    <button class="addToCartBtn" data-product='{"name":"Tulsi Plant","price":8,"image":"./pictures of index/tulsi plant.png"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lavender.webp" alt="Lavender">
+    <h3>Lavender</h3>
+    <p>Fragrant herb that soothes and relaxes.</p>
+    <p>Price: $18</p>
+    <button class="addToCartBtn" data-product='{"name":"Lavender","price":18,"image":"./pictures of index/Lavender.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lucky Bamboo.jpg" alt="Lucky Bamboo">
+    <h3>Lucky Bamboo</h3>
+    <p>Symbol of good luck and prosperity.</p>
+    <p>Price: $14</p>
+    <button class="addToCartBtn" data-product='{"name":"Lucky Bamboo","price":14,"image":"./pictures of index/Lucky Bamboo.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
+    <h3>Snake Plant</h3>
+    <p>Excellent air purifier for indoor spaces.</p>
+    <p>Price: $16</p>
+    <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":16,"image":"./pictures of index/Snake Plant.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
+    <h3>Peace Lily</h3>
+    <p>Beautiful indoor plant with white blooms.</p>
+    <p>Price: $20</p>
+    <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":20,"image":"./pictures of index/Peace Lily.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Hibiscus.webp" alt="Hibiscus">
+    <h3>Hibiscus</h3>
+    <p>Bright tropical flowers loved by pollinators.</p>
+    <p>Price: $13</p>
+    <button class="addToCartBtn" data-product='{"name":"Hibiscus","price":13,"image":"./pictures of index/Hibiscus.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Jasmine.jpg" alt="Jasmine">
+    <h3>Jasmine</h3>
+    <p>Sweet-scented plant ideal for gardens.</p>
+    <p>Price: $15</p>
+    <button class="addToCartBtn" data-product='{"name":"Jasmine","price":15,"image":"./pictures of index/Jasmine.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Bonsai.webp" alt="Bonsai">
+    <h3>Bonsai Tree</h3>
+    <p>Miniature tree for elegant home decor.</p>
+    <p>Price: $25</p>
+    <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":25,"image":"./pictures of index/Bonsai.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Cactus.webp" alt="Cactus">
+    <h3>Cactus</h3>
+    <p>Low-maintenance plant perfect for desks.</p>
+    <p>Price: $9</p>
+    <button class="addToCartBtn" data-product='{"name":"Cactus","price":9,"image":"./pictures of index/Cactus.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Orchid.jpg" alt="Orchid">
+    <h3>Orchid</h3>
+    <p>Elegant flowers for modern interiors.</p>
+    <p>Price: $22</p>
+    <button class="addToCartBtn" data-product='{"name":"Orchid","price":22,"image":"./pictures of index/Orchid.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Pothos.webp" alt="Pothos">
+    <h3>Pothos</h3>
+    <p>Hardy vine plant for air purification.</p>
+    <p>Price: $11</p>
+    <button class="addToCartBtn" data-product='{"name":"Pothos","price":11,"image":"./pictures of index/Pothos.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Fern.jpg" alt="Fern">
+    <h3>Fern</h3>
+    <p>Lovely green foliage for humid areas.</p>
+    <p>Price: $10</p>
+    <button class="addToCartBtn" data-product='{"name":"Fern","price":10,"image":"./pictures of index/Fern.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Banana Plant.jpg" alt="Banana Plant">
+    <h3>Banana Plant</h3>
+    <p>Tropical plant with large vibrant leaves.</p>
+    <p>Price: $17</p>
+    <button class="addToCartBtn" data-product='{"name":"Banana Plant","price":17,"image":"./pictures of index/Banana Plant.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Coleus.jpg" alt="Coleus">
+    <h3>Coleus</h3>
+    <p>Colorful foliage plant for bright corners.</p>
+    <p>Price: $9</p>
+    <button class="addToCartBtn" data-product='{"name":"Coleus","price":9,"image":"./pictures of index/Coleus.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Rosemary.jpg" alt="Rosemary">
+    <h3>Rosemary</h3>
+    <p>Aromatic herb used for cooking and fragrance.</p>
+    <p>Price: $12</p>
+    <button class="addToCartBtn" data-product='{"name":"Rosemary","price":12,"image":"./pictures of index/Rosemary.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Mint.jpg" alt="Mint">
+    <h3>Mint</h3>
+    <p>Fresh herb for teas and garnishing.</p>
+    <p>Price: $8</p>
+    <button class="addToCartBtn" data-product='{"name":"Mint","price":8,"image":"./pictures of index/Mint.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Ficus.webp" alt="Ficus">
+    <h3>Ficus</h3>
+    <p>Popular indoor plant with glossy leaves.</p>
+    <p>Price: $18</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus","price":18,"image":"./pictures of index/Ficus.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Croton.jpeg" alt="Croton">
+    <h3>Croton</h3>
+    <p>Vibrant leaves in shades of yellow and red.</p>
+    <p>Price: $15</p>
+    <button class="addToCartBtn" data-product='{"name":"Croton","price":15,"image":"./pictures of index/Croton.jpeg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/ZZ Plant.jpg" alt="ZZ Plant">
+    <h3>ZZ Plant</h3>
+    <p>Low-light tolerant and easy to grow.</p>
+    <p>Price: $19</p>
+    <button class="addToCartBtn" data-product='{"name":"ZZ Plant","price":19,"image":"./pictures of index/ZZ Plant.jpg"}'>Add to Cart</button>
+  </div>
+
+</div>
+
+
+  </div>
+</section>
+
+
+
+
+<!-- Care Section -->
+<section id="care">
+  <h2 style="text-align:center;">Daily Plant Care 🌱</h2>
+  <div class="care-cards">
+    <div class="card"><h3>Watering</h3><p>Different plants need different amounts of water. Know your plant!</p></div>
+    <div class="card"><h3>Sunlight</h3><p>Indoor plants require indirect sunlight, outdoor plants need full sunlight.</p></div>
+    <div class="card"><h3>Fertilization</h3><p>Use organic fertilizers weekly to keep plants healthy and green.</p></div>
+    <div class="card"><h3>Pest Control</h3><p>Use natural remedies to prevent insects without harming the plant.</p></div>
+  </div>
+</section>
+
+<!-- Share Story -->
+<section id="share-story">
+<h2>Share Your Plant Story 💌</h2>
+<p>Share your favorite plant stories or growth journey with us!</p>
+<form>
+  <div class="form-group">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name">
+  </div>
+  <div class="form-group">
+    <label for="story">Story</label>
+    <textarea id="story" name="story" rows="5" placeholder="Write your story..."></textarea>
+  </div>
+  <button type="submit">Submit 🌿</button>
+</form>
+</section>
+
+
+
+
+
+
+
+
+
+<footer>
+<h2 style="color:black;">Follow Me</h2>
+<div class="social-buttons">
+  <a href="https://www.facebook.com/share/1BDccttJnA/">Facebook</a>
+  <a href="https://youtube.com/@silent_alone_st?si=0jozvVrRfoGj6ZsX">Youtube</a>
+  <a href="https://www.linkedin.com/public-profile/settings">Linkedin</a>
+</div>
+<p>© 2025 GreenNest. All rights reserved.</p>
+</footer>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// SESSION CHECK
+fetch(`${BACKEND}/check-session`, { credentials:"include" })
+.then(res=>res.json())
+.then(data=> { if(!data.loggedIn) window.location.href="login.html"; });
+
+// LOGOUT
+document.getElementById("logoutBtn").addEventListener("click", async()=>{
+  const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success) window.location.href="login.html";
+  else alert("Logout failed.");
+});
+
+// ADD TO CART
+document.querySelectorAll(".addToCartBtn").forEach(btn=>{
+  btn.addEventListener("click", async()=>{
+    const product = JSON.parse(btn.dataset.product);
+    const res = await fetch(`${BACKEND}/add-to-cart`, {
+      method:"POST",
+      credentials:"include",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(product)
+    });
+    const data = await res.json();
+    if(data.success) alert(`${product.name} added to cart!`);
+    else alert("Failed to add to cart.");
+  });
+});
+</script>
+</body>
+</html>

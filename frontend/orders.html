@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Orders 🌿 GreenNest</title>
+<style>
+body { font-family:'Poppins', sans-serif; margin:0; background: #f0f8f5; color:#333; }
+header { background: linear-gradient(90deg,#00BFA6,#00C897,#00E7B0); padding:15px 30px; display:flex; justify-content: space-between; align-items:center; }
+.nav a { color:white; text-decoration:none; margin:0 15px; font-weight:600; }
+.nav a:hover, .nav a.active { text-decoration:underline; }
+#logoutBtn { background:white; color:#00BFA6; border:none; border-radius:20px; padding:8px 18px; font-weight:600; cursor:pointer; }
+.orders-container { max-width:900px; margin:40px auto; background:white; border-radius:20px; padding:30px; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
+.orders-container h2 { text-align:center; margin-bottom:20px; color:#00BFA6; }
+.order-card { border:1px solid #B2DFDB; border-radius:15px; padding:15px; margin-bottom:15px; }
+.order-card button { background:linear-gradient(90deg,#00BFA6,#00E7B0); color:white; border:none; border-radius:10px; padding:5px 10px; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="profile.html" class="active">Profile</a>
+  </nav>
+  <button id="logoutBtn">Logout</button>
+</header>
+
+<div class="orders-container">
+<h2>My Orders</h2>
+<div id="ordersList">
+<!-- Orders will be dynamically loaded here -->
+</div>
+</div>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// Session check
+fetch(`${BACKEND}/check-session`, { credentials:"include" })
+.then(res=>res.json())
+.then(data=> { if(!data.loggedIn) window.location.href="login.html"; });
+
+// Logout
+document.getElementById("logoutBtn").addEventListener("click", async()=>{
+  const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success) window.location.href="login.html"; else alert("Logout failed.");
+});
+
+// Fetch orders
+async function loadOrders(){
+  const res = await fetch(`${BACKEND}/my-orders`, { credentials:"include" });
+  const data = await res.json();
+  const ordersList = document.getElementById("ordersList");
+  ordersList.innerHTML="";
+  if(data.orders && data.orders.length>0){
+    data.orders.forEach(order=>{
+      const div = document.createElement("div");
+      div.className="order-card";
+      div.innerHTML=`<h3>Order #${order.id}</h3>
+                     <p>Items: ${order.items.map(i=>i.name).join(", ")}</p>
+                     <p>Total: $${order.total}</p>
+                     <button onclick="cancelOrder(${order.id})">Cancel Order</button>`;
+      ordersList.appendChild(div);
+    });
+  }else ordersList.innerHTML="<p>No orders yet.</p>";
+}
+
+async function cancelOrder(orderId){
+  if(!confirm("Are you sure you want to cancel this order?")) return;
+  const res = await fetch(`${BACKEND}/cancel-order/${orderId}`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success){ alert("Order cancelled!"); loadOrders(); } else alert("Failed to cancel.");
+}
+
+loadOrders();
+</script>
+
+</body>
+</html>

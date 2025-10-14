@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "frontend"
+  functions = "netlify/functions"
+
+[dev]
+  command = "node backend/server.js"
+  publish = "frontend"
+  functions = "netlify/functions"
+  port = 3000           # Browser frontend port
+  targetPort = 5000     # Backend server port
+  autoLaunch = false
+  environment = { 
+    NODE_ENV = "development",
+    DATABASE_URL = "postgresql://neondb_owner:npg_IAmRKvE4f0BX@ep-aged-math-adlps09i-pooler.c-2.us-east-1.aws.neon.tech/greennest_db?sslmode=require"
+  }

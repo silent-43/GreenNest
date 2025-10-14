@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Cart 🌿 GreenNest</title>
+<style>
+body { font-family:'Poppins', sans-serif; margin:0; background:#f0f8f5; color:#333; }
+header { background: linear-gradient(90deg,#00BFA6,#00C897,#00E7B0); padding:15px 30px; display:flex; justify-content: space-between; align-items:center; }
+.nav a { color:white; text-decoration:none; margin:0 15px; font-weight:600; }
+.nav a:hover, .nav a.active { text-decoration:underline; }
+#logoutBtn { background:white; color:#00BFA6; border:none; border-radius:20px; padding:8px 18px; font-weight:600; cursor:pointer; }
+.cart-container { max-width:900px; margin:40px auto; background:white; border-radius:20px; padding:30px; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
+.cart-item { display:flex; align-items:center; margin-bottom:15px; border-bottom:1px solid #ddd; padding-bottom:10px; }
+.cart-item img { width:100px; height:100px; object-fit:cover; border-radius:15px; margin-right:20px; }
+.cart-item-details { flex:1; }
+button.removeBtn { background:red; padding:5px 10px; border:none; border-radius:10px; color:white; cursor:pointer; margin-left:10px; transition:0.2s; }
+button.removeBtn:hover { transform:scale(1.05); }
+.total { text-align:right; font-weight:600; margin-top:20px; }
+#checkoutBtn { background:#00BFA6; color:white; border:none; border-radius:20px; padding:10px 20px; cursor:pointer; margin-top:15px; font-weight:600; transition:0.2s; }
+#checkoutBtn:hover { background:#00E7B0; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop Plants</a>
+    <a href="categories.html">Categories</a>
+    <a href="care.html">Plant Care</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="#">Others</a>
+    <a href="profile.html">Profile</a>
+  </nav>
+  <button id="logoutBtn">Logout</button>
+</header>
+
+<div class="cart-container">
+  <h2>My Cart</h2>
+  <div id="cartItems"></div>
+  <p class="total">Total: $<span id="totalAmount">0</span></p>
+  <button id="checkoutBtn">Proceed to Order</button>
+</div>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// ------------------ SESSION CHECK ------------------
+async function checkSession(){
+  const res = await fetch(`${BACKEND}/check-session`, { credentials:"include" });
+  const data = await res.json();
+  if(!data.loggedIn) window.location.href="login.html";
+}
+checkSession();
+
+// ------------------ LOGOUT ------------------
+document.getElementById("logoutBtn").addEventListener("click", async()=>{
+  const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success) window.location.href="login.html";
+  else alert("Logout failed.");
+});
+
+// ------------------ LOAD CART ------------------
+async function loadCart(){
+  const res = await fetch(`${BACKEND}/get-cart`, { credentials:"include" });
+  const data = await res.json();
+  const cartDiv = document.getElementById("cartItems");
+  cartDiv.innerHTML = "";
+  let total = 0;
+
+  if(data.success && data.cart.length > 0){
+    data.cart.forEach((item,index)=>{
+      total += item.price;
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <div class="cart-item-details">
+          <h3>${item.name}</h3>
+          <p>Price: $${item.price}</p>
+        </div>
+        <button class="removeBtn" data-index="${index}">Remove</button>
+      `;
+      cartDiv.appendChild(div);
+    });
+    document.getElementById("totalAmount").textContent = total;
+
+    document.querySelectorAll(".removeBtn").forEach(btn=>{
+      btn.addEventListener("click", async ()=>{
+        const idx = parseInt(btn.dataset.index);
+        const res = await fetch(`${BACKEND}/remove-from-cart`, {
+          method:"POST",
+          credentials:"include",
+          headers:{ "Content-Type":"application/json" },
+          body: JSON.stringify({index:idx})
+        });
+        const data = await res.json();
+        if(data.success) loadCart();
+        else alert("Failed to remove item.");
+      });
+    });
+  } else {
+    cartDiv.innerHTML = "<p>Your cart is empty.</p>";
+    document.getElementById("totalAmount").textContent = 0;
+  }
+}
+
+// ------------------ CHECKOUT ------------------
+document.getElementById("checkoutBtn").addEventListener("click", async ()=>{
+  const res = await fetch(`${BACKEND}/checkout`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success){
+    alert("Order placed successfully!");
+    loadCart();
+  } else alert("Checkout failed: " + (data.message || ""));
+});
+
+// Initial load
+loadCart();
+</script>
+
+</body>
+</html>

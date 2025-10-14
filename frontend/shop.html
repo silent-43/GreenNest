@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenNest - Shop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html" class="active">Shop</a>
+    <a href="categories.html">Categories</a>
+    <a href="care.html">Care Tips</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <button id="logoutBtn">Logout</button>
+</header>
+
+<section id="products">
+  <h2 style="text-align:center;">All Plants 🌿</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="./images/plant1.jpg" alt="Fiddle Leaf Fig">
+      <h3>Fiddle Leaf Fig</h3>
+      <p>Price: $25</p>
+      <button class="addToCartBtn" data-product='{"name":"Fiddle Leaf Fig","price":25,"image":"./images/plant1.jpg"}'>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/plant2.jpg" alt="Snake Plant">
+      <h3>Snake Plant</h3>
+      <p>Price: $18</p>
+      <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":18,"image":"./images/plant2.jpg"}'>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/plant3.jpg" alt="Bonsai Tree">
+      <h3>Bonsai Tree</h3>
+      <p>Price: $40</p>
+      <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":40,"image":"./images/plant3.jpg"}'>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/plant4.jpg" alt="Peace Lily">
+      <h3>Peace Lily</h3>
+      <p>Price: $22</p>
+      <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":22,"image":"./images/plant4.jpg"}'>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/plant5.jpg" alt="Aloe Vera">
+      <h3>Aloe Vera</h3>
+      <p>Price: $15</p>
+      <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":15,"image":"./images/plant5.jpg"}'>Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2 style="color:black;">Follow Us</h2>
+  <div class="social-buttons">
+    <a href="https://www.facebook.com/share/1BDccttJnA/">Facebook</a>
+    <a href="https://youtube.com/@silent_alone_st?si=0jozvVrRfoGj6ZsX">Youtube</a>
+    <a href="https://www.linkedin.com/public-profile/settings">Linkedin</a>
+  </div>
+  <p>© 2025 GreenNest. All rights reserved.</p>
+</footer>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// SESSION CHECK
+fetch(`${BACKEND}/check-session`, { credentials:"include" })
+.then(res=>res.json())
+.then(data=> { if(!data.loggedIn) window.location.href="login.html"; });
+
+// LOGOUT
+document.getElementById("logoutBtn").addEventListener("click", async()=>{
+  const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success) window.location.href="login.html";
+  else alert("Logout failed.");
+});
+
+// ADD TO CART
+document.querySelectorAll(".addToCartBtn").forEach(btn=>{
+  btn.addEventListener("click", async()=>{
+    const product = JSON.parse(btn.dataset.product);
+    const res = await fetch(`${BACKEND}/add-to-cart`, {
+      method:"POST",
+      credentials:"include",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(product)
+    });
+    const data = await res.json();
+    if(data.success) alert(`${product.name} added to cart!`);
+    else alert("Failed to add to cart.");
+  });
+});
+</script>
+
+</body>
+</html>
