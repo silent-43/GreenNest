@@ -5,6 +5,147 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GreenNest - Shop</title>
 <link rel="stylesheet" href="style.css">
+
+
+
+<style>
+#bsm {
+  font-size: clamp(2.5rem, 8vw, 100px);
+  font-weight: 800;
+  text-align: center;
+  color: #0ee80eee;
+  margin: 10px auto;
+  padding: 10px 30px;
+  border: 8px solid #06ef5f;
+  border-radius: 20px;
+  background-color: rgba(0,255,0,0.1);
+  animation: glowBounce 2s infinite alternate ease-in-out;
+  display: block;
+  max-width: 80%;
+}
+
+@keyframes glowBounce {
+  0% {
+    box-shadow: 0 0 10px #2fae2f, 0 0 20px #2fae2f;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 18px #4dff4d, 0 0 35px #4dff4d;
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 10px #2fae2f, 0 0 20px #2fae2f;
+    transform: scale(1);
+  }
+}
+</style>
+
+
+
+
+<style>
+#allPlants {
+  font-size: clamp(1.2rem, 4vw, 2rem); /* Chhoto font size */
+  font-weight: 700;
+  text-align: center;
+  color: #1af60ff2;
+  margin: 20px auto;
+  padding: 10px 20px; /* Chhoto padding */
+  border: 6px solid #0de727; /* Thin border */
+  border-radius: 10px;
+  background-color: rgba(40,167,69,0.1);
+  max-width: 20%;
+  display: block;
+  animation: allPlantsBounce 2s infinite alternate ease-in-out;
+}
+
+@keyframes allPlantsBounce {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; /* subtle glow */
+  }
+  50% {
+    transform: scale(1.02); /* gentle bounce */
+    box-shadow: 0 0 8px #4dff4d, 0 0 14px #4dff4d;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745;
+  }
+}
+</style>
+
+
+
+
+<style>
+#greennest-footer {
+  text-align: center;
+  padding: 30px 10px;
+  background-color: whitesmoke;
+  color: #000;
+  border-top: 2px solid rgba(14, 195, 96, 0.6);
+  border-radius: 15px 15px 0 0;
+  backdrop-filter: blur(5px);
+  animation: fadeInFooter 1.5s ease-in-out;
+}
+
+#greennest-footer h2 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px rgba(40,167,69,0.3);
+  animation: glowTitle 2s infinite alternate ease-in-out;
+}
+
+#greennest-footer .social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#greennest-footer .social-buttons a {
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(120deg, #06ec3c, #28a745);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+#greennest-footer .social-buttons a:hover {
+  transform: scale(1.1);
+  background: linear-gradient(120deg, #28a745, #06ec3c);
+  box-shadow: 0 0 15px rgba(40,167,69,0.5);
+}
+
+#greennest-footer p {
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 15px;
+}
+
+@keyframes fadeInFooter {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowTitle {
+  0% { text-shadow: 0 0 5px rgba(40,167,69,0.2); }
+  100% { text-shadow: 0 0 15px rgba(40,167,69,0.6); }
+}
+</style>
+
+
 </head>
 <body>
 
@@ -16,12 +157,32 @@
     <a href="care.html">Care Tips</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
+    <button id="logoutBtn" style="
+  background-color: #06ef5f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+">
+  Logout
+</button>
+
   </nav>
-  <button id="logoutBtn">Logout</button>
+  
 </header>
+<br>
+<h1 id="bsm">GreenNest 🌿</h1>
+
+
+
 
 <section id="products">
-  <h2 style="text-align:center;">All Plants 🌿</h2>
+  <h2 id="allPlants" style="text-align:center;">All Plants 🌿</h2>
   <div class="product-grid">
     <div class="product-card">
       <img src="./images/plant1.jpg" alt="Fiddle Leaf Fig">
@@ -29,6 +190,169 @@
       <p>Price: $25</p>
       <button class="addToCartBtn" data-product='{"name":"Fiddle Leaf Fig","price":25,"image":"./images/plant1.jpg"}'>Add to Cart</button>
     </div>
+
+    <div class="product-card">
+  <img src="./pictures of index/Dragon Tree.jpg" alt="Dragon Tree">
+  <h3>Dragon Tree</h3>
+  <p>Striking indoor plant with red-edged leaves.</p>
+  <p>Price: $20</p>
+  <button class="addToCartBtn" data-product='{"name":"Dragon Tree","price":20,"image":"./pictures of index/Dragon Tree.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Bamboo Palm.jpg" alt="Bamboo Palm">
+  <h3>Bamboo Palm</h3>
+  <p>Air-purifying plant suitable for corners.</p>
+  <p>Price: $18</p>
+  <button class="addToCartBtn" data-product='{"name":"Bamboo Palm","price":18,"image":"./pictures of index/Bamboo Palm.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Calathea.jpg" alt="Calathea">
+  <h3>Calathea</h3>
+  <p>Decorative foliage with patterned leaves.</p>
+  <p>Price: $22</p>
+  <button class="addToCartBtn" data-product='{"name":"Calathea","price":22,"image":"./pictures of index/Calathea.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Philodendron.jpg" alt="Philodendron">
+  <h3>Philodendron</h3>
+  <p>Easy-care vine for indoor decoration.</p>
+  <p>Price: $17</p>
+  <button class="addToCartBtn" data-product='{"name":"Philodendron","price":17,"image":"./pictures of index/Philodendron.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Monstera.jpg" alt="Monstera">
+  <h3>Monstera</h3>
+  <p>Large tropical leaves, iconic indoor plant.</p>
+  <p>Price: $30</p>
+  <button class="addToCartBtn" data-product='{"name":"Monstera","price":30,"image":"./pictures of index/Monstera.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Spider Plant.jpg" alt="Spider Plant">
+  <h3>Spider Plant</h3>
+  <p>Hardy, low-maintenance hanging plant.</p>
+  <p>Price: $12</p>
+  <button class="addToCartBtn" data-product='{"name":"Spider Plant","price":12,"image":"./pictures of index/Spider Plant.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Golden Pothos.jpg" alt="Golden Pothos">
+  <h3>Golden Pothos</h3>
+  <p>Vining plant, perfect for shelves or pots.</p>
+  <p>Price: $15</p>
+  <button class="addToCartBtn" data-product='{"name":"Golden Pothos","price":15,"image":"./pictures of index/Golden Pothos.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Anthurium.jpg" alt="Anthurium">
+  <h3>Anthurium</h3>
+  <p>Heart-shaped flowers, elegant indoor plant.</p>
+  <p>Price: $25</p>
+  <button class="addToCartBtn" data-product='{"name":"Anthurium","price":25,"image":"./pictures of index/Anthurium.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Parlor Palm.jpg" alt="Parlor Palm">
+  <h3>Parlor Palm</h3>
+  <p>Compact palm ideal for indoor spaces.</p>
+  <p>Price: $19</p>
+  <button class="addToCartBtn" data-product='{"name":"Parlor Palm","price":19,"image":"./pictures of index/Parlor Palm.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Chinese Evergreen.jpg" alt="Chinese Evergreen">
+  <h3>Chinese Evergreen</h3>
+  <p>Easy-care plant with variegated leaves.</p>
+  <p>Price: $16</p>
+  <button class="addToCartBtn" data-product='{"name":"Chinese Evergreen","price":16,"image":"./pictures of index/Chinese Evergreen.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Aglaonema.jpg" alt="Aglaonema">
+  <h3>Aglaonema</h3>
+  <p>Low-light tolerant, decorative leaves.</p>
+  <p>Price: $18</p>
+  <button class="addToCartBtn" data-product='{"name":"Aglaonema","price":18,"image":"./pictures of index/Aglaonema.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Bird of Paradise.jpg" alt="Bird of Paradise">
+  <h3>Bird of Paradise</h3>
+  <p>Tropical plant with unique flowers.</p>
+  <p>Price: $35</p>
+  <button class="addToCartBtn" data-product='{"name":"Bird of Paradise","price":35,"image":"./pictures of index/Bird of Paradise.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Fiddle Leaf Fig.jpg" alt="Fiddle Leaf Fig">
+  <h3>Fiddle Leaf Fig</h3>
+  <p>Large glossy leaves, stylish indoor plant.</p>
+  <p>Price: $28</p>
+  <button class="addToCartBtn" data-product='{"name":"Fiddle Leaf Fig","price":28,"image":"./pictures of index/Fiddle Leaf Fig.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Sansevieria.jpg" alt="Sansevieria">
+  <h3>Sansevieria</h3>
+  <p>Snake plant variety, air-purifying leaves.</p>
+  <p>Price: $14</p>
+  <button class="addToCartBtn" data-product='{"name":"Sansevieria","price":14,"image":"./pictures of index/Sansevieria.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Alocasia.jpg" alt="Alocasia">
+  <h3>Alocasia</h3>
+  <p>Decorative foliage with dramatic leaves.</p>
+  <p>Price: $27</p>
+  <button class="addToCartBtn" data-product='{"name":"Alocasia","price":27,"image":"./pictures of index/Alocasia.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Dracaena.jpg" alt="Dracaena">
+  <h3>Dracaena</h3>
+  <p>Popular indoor plant for low-light areas.</p>
+  <p>Price: $21</p>
+  <button class="addToCartBtn" data-product='{"name":"Dracaena","price":21,"image":"./pictures of index/Dracaena.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Ornamental Pepper.jpg" alt="Ornamental Pepper">
+  <h3>Ornamental Pepper</h3>
+  <p>Colorful peppers, adds charm to any corner.</p>
+  <p>Price: $13</p>
+  <button class="addToCartBtn" data-product='{"name":"Ornamental Pepper","price":13,"image":"./pictures of index/Ornamental Pepper.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Kalanchoe.jpg" alt="Kalanchoe">
+  <h3>Kalanchoe</h3>
+  <p>Bright flowering succulent, low maintenance.</p>
+  <p>Price: $15</p>
+  <button class="addToCartBtn" data-product='{"name":"Kalanchoe","price":15,"image":"./pictures of index/Kalanchoe.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Peperomia.jpg" alt="Peperomia">
+  <h3>Peperomia</h3>
+  <p>Compact indoor plant with unique leaves.</p>
+  <p>Price: $12</p>
+  <button class="addToCartBtn" data-product='{"name":"Peperomia","price":12,"image":"./pictures of index/Peperomia.jpg"}'>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Schefflera.jpg" alt="Schefflera">
+  <h3>Schefflera</h3>
+  <p>Umbrella plant with shiny leaves.</p>
+  <p>Price: $19</p>
+  <button class="addToCartBtn" data-product='{"name":"Schefflera","price":19,"image":"./pictures of index/Schefflera.jpg"}'>Add to Cart</button>
+</div>
+
+
+
     <div class="product-card">
       <img src="./images/plant2.jpg" alt="Snake Plant">
       <h3>Snake Plant</h3>
@@ -53,18 +377,222 @@
       <p>Price: $15</p>
       <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":15,"image":"./images/plant5.jpg"}'>Add to Cart</button>
     </div>
+    
+  <div class="product-card">
+    <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
+    <h3>Ficus Tree</h3>
+    <p>Indoor tree, moderate sunlight.</p>
+    <p>Price: $25</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":25,"image":"./pictures of index/ficus tree.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/rose plants.avif" alt="Rose Plant">
+    <h3>Rose Plant</h3>
+    <p>Blooms with beautiful red roses.</p>
+    <p>Price: $15</p>
+    <button class="addToCartBtn" data-product='{"name":"Rose Plant","price":15,"image":"./pictures of index/rose plants.avif"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
+    <h3>Aloe Vera</h3>
+    <p>Easy to maintain succulent plant.</p>
+    <p>Price: $10</p>
+    <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":10,"image":"./pictures of index/aloe vera.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/money plant.webp" alt="Money Plant">
+    <h3>Money Plant</h3>
+    <p>Brings prosperity and purifies air.</p>
+    <p>Price: $12</p>
+    <button class="addToCartBtn" data-product='{"name":"Money Plant","price":12,"image":"./pictures of index/money plant.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/tulsi plant.png" alt="Tulsi Plant">
+    <h3>Tulsi Plant</h3>
+    <p>Sacred plant known for its medicinal properties.</p>
+    <p>Price: $8</p>
+    <button class="addToCartBtn" data-product='{"name":"Tulsi Plant","price":8,"image":"./pictures of index/tulsi plant.png"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lavender.webp" alt="Lavender">
+    <h3>Lavender</h3>
+    <p>Fragrant herb that soothes and relaxes.</p>
+    <p>Price: $18</p>
+    <button class="addToCartBtn" data-product='{"name":"Lavender","price":18,"image":"./pictures of index/Lavender.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lucky Bamboo.jpg" alt="Lucky Bamboo">
+    <h3>Lucky Bamboo</h3>
+    <p>Symbol of good luck and prosperity.</p>
+    <p>Price: $14</p>
+    <button class="addToCartBtn" data-product='{"name":"Lucky Bamboo","price":14,"image":"./pictures of index/Lucky Bamboo.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
+    <h3>Snake Plant</h3>
+    <p>Excellent air purifier for indoor spaces.</p>
+    <p>Price: $16</p>
+    <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":16,"image":"./pictures of index/Snake Plant.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
+    <h3>Peace Lily</h3>
+    <p>Beautiful indoor plant with white blooms.</p>
+    <p>Price: $20</p>
+    <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":20,"image":"./pictures of index/Peace Lily.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Hibiscus.webp" alt="Hibiscus">
+    <h3>Hibiscus</h3>
+    <p>Bright tropical flowers loved by pollinators.</p>
+    <p>Price: $13</p>
+    <button class="addToCartBtn" data-product='{"name":"Hibiscus","price":13,"image":"./pictures of index/Hibiscus.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Jasmine.jpg" alt="Jasmine">
+    <h3>Jasmine</h3>
+    <p>Sweet-scented plant ideal for gardens.</p>
+    <p>Price: $15</p>
+    <button class="addToCartBtn" data-product='{"name":"Jasmine","price":15,"image":"./pictures of index/Jasmine.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Bonsai.webp" alt="Bonsai">
+    <h3>Bonsai Tree</h3>
+    <p>Miniature tree for elegant home decor.</p>
+    <p>Price: $25</p>
+    <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":25,"image":"./pictures of index/Bonsai.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Cactus.webp" alt="Cactus">
+    <h3>Cactus</h3>
+    <p>Low-maintenance plant perfect for desks.</p>
+    <p>Price: $9</p>
+    <button class="addToCartBtn" data-product='{"name":"Cactus","price":9,"image":"./pictures of index/Cactus.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Orchid.jpg" alt="Orchid">
+    <h3>Orchid</h3>
+    <p>Elegant flowers for modern interiors.</p>
+    <p>Price: $22</p>
+    <button class="addToCartBtn" data-product='{"name":"Orchid","price":22,"image":"./pictures of index/Orchid.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Pothos.webp" alt="Pothos">
+    <h3>Pothos</h3>
+    <p>Hardy vine plant for air purification.</p>
+    <p>Price: $11</p>
+    <button class="addToCartBtn" data-product='{"name":"Pothos","price":11,"image":"./pictures of index/Pothos.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Fern.jpg" alt="Fern">
+    <h3>Fern</h3>
+    <p>Lovely green foliage for humid areas.</p>
+    <p>Price: $10</p>
+    <button class="addToCartBtn" data-product='{"name":"Fern","price":10,"image":"./pictures of index/Fern.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Banana Plant.jpg" alt="Banana Plant">
+    <h3>Banana Plant</h3>
+    <p>Tropical plant with large vibrant leaves.</p>
+    <p>Price: $17</p>
+    <button class="addToCartBtn" data-product='{"name":"Banana Plant","price":17,"image":"./pictures of index/Banana Plant.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Coleus.jpg" alt="Coleus">
+    <h3>Coleus</h3>
+    <p>Colorful foliage plant for bright corners.</p>
+    <p>Price: $9</p>
+    <button class="addToCartBtn" data-product='{"name":"Coleus","price":9,"image":"./pictures of index/Coleus.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Rosemary.jpg" alt="Rosemary">
+    <h3>Rosemary</h3>
+    <p>Aromatic herb used for cooking and fragrance.</p>
+    <p>Price: $12</p>
+    <button class="addToCartBtn" data-product='{"name":"Rosemary","price":12,"image":"./pictures of index/Rosemary.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Mint.jpg" alt="Mint">
+    <h3>Mint</h3>
+    <p>Fresh herb for teas and garnishing.</p>
+    <p>Price: $8</p>
+    <button class="addToCartBtn" data-product='{"name":"Mint","price":8,"image":"./pictures of index/Mint.jpg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Ficus.webp" alt="Ficus">
+    <h3>Ficus</h3>
+    <p>Popular indoor plant with glossy leaves.</p>
+    <p>Price: $18</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus","price":18,"image":"./pictures of index/Ficus.webp"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Croton.jpeg" alt="Croton">
+    <h3>Croton</h3>
+    <p>Vibrant leaves in shades of yellow and red.</p>
+    <p>Price: $15</p>
+    <button class="addToCartBtn" data-product='{"name":"Croton","price":15,"image":"./pictures of index/Croton.jpeg"}'>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/ZZ Plant.jpg" alt="ZZ Plant">
+    <h3>ZZ Plant</h3>
+    <p>Low-light tolerant and easy to grow.</p>
+    <p>Price: $19</p>
+    <button class="addToCartBtn" data-product='{"name":"ZZ Plant","price":19,"image":"./pictures of index/ZZ Plant.jpg"}'>Add to Cart</button>
+  </div>
+
   </div>
 </section>
 
-<footer>
-  <h2 style="color:black;">Follow Us</h2>
+
+
+
+
+
+
+<footer id="greennest-footer">
+  <h2>Follow Me</h2>
   <div class="social-buttons">
-    <a href="https://www.facebook.com/share/1BDccttJnA/">Facebook</a>
-    <a href="https://youtube.com/@silent_alone_st?si=0jozvVrRfoGj6ZsX">Youtube</a>
-    <a href="https://www.linkedin.com/public-profile/settings">Linkedin</a>
+    <a href="https://www.facebook.com/share/1BDccttJnA/">
+      🌐 Facebook
+    </a>
+    <a href="https://youtube.com/@silent_alone_st?si=0jozvVrRfoGj6ZsX">
+      ▶️ YouTube
+    </a>
+    <a href="https://www.linkedin.com/public-profile/settings">
+      💼 LinkedIn
+    </a>
   </div>
   <p>© 2025 GreenNest. All rights reserved.</p>
 </footer>
+
+
+
+
+
+
+
 
 <script>
 const BACKEND="http://127.0.0.1:5000";

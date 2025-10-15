@@ -157,6 +157,348 @@ button[type="submit"]:hover {
 
 
 
+<style>
+#bsm {
+  font-size: clamp(2.5rem, 8vw, 100px);
+  font-weight: 800;
+  text-align: center;
+  color: #0ee80eee;
+  margin: 20px auto;
+  padding: 20px 40px;
+  border: 8px solid #06ef5f;
+  border-radius: 20px;
+  background-color: rgba(0,255,0,0.1);
+  animation: glowBounce 2s infinite alternate ease-in-out;
+  display: block;
+  max-width: 80%;
+}
+
+@keyframes glowBounce {
+  0% {
+    box-shadow: 0 0 10px #2fae2f, 0 0 20px #2fae2f;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 18px #4dff4d, 0 0 35px #4dff4d;
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 10px #2fae2f, 0 0 20px #2fae2f;
+    transform: scale(1);
+  }
+}
+</style>
+
+
+
+
+
+
+<style>
+#featured {
+  font-size: clamp(1.2rem, 4vw, 2rem); /* Chhoto font size */
+  font-weight: 700;
+  text-align: center;
+  color: #28a745;
+  margin: 20px auto;
+  padding: 10px 20px; /* Chhoto padding */
+  border: 6px solid #06ec3c; /* Thin border */
+  border-radius: 10px;
+  background-color: rgba(40,167,69,0.1);
+  max-width: 20%;
+  display: block;
+  animation: featuredBounce 2s infinite alternate ease-in-out;
+}
+
+@keyframes featuredBounce {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; /* subtle glow */
+  }
+  50% {
+    transform: scale(1.03); /* gentle bounce */
+    box-shadow: 0 0 8px #4dff4d, 0 0 14px #4dff4d;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+<style>
+/* H2 Style + Animation */
+#hero-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  text-align: center;
+  color: #160fec;
+  margin: 20px auto;
+  max-width: 90%;
+  display: block;
+  animation: titleBounce 2s infinite alternate ease-in-out;
+}
+
+#hero-title span {
+  color: #14c114; /* Highlight span */
+}
+
+/* H2 Bounce + Glow */
+@keyframes titleBounce {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 3px #2fae2f;
+  }
+  50% {
+    transform: scale(1.04);
+    text-shadow: 0 0 10px #4dff4d;
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 3px #2fae2f;
+  }
+}
+
+/* H3 Style + Subtle Fade */
+#hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 800;
+  text-align: center;
+  color: #f312d1;
+  margin: 10px auto;
+  max-width: 85%;
+  display: block;
+  animation: subtitleFade 3s infinite alternate ease-in-out;
+}
+
+@keyframes subtitleFade {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+</style>
+
+
+
+<style>
+#caretitle {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  color: #28a745;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: 6px solid #06ec3c;
+  border-radius: 10px;
+  background-color: rgba(40,167,69,0.1);
+  max-width: 25%;
+  display: block;
+  animation: careBounce 2s infinite alternate ease-in-out;
+}
+
+@keyframes careBounce {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 8px #4dff4d, 0 0 14px #4dff4d;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+#greennest-footer {
+  text-align: center;
+  padding: 30px 10px;
+  background-color: whitesmoke;
+  color: #000;
+  border-top: 2px solid rgba(14, 195, 96, 0.6);
+  border-radius: 15px 15px 0 0;
+  backdrop-filter: blur(5px);
+  animation: fadeInFooter 1.5s ease-in-out;
+}
+
+#greennest-footer h2 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px rgba(40,167,69,0.3);
+  animation: glowTitle 2s infinite alternate ease-in-out;
+}
+
+#greennest-footer .social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#greennest-footer .social-buttons a {
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(120deg, #06ec3c, #28a745);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+#greennest-footer .social-buttons a:hover {
+  transform: scale(1.1);
+  background: linear-gradient(120deg, #28a745, #06ec3c);
+  box-shadow: 0 0 15px rgba(40,167,69,0.5);
+}
+
+#greennest-footer p {
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 15px;
+}
+
+@keyframes fadeInFooter {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowTitle {
+  0% { text-shadow: 0 0 5px rgba(40,167,69,0.2); }
+  100% { text-shadow: 0 0 15px rgba(40,167,69,0.6); }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  #share-story {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+#storytitle {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  color: #28a745;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: 4px solid #06ec3c;
+  border-radius: 10px;
+  background-color: rgba(40,167,69,0.1);
+  display: block;
+  animation: featuredBounce 2s infinite alternate ease-in-out;
+  width: 72%;              
+  max-width: 700px; 
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.voice-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.voice-controls button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.voice-controls button:hover {
+  background-color: #218838;
+}
+
+@keyframes featuredBounce {
+  0% { transform: scale(1); box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; }
+  50% { transform: scale(1.02); box-shadow: 0 0 8px #4dff4d, 0 0 14px #4dff4d; }
+  100% { transform: scale(1); box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; }
+}
+
+</style>
+
+
+
+
 </head>
 <body>
 
@@ -172,23 +514,82 @@ button[type="submit"]:hover {
   </nav>
   <button id="logoutBtn">Logout</button>
 </header>
+<br>
 
-<h1 style="text-align:center; margin:40px 0 20px 0;">GreenNest 🌿</h1>
+<h1 id="bsm">GreenNest 🌿</h1>
+
+<br>
+<br>
 
 <section id="hero">
+
+
   <div class="hero-content">
-    <h2>Welcome to <span>GreenNest</span></h2>
-    <h3>Your one-stop platform for plants, trees & daily care 🌱</h3>
-  </div>
+  <h2 id="hero-title">Welcome to <span>GreenNest</span></h2>
+  <h3 id="hero-subtitle">Your one-stop platform for plants, trees & daily care 🌱</h3>
+</div>
+
+
   <div class="hero-image">
     <img src="./pictures of index/GreenNest plant Showcase.webp" alt="Plants Showcase">
   </div>
 </section>
 
+<br>
+<br>
+<br>
+
 <section id="shop">
-  <h2 style="text-align:center;">Featured Plants 🌿</h2>
+  <h2 id="featured" style="text-align:center;">Featured Plants 🌿</h2>
+
+<br>
+
+
+
+
+
+
+
+
+
+
 <div class="product-grid">
 
+  <div class="product-card">
+    <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
+    <h3>Ficus Tree</h3>
+    <p>Indoor tree, moderate sunlight.</p>
+    <p>Price: $25</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":25,"image":"./pictures of index/ficus tree.jpg"}'>Add to Cart</button>
+  </div>
+
+  
+
+    <div class="product-card">
+      <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
+      <h3>Snake Plant</h3>
+      <p>Price: $18</p>
+      <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":18,"image":"./images/Snake Plant.webp"}'>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./pictures of index/Bonsai.webp" alt="Bonsai Tree">
+      <h3>Bonsai Tree</h3>
+      <p>Price: $40</p>
+      <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":40,"image":"./images/Bonsai.webp"}'>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
+      <h3>Peace Lily</h3>
+      <p>Price: $22</p>
+      <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":22,"image":"./images/Peace Lily.jpg"}'>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
+      <h3>Aloe Vera</h3>
+      <p>Price: $15</p>
+      <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":15,"image":"./images/aloe vera.webp"}'>Add to Cart</button>
+    </div>
+    
   <div class="product-card">
     <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
     <h3>Ficus Tree</h3>
@@ -373,60 +774,322 @@ button[type="submit"]:hover {
     <button class="addToCartBtn" data-product='{"name":"ZZ Plant","price":19,"image":"./pictures of index/ZZ Plant.jpg"}'>Add to Cart</button>
   </div>
 
+
+<div class="product-card">
+    <img src="./pictures of index/Pothos.webp" alt="Pothos">
+    <h3>Pothos</h3>
+    <p>Hardy vine plant for air purification.</p>
+    <p>Price: $11</p>
+    <button class="addToCartBtn" data-product='{"name":"Pothos","price":11,"image":"./pictures of index/Pothos.webp"}'>Add to Cart</button>
+  </div>
+
+
+  <div class="product-card">
+    <img src="./pictures of index/more plants.jpg" alt="More Plants" style="object-fit:cover; height:180px;">
+    <h3>Explore More Plants 🌿</h3>
+    <p>Check out our full collection of amazing plants and find your perfect green companion!</p>
+    <a href="./shop.html" style="display:inline-block; margin-top:10px; background:linear-gradient(90deg,#00BFA6,#00E7B0); color:white; padding:8px 15px; border-radius:15px; text-decoration:none; font-weight:600;">Visit Shop Plants</a>
 </div>
+
 
 
   </div>
 </section>
+
+
+
+
 
 
 
 
 <!-- Care Section -->
 <section id="care">
-  <h2 style="text-align:center;">Daily Plant Care 🌱</h2>
+  <h2 style="text-align:center;" id="caretitle">Daily Plant Care 🌱</h2>
   <div class="care-cards">
-    <div class="card"><h3>Watering</h3><p>Different plants need different amounts of water. Know your plant!</p></div>
-    <div class="card"><h3>Sunlight</h3><p>Indoor plants require indirect sunlight, outdoor plants need full sunlight.</p></div>
-    <div class="card"><h3>Fertilization</h3><p>Use organic fertilizers weekly to keep plants healthy and green.</p></div>
-    <div class="card"><h3>Pest Control</h3><p>Use natural remedies to prevent insects without harming the plant.</p></div>
+
+   <div class="card">
+  <h3>
+    <a href="watering.html" style="color: rgba(7, 11, 241, 0.929); 
+        border: 2px solid rgba(14, 195, 96, 0.929); 
+        padding: 5px 10px; 
+        border-radius: 8px; 
+        text-decoration: none;">Watering</a>
+  </h3>
+  <p><b>click here to see more</b></p>
+  <br>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <img src="./pictures of index/watering.jpeg" alt="Watering" style="width: 150px; height: auto; border-radius: 10px;">
+    <img src="./pictures of index/watering1.jpeg" alt="Watering" style="width: 150px; height: auto; border-radius: 10px;">
   </div>
-</section>
-
-<!-- Share Story -->
-<section id="share-story">
-<h2>Share Your Plant Story 💌</h2>
-<p>Share your favorite plant stories or growth journey with us!</p>
-<form>
-  <div class="form-group">
-    <label for="name">Your Name</label>
-    <input type="text" id="name" name="name" placeholder="Enter your name">
-  </div>
-  <div class="form-group">
-    <label for="story">Story</label>
-    <textarea id="story" name="story" rows="5" placeholder="Write your story..."></textarea>
-  </div>
-  <button type="submit">Submit 🌿</button>
-</form>
-</section>
-
-
-
-
-
-
-
-
-
-<footer>
-<h2 style="color:black;">Follow Me</h2>
-<div class="social-buttons">
-  <a href="https://www.facebook.com/share/1BDccttJnA/">Facebook</a>
-  <a href="https://youtube.com/@silent_alone_st?si=0jozvVrRfoGj6ZsX">Youtube</a>
-  <a href="https://www.linkedin.com/public-profile/settings">Linkedin</a>
+  <p>Different plants need different amounts of water. Know your plant!</p>
 </div>
-<p>© 2025 GreenNest. All rights reserved.</p>
+
+
+<div class="card">
+  <h3>
+    <a href="./sunlight.html" style="color: rgba(7, 11, 241, 0.929); 
+        border: 2px solid rgba(14, 195, 96, 0.929); 
+        padding: 5px 10px; 
+        border-radius: 8px; 
+        text-decoration: none;">Sunlight</a>
+  </h3>
+  <p><b>click here to see more</b></p>
+  <br>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <img src="./pictures of index/sunlight.jpg" alt="Sunlight" style="width: 150px; height: auto; border-radius: 10px;">
+    <img src="./pictures of index/sunlight1.jpg" alt="Sunlight" style="width: 150px; height: auto; border-radius: 10px;">
+  </div>
+  <p>Indoor plants require indirect sunlight, outdoor plants need full sunlight.</p>
+</div>
+
+
+
+<div class="card">
+  <h3>
+    <a href="./fertilization.html" style="color: rgba(7, 11, 241, 0.929); 
+        border: 2px solid rgba(14, 195, 96, 0.929); 
+        padding: 5px 10px; 
+        border-radius: 8px; 
+        text-decoration: none;">Fertilization</a>
+  </h3>
+  <p><b>click here to see more</b></p>
+  <br>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <img src="./pictures of index/Fertilization.jpg" alt="Fertilization" style="width: 150px; height: auto; border-radius: 10px;">
+    <img src="./pictures of index/Fertilization1.jpg" alt="Fertilization" style="width: 150px; height: auto; border-radius: 10px;">
+  </div>
+  <p>Use organic fertilizers weekly to keep plants healthy and green.</p>
+</div>
+
+
+
+  <div class="card">
+  <h3>
+    <a href="./pest-control.html" style="color: rgba(7, 11, 241, 0.929); 
+        border: 2px solid rgba(14, 195, 96, 0.929); 
+        padding: 5px 10px; 
+        border-radius: 8px; 
+        text-decoration: none;">Pest Control</a>
+  </h3>
+  <p><b>click here to see more</b></p>
+  <br>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <img src="./pictures of index/Pest Control.jpg" alt="Pest Control" style="width: 150px; height: auto; border-radius: 10px;">
+    <img src="./pictures of index/Pest Control1.webp" alt="Pest Control" style="width: 150px; height: auto; border-radius: 10px;">
+  </div>
+  <p>Use natural remedies to prevent insects without harming the plant.</p>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+<div>
+
+
+
+
+
+
+<section id="share-story">
+  <h2 id="storytitle">Share Your Plant Story 💌</h2>
+  <p><b>Share your favorite plant stories or growth journey with us!</b></p>
+
+  <form id="storyForm" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+    </div>
+
+    <div class="form-group">
+      <label for="story">Story</label>
+      <textarea id="story" name="story" rows="5" placeholder="Write your story..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>🎤 Or Record a Voice Message</label>
+      <div class="voice-controls">
+        <button type="button" id="startRecord">Start Recording</button>
+        <button type="button" id="stopRecord" disabled>Stop Recording</button>
+        <audio id="audioPlayback" controls style="display:none;"></audio>
+      </div>
+    </div>
+
+    <button type="submit">Submit 🌿</button>
+  </form>
+
+  <h3>All Stories</h3>
+  <div id="storiesList"></div>
+</section>
+
+<style>
+  #share-story { max-width:600px; margin:40px auto; padding:20px; background:#f0fff0; border-radius:10px; }
+  .form-group { margin-bottom:15px; }
+  input, textarea { width:100%; padding:8px; border-radius:5px; border:1px solid #ccc; }
+  button { padding:10px 15px; border:none; border-radius:5px; background:#2fae2f; color:white; cursor:pointer; }
+  button:disabled { background:#aaa; }
+  #storiesList { margin-top:20px; }
+  .story-item { border:1px solid #2fae2f; border-radius:8px; padding:10px; margin-bottom:10px; background:#e6ffe6; }
+  .story-item audio { margin-top:5px; width:100%; }
+</style>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+const startBtn = document.getElementById("startRecord");
+const stopBtn = document.getElementById("stopRecord");
+const audioPlayback = document.getElementById("audioPlayback");
+const storiesList = document.getElementById("storiesList");
+
+// Voice recording
+startBtn.addEventListener("click", async () => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+    mediaRecorder.onstop = () => {
+      const audioBlob = new Blob(audioChunks, { type: "audio/mp3" });
+      const audioURL = URL.createObjectURL(audioBlob);
+      audioPlayback.src = audioURL;
+      audioPlayback.style.display = "block";
+      audioPlayback.blob = audioBlob;
+    };
+    mediaRecorder.start();
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+  } catch (err) {
+    alert("Microphone access denied or unavailable!");
+  }
+});
+
+stopBtn.addEventListener("click", () => {
+  mediaRecorder.stop();
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
+});
+
+// Submit story
+const form = document.getElementById("storyForm");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const story = document.getElementById("story").value.trim();
+
+  if (!name && !story && !audioPlayback.blob) {
+    alert("Please provide name, story or voice message!");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("story", story);
+  if (audioPlayback.blob) formData.append("voice", audioPlayback.blob, "voice.mp3");
+
+  try {
+    const res = await fetch("/share-story", { method: "POST", body: formData });
+    const result = await res.json();
+    if (result.success) {
+      alert("✅ Story saved successfully!");
+      form.reset();
+      audioPlayback.style.display = "none";
+      audioPlayback.blob = null;
+      fetchStories();
+    } else {
+      alert("❌ " + result.message);
+    }
+  } catch (err) {
+    console.error(err);
+    alert("⚠️ Unable to save story.");
+  }
+});
+
+// Fetch all stories
+async function fetchStories() {
+  try {
+    const res = await fetch("/get-stories");
+    const data = await res.json();
+    if (data.success) {
+      storiesList.innerHTML = "";
+      data.stories.forEach(s => {
+        const div = document.createElement("div");
+        div.className = "story-item";
+        div.innerHTML = `
+          <p><b>${s.name || "Anonymous"}</b> (${new Date(s.date).toLocaleString()})</p>
+          <p>${s.story || ""}</p>
+          ${s.voiceUrl ? `<audio controls src="${s.voiceUrl}"></audio>` : ""}
+        `;
+        storiesList.appendChild(div);
+      });
+    }
+  } catch(err) { console.error(err); }
+}
+
+// Initial fetch
+fetchStories();
+</script>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+
+
+
+
+
+
+<footer id="greennest-footer">
+  <h2>Follow Me</h2>
+  <div class="social-buttons">
+    <a href="https://www.facebook.com/share/1BDccttJnA/">
+      🌐 Facebook
+    </a>
+    <a href="https://youtube.com/@silent_alone_st?si=0jozvVrRfoGj6ZsX">
+      ▶️ YouTube
+    </a>
+    <a href="https://www.linkedin.com/public-profile/settings">
+      💼 LinkedIn
+    </a>
+  </div>
+  <p>© 2025 GreenNest. All rights reserved.</p>
 </footer>
+
+
+
+
+
 
 <script>
 const BACKEND="http://127.0.0.1:5000";

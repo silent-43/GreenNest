@@ -42,6 +42,16 @@ app.use(
   })
 );
 
+// Middleware to check if user is logged in
+const isLoggedIn = (req, res, next) => {
+  if (req.session && req.session.user) {
+    next();
+  } else {
+    // Return an explicit loggedIn: false status for the frontend
+    res.status(403).json({ loggedIn: false, message: "Access denied. Please log in." });
+  }
+};
+
 // ------------------ DATABASE ------------------
 mongoose
   .connect(process.env.MONGO_URI)
@@ -59,6 +69,16 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 const User = mongoose.model("User", userSchema);
+
+// NEW Story Schema
+const storySchema = new mongoose.Schema({
+    name: { type: String, default: "Anonymous" },
+    story: { type: String, default: "" },
+    voiceUrl: { type: String, default: "" },
+    date: { type: Date, default: Date.now },
+});
+const Story = mongoose.model("Story", storySchema);
+
 
 // ------------------ CART SESSION ------------------
 app.use((req, res, next) => {
@@ -84,11 +104,13 @@ app.get("/", (req, res) => {
   res.send("🌿 GreenNest backend connected successfully!");
 });
 
-// Check session
+// Check session (PROTECTED)
 app.get("/check-session", (req, res) => {
+  // If req.session.user exists, it means the user is logged in
   if (req.session && req.session.user)
     return res.json({ loggedIn: true, user: req.session.user });
-  res.json({ loggedIn: false });
+  // If not logged in, return the status explicitly
+  res.status(401).json({ loggedIn: false });
 });
 
 // Signup
@@ -141,18 +163,15 @@ app.post("/logout", (req, res) => {
 
 // ------------------ PROFILE ROUTES ------------------
 
-// Get profile
-app.get("/get-profile", async (req, res) => {
-  if (!req.session.user) return res.json({ success: false, message: "Not logged in" });
+// Get profile (PROTECTED)
+app.get("/get-profile", isLoggedIn, async (req, res) => {
   const user = await User.findById(req.session.user.id);
   if (!user) return res.json({ success: false, message: "User not found" });
   res.json({ success: true, profile: user });
 });
 
-// Update profile (with image upload)
-app.post("/update-profile", upload.single("profilePic"), async (req, res) => {
-  if (!req.session.user) return res.json({ success: false, message: "Not logged in" });
-
+// Update profile (with image upload) (PROTECTED)
+app.post("/update-profile", isLoggedIn, upload.single("profilePic"), async (req, res) => {
   try {
     const { name, email, phone, address } = req.body;
     let profilePicPath = req.file
@@ -173,32 +192,70 @@ app.post("/update-profile", upload.single("profilePic"), async (req, res) => {
 // Serve uploaded images
 app.use("/uploads", express.static(uploadDir));
 
+
+// ------------------ STORY ROUTES ------------------
+
+// Submit story (with optional voice upload)
+app.post("/share-story", upload.single("voice"), async (req, res) => {
+    try {
+        const { name, story } = req.body;
+        
+        // At least one of the fields should be present
+        if (!name && !story && !req.file) {
+            return res.status(400).json({ success: false, message: "Need a name, story, or voice message." });
+        }
+
+        let voiceUrl = req.file
+            ? `/uploads/${req.file.filename}`
+            : "";
+
+        const newStory = new Story({
+            name: name || "Anonymous",
+            story: story || "",
+            voiceUrl: voiceUrl,
+        });
+
+        await newStory.save();
+        res.json({ success: true, message: "Story shared successfully!" });
+
+    } catch (err) {
+        console.error("SHARE STORY ERROR:", err);
+        res.status(500).json({ success: false, message: "Failed to share story: " + err.message });
+    }
+});
+
+// Get all stories
+app.get("/get-stories", async (req, res) => {
+    try {
+        // Fetch all stories, sorted by date descending (newest first)
+        const stories = await Story.find().sort({ date: -1 }); 
+        res.json({ success: true, stories });
+    } catch (err) {
+        console.error("GET STORIES ERROR:", err);
+        res.status(500).json({ success: false, message: "Failed to fetch stories: " + err.message });
+    }
+});
+
+
 // ------------------ CART ROUTES ------------------
-app.post("/add-to-cart", (req, res) => {
-  if (!req.session.user)
-    return res.status(401).json({ success: false, message: "Not logged in" });
+// The cart routes should also ideally be protected by isLoggedIn middleware
+app.post("/add-to-cart", isLoggedIn, (req, res) => {
   const { name, price, image } = req.body;
   req.session.cart.push({ name, price, image });
   res.json({ success: true, cart: req.session.cart });
 });
 
-app.get("/get-cart", (req, res) => {
-  if (!req.session.user)
-    return res.status(401).json({ success: false, message: "Not logged in" });
+app.get("/get-cart", isLoggedIn, (req, res) => {
   res.json({ success: true, cart: req.session.cart });
 });
 
-app.post("/remove-from-cart", (req, res) => {
+app.post("/remove-from-cart", isLoggedIn, (req, res) => {
   const { index } = req.body;
-  if (!req.session.user)
-    return res.status(401).json({ success: false, message: "Not logged in" });
   req.session.cart.splice(index, 1);
   res.json({ success: true, cart: req.session.cart });
 });
 
-app.post("/checkout", (req, res) => {
-  if (!req.session.user)
-    return res.status(401).json({ success: false, message: "Not logged in" });
+app.post("/checkout", isLoggedIn, (req, res) => {
   req.session.cart = [];
   res.json({ success: true, message: "Order placed successfully" });
 });
