@@ -7,13 +7,19 @@ import mongoose from "mongoose";
 import path from "path";
 import multer from "multer";
 import fs from "fs";
+import { fileURLToPath } from "url";
 
-dotenv.config({ path: path.resolve("S:/Nursery Website/backend/.env") });
+// ======== ENV & PATH SETUP ========
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load .env from current backend folder
+dotenv.config({ path: path.join(__dirname, ".env") });
 console.log("ENV FILE LOADED: MONGO_URI =", process.env.MONGO_URI);
 
 const app = express();
 
-// ------------------ CORS ------------------
+// ======== CORS CONFIG ========
 app.use(
   cors({
     origin: [
@@ -25,7 +31,7 @@ app.use(
   })
 );
 
-// ------------------ MIDDLEWARE ------------------
+// ======== MIDDLEWARE ========
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -42,23 +48,21 @@ app.use(
   })
 );
 
-// Middleware to check if user is logged in
+// ======== AUTH MIDDLEWARE ========
 const isLoggedIn = (req, res, next) => {
-  if (req.session && req.session.user) {
-    next();
-  } else {
-    // Return an explicit loggedIn: false status for the frontend
-    res.status(403).json({ loggedIn: false, message: "Access denied. Please log in." });
-  }
+  if (req.session && req.session.user) next();
+  else res.status(403).json({ loggedIn: false, message: "Access denied. Please log in." });
 };
 
-// ------------------ DATABASE ------------------
+// ======== DATABASE CONNECTION ========
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected successfully!"))
   .catch((err) => console.error("❌ MongoDB connection failed:", err.message));
 
-// ------------------ SCHEMA ------------------
+// ======== SCHEMAS ========
+
+// User Schema
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -70,46 +74,46 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
-// NEW Story Schema
+// Story Schema
 const storySchema = new mongoose.Schema({
-    name: { type: String, default: "Anonymous" },
-    story: { type: String, default: "" },
-    voiceUrl: { type: String, default: "" },
-    date: { type: Date, default: Date.now },
+  name: { type: String, default: "Anonymous" },
+  story: { type: String, default: "" },
+  voiceUrl: { type: String, default: "" },
+  date: { type: Date, default: Date.now },
 });
 const Story = mongoose.model("Story", storySchema);
 
-
-// ------------------ CART SESSION ------------------
+// ======== CART SESSION SETUP ========
 app.use((req, res, next) => {
   if (!req.session.cart) req.session.cart = [];
   next();
 });
 
-// ------------------ FILE UPLOAD SETUP ------------------
-const uploadDir = path.resolve("S:/Nursery Website/backend/uploads");
-if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
+// ======== FILE UPLOAD CONFIG ========
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, uploadDir),
-  filename: (req, file, cb) =>
-    cb(null, Date.now() + "-" + file.originalname),
+  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
 });
 const upload = multer({ storage });
 
-// ------------------ ROUTES ------------------
+// ======== ROUTES ========
 
 // Test route
 app.get("/", (req, res) => {
   res.send("🌿 GreenNest backend connected successfully!");
 });
 
-// Check session (PROTECTED)
+// ======== AUTH ROUTES ========
+
+// Check session
 app.get("/check-session", (req, res) => {
-  // If req.session.user exists, it means the user is logged in
   if (req.session && req.session.user)
     return res.json({ loggedIn: true, user: req.session.user });
-  // If not logged in, return the status explicitly
   res.status(401).json({ loggedIn: false });
 });
 
@@ -125,7 +129,8 @@ app.post("/signup", async (req, res) => {
       return res.status(400).json({ success: false, message: "User already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await User.create({ name, email, password: hashedPassword });
+    await User.create({ name, email, password: hashedPassword });
+
     res.json({ success: true, message: "Registered successfully!" });
   } catch (err) {
     console.error("SIGNUP ERROR:", err);
@@ -138,7 +143,8 @@ app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user) return res.status(401).json({ success: false, message: "User not found" });
+    if (!user)
+      return res.status(401).json({ success: false, message: "User not found" });
 
     const match = await bcrypt.compare(password, user.password);
     if (!match)
@@ -155,28 +161,27 @@ app.post("/login", async (req, res) => {
 // Logout
 app.post("/logout", (req, res) => {
   req.session.destroy((err) => {
-    if (err) return res.status(500).json({ success: false, message: "Logout failed" });
+    if (err)
+      return res.status(500).json({ success: false, message: "Logout failed" });
     res.clearCookie("connect.sid");
     res.json({ success: true, message: "Logged out successfully" });
   });
 });
 
-// ------------------ PROFILE ROUTES ------------------
+// ======== PROFILE ROUTES ========
 
-// Get profile (PROTECTED)
+// Get profile
 app.get("/get-profile", isLoggedIn, async (req, res) => {
   const user = await User.findById(req.session.user.id);
   if (!user) return res.json({ success: false, message: "User not found" });
   res.json({ success: true, profile: user });
 });
 
-// Update profile (with image upload) (PROTECTED)
+// Update profile
 app.post("/update-profile", isLoggedIn, upload.single("profilePic"), async (req, res) => {
   try {
     const { name, email, phone, address } = req.body;
-    let profilePicPath = req.file
-      ? `/uploads/${req.file.filename}`
-      : undefined;
+    const profilePicPath = req.file ? `/uploads/${req.file.filename}` : undefined;
 
     const updateFields = { name, email, phone, address };
     if (profilePicPath) updateFields.profilePic = profilePicPath;
@@ -189,77 +194,73 @@ app.post("/update-profile", isLoggedIn, upload.single("profilePic"), async (req,
   }
 });
 
-// Serve uploaded images
+// Serve uploaded files
 app.use("/uploads", express.static(uploadDir));
 
-
-// ------------------ STORY ROUTES ------------------
+// ======== STORY ROUTES ========
 
 // Submit story (with optional voice upload)
 app.post("/share-story", upload.single("voice"), async (req, res) => {
-    try {
-        const { name, story } = req.body;
-        
-        // At least one of the fields should be present
-        if (!name && !story && !req.file) {
-            return res.status(400).json({ success: false, message: "Need a name, story, or voice message." });
-        }
+  try {
+    const { name, story } = req.body;
 
-        let voiceUrl = req.file
-            ? `/uploads/${req.file.filename}`
-            : "";
+    if (!name && !story && !req.file)
+      return res.status(400).json({ success: false, message: "Need a name, story, or voice message." });
 
-        const newStory = new Story({
-            name: name || "Anonymous",
-            story: story || "",
-            voiceUrl: voiceUrl,
-        });
+    const voiceUrl = req.file ? `/uploads/${req.file.filename}` : "";
 
-        await newStory.save();
-        res.json({ success: true, message: "Story shared successfully!" });
+    const newStory = new Story({
+      name: name || "Anonymous",
+      story: story || "",
+      voiceUrl,
+    });
 
-    } catch (err) {
-        console.error("SHARE STORY ERROR:", err);
-        res.status(500).json({ success: false, message: "Failed to share story: " + err.message });
-    }
+    await newStory.save();
+    res.json({ success: true, message: "Story shared successfully!" });
+  } catch (err) {
+    console.error("SHARE STORY ERROR:", err);
+    res.status(500).json({ success: false, message: "Failed to share story: " + err.message });
+  }
 });
 
 // Get all stories
 app.get("/get-stories", async (req, res) => {
-    try {
-        // Fetch all stories, sorted by date descending (newest first)
-        const stories = await Story.find().sort({ date: -1 }); 
-        res.json({ success: true, stories });
-    } catch (err) {
-        console.error("GET STORIES ERROR:", err);
-        res.status(500).json({ success: false, message: "Failed to fetch stories: " + err.message });
-    }
+  try {
+    const stories = await Story.find().sort({ date: -1 });
+    res.json({ success: true, stories });
+  } catch (err) {
+    console.error("GET STORIES ERROR:", err);
+    res.status(500).json({ success: false, message: "Failed to fetch stories: " + err.message });
+  }
 });
 
+// ======== CART ROUTES ========
 
-// ------------------ CART ROUTES ------------------
-// The cart routes should also ideally be protected by isLoggedIn middleware
+// Add to cart
 app.post("/add-to-cart", isLoggedIn, (req, res) => {
   const { name, price, image } = req.body;
   req.session.cart.push({ name, price, image });
   res.json({ success: true, cart: req.session.cart });
 });
 
+// Get cart
 app.get("/get-cart", isLoggedIn, (req, res) => {
   res.json({ success: true, cart: req.session.cart });
 });
 
+// Remove from cart
 app.post("/remove-from-cart", isLoggedIn, (req, res) => {
   const { index } = req.body;
   req.session.cart.splice(index, 1);
   res.json({ success: true, cart: req.session.cart });
 });
 
+// Checkout
 app.post("/checkout", isLoggedIn, (req, res) => {
   req.session.cart = [];
   res.json({ success: true, message: "Order placed successfully" });
 });
 
-// ------------------ START SERVER ------------------
+// ======== START SERVER ========
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

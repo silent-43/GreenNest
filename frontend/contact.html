@@ -12,24 +12,179 @@
 
 <header>
   <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="categories.html">Categories</a>
-    <a href="care.html">Care Tips</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html">হোম</a>
+    <a href="shop.html">দোকান</a>
+    <a href="categories.html">গাছের ধরন</a>
+    <a href="care.html">পরিচর্যা পরামর্শ</a>
+    <a href="about.html">আমাদের সম্পর্কে</a>
+    <a href="contact.html">যোগাযোগ করুন</a>
   </nav>
 </header>
 
-<section id="contact">
-  <h2>Contact Us 🌱</h2>
-  <form id="share-story">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+
+
+
+
+
+
+<section id="contact" style="max-width:1100px; margin:40px auto; padding:0 20px;">
+
+  <h2>যোগাযোগ করুন 🌱</h2>
+
+  <p>
+    GreenNest-এ আপনার প্রশ্ন, অর্ডার, কাস্টম রিকোয়েস্ট বা যেকোনো ধরনের অনুরোধ জানাতে পারেন। নিচে আমাদের বিভিন্ন যোগাযোগ মাধ্যম এবং অফিস সময় দেয়া আছে — সহজভাবে যেকোনো উপায়ে আমরা আপনার সঙ্গে দ্রুত যোগাযোগ করব।
+  </p>
+
+  <!-- Contact info cards -->
+  <div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:20px;">
+
+    <div style="flex:1; min-width:260px; background:#f6fff6; padding:18px; border-radius:10px;">
+      <h3>📞 ফোন / WhatsApp</h3>
+      <p>অফিস ফোন: <strong>+8801339524497</strong></p>
+      <p>WhatsApp: <strong>+8801571053111</strong> (সরাসরি ম্যাসেজ করুন)</p>
+      <p>গ্রাহক সাপোর্ট লাইন: <strong>+8801571053111</strong></p>
+    </div>
+
+    <div style="flex:1; min-width:260px; background:#f6fff6; padding:18px; border-radius:10px;">
+      <h3>✉️ ইমেইল</h3>
+      <p>সাধারণ তথ্য: <strong>onlinedocs75@gmail.com</strong></p>
+      <p>অর্ডার ও শীপিং: <strong>onlinedocs75@gmail.com</strong></p>
+      <p>কর্মযোগ/শেয়ার-অফার: <strong>22234103345@cse.bubt.edu.bd</strong></p>
+    </div>
+
+    <div style="flex:1; min-width:260px; background:#f6fff6; padding:18px; border-radius:10px;">
+      <h3>📍 আমাদের ঠিকানা</h3>
+      <p>GreenNest Nursery (প্রধান শাখা)</p>
+      <p>Mirpur-2, R/A, DHAKA-1216, Bangladesh</p>
+      <p>শোরুম ও কালেকশন পয়েন্টে এসে সংগ্রহ করতে আগ্রহী হলে আগে ফোন করে অ্যাপয়েন্টমেন্ট নেবেন।</p>
+    </div>
+
+  </div>
+
+  <!-- Contact form -->
+  <div style="margin-top:30px; display:flex; gap:30px; flex-wrap:wrap;">
+
+    <div style="flex:1; min-width:320px;">
+      <h3>মেসেজ পাঠান</h3>
+      <form id="contact-form" action="#" method="post" style="display:flex; flex-direction:column; gap:12px;">
+        <input type="text" name="name" placeholder="আপনার নাম" required style="padding:10px; border-radius:6px; border:1px solid #ddd;">
+        <input type="email" name="email" placeholder="আপনার ইমেইল" required style="padding:10px; border-radius:6px; border:1px solid #ddd;">
+        <input type="tel" name="phone" placeholder="ফোন (ঐচ্ছিক)" style="padding:10px; border-radius:6px; border:1px solid #ddd;">
+        <select name="subject" style="padding:10px; border-radius:6px; border:1px solid #ddd;">
+          <option value="">--- সেবা নির্বাচন করুন ---</option>
+          <option value="order">অর্ডার সম্পর্কিত</option>
+          <option value="product">পণ্যের তথ্য</option>
+          <option value="delivery">ডেলিভারি/শিপিং</option>
+          <option value="care">গাছ পরিচর্যা পরামর্শ</option>
+          <option value="other">অন্যান্য</option>
+        </select>
+        <textarea name="message" rows="6" placeholder="আপনার মেসেজ লিখুন..." required style="padding:10px; border-radius:6px; border:1px solid #ddd;"></textarea>
+        <button type="submit" style="padding:12px; border-radius:8px; border:0; background:green; color:white; font-weight:bold;">মেসেজ পাঠান</button>
+      </form>
+
+      <p style="margin-top:10px; color:#555;">(নোট: ফর্মটি আপনার সার্ভারে সাবমিট করার জন্য `action` এবং ব্যাকএন্ড হ্যান্ডলার লাগবে। বর্তমানে এটি ডকুমেন্টে ডেমো হিসেবে রয়েছে।)</p>
+    </div>
+
+    <!-- Map & Visit -->
+    <div style="flex:1; min-width:320px;">
+      <h3>আমাদের খুঁজে পান</h3>
+      <!-- Replace the src with your actual map image or embed -->
+      <div style="background:#fff; padding:12px; border-radius:8px; border:1px solid #eee;">
+        <img src="./pics of about/map.png" alt="GreenNest Location Map" style="width:100%; border-radius:6px;">
+        <p style="margin-top:12px;">অফিস/নার্সারি দেখতে আসার আগে কল করে নির্দিষ্ট সময় ঠিক করে নিন — যেন আমরা আপনার আগমন সময় প্রস্তুত থাকতে পারি।</p>
+      </div>
+
+      <h4 style="margin-top:18px;">অফিস সময়</h4>
+      <p>সোম - শুক্রবার: ৯:০০ AM – ৬:০০ PM</p>
+      <p>শনিবার: ১০:০০ AM – ৪:০০ PM</p>
+      <p>রবিবার: বন্ধ</p>
+    </div>
+
+  </div>
+
+  <!-- Team contact persons -->
+  <div style="margin-top:35px;">
+    <h3>টিম মেম্বারদের সাথে যোগাযোগ</h3>
+    <p>নিচে টিমের বিশেষ ব্যক্তিদের নাম ও দায়িত্ব দেওয়া আছে — নির্দিষ্ট কাজের জন্য সরাসরি এই সদস্যদের সাথে যোগাযোগ করতে পারেন। (ইমেইল/ফোন/WhatsApp ব্যবহার করুন)</p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:18px; justify-content:center;">
+
+      <!-- Member 1 -->
+      <div style="width:260px; text-align:center; background:#fbfff9; border-radius:10px; padding:15px;">
+        <img src="./pics of about/sohag.jpg" alt="Sohag Karmokar" style="width:100%; border-radius:10px;">
+        <h4 style="margin-top:10px;">SOHAG KARMOKAR</h4>
+        <p style="color:green; font-weight:bold;">Founder & Manager</p>
+        <p style="font-size:14px;">অর্ডার ম্যানেজমেন্ট, কাস্টমার রিলেশন ও বিজনেস অপারেশন সম্পর্কে সরাসরি যোগাযোগ করুন।</p>
+        <p style="margin-top:8px;">ইমেইল: <strong>22234103345@cse.bubt.edu.bd</strong></p>
+        <p>ফোন: <strong>+8801339524497</strong></p>
+      </div>
+
+      <!-- Member 2 -->
+      <div style="width:260px; text-align:center; background:#fbfff9; border-radius:10px; padding:15px;">
+        <img src="./pics of about/sabbir.png" alt="Sheikh Sabbir Ahmad" style="width:100%; border-radius:10px;">
+        <h4 style="margin-top:10px;">SHEIKH SABBIR AHMAD</h4>
+        <p style="color:green; font-weight:bold;">Nursery Supervisor</p>
+        <p style="font-size:14px;">গাছের স্বাস্থ্য, সার-পরামর্শ ও প্ল্যান্ট মনিটরিং-এর জন্য যোগাযোগ করুন।</p>
+        <p style="margin-top:8px;">ইমেইল: <strong>22234103362@cse.bubt.edu.bd</strong></p>
+        <p>ফোন: <strong>+880 1X-XXX-YYYY</strong></p>
+      </div>
+
+      <!-- Member 3 -->
+      <div style="width:260px; text-align:center; background:#fbfff9; border-radius:10px; padding:15px;">
+        <img src="./pics of about/tamim.png" alt="Shohidul Islam" style="width:100%; border-radius:10px;">
+        <h4 style="margin-top:10px;">SHOHIDUL ISLAM</h4>
+        <p style="color:green; font-weight:bold;">Packaging Expert</p>
+        <p style="font-size:14px;">প্যাকেজিং ও শিপিং সংক্রান্ত বিস্তারিত জানার জন্য যোগাযোগ করুন।</p>
+        <p style="margin-top:8px;">ইমেইল: <strong>22234103148@cse.bubt.edu.bd</strong></p>
+        <p>ফোন: <strong>+880 1X-XXX-ZZZZ</strong></p>
+      </div>
+
+      <!-- Member 4 -->
+      <div style="width:260px; text-align:center; background:#fbfff9; border-radius:10px; padding:15px;">
+        <img src="./pics of about/images.png" alt="Oindrilla Islam" style="width:100%; border-radius:10px;">
+        <h4 style="margin-top:10px;">OINDRILLA ISLAM</h4>
+        <p style="color:green; font-weight:bold;">Delivery Coordinator</p>
+        <p style="font-size:14px;">ডেলিভারি ট্র্যাকিং, কুরিয়ার আপডেট ও সময়সূচি সম্পর্কিত সহায়তার জন্য যোগাযোগ করুন।</p>
+        <p style="margin-top:8px;">ইমেইল: <strong>22234103401@cse.bubt.edu.bd</strong></p>
+        <p>ফোন: <strong>+880 1X-XXX-AAAA</strong></p>
+      </div>
+
+      <!-- Member 5 -->
+      <div style="width:260px; text-align:center; background:#fbfff9; border-radius:10px; padding:15px;">
+        <img src="./pics of about/images.png" alt="Abira Akter Nishi" style="width:100%; border-radius:10px;">
+        <h4 style="margin-top:10px;">ABIRA AKTER NISHI</h4>
+        <p style="color:green; font-weight:bold;">Customer Support</p>
+        <p style="font-size:14px;">অর্ডার সংশোধন, রিফান্ড/রিটার্ন ও কাস্টমার কেয়ার নিয়ে সরাসরি যোগাযোগ করুন।</p>
+        <p style="margin-top:8px;">ইমেইল: <strong>........@cse.bubt.edu.bd</strong></p>
+        <p>ফোন: <strong>+880 1X-XXX-BBBB</strong></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ short -->
+  <div style="margin-top:35px;">
+    <h3>সাম্প্রতিক সাধারণ প্রশ্ন (FAQ)</h3>
+    <div style="background:#fff; border-radius:8px; padding:15px; border:1px solid #eee;">
+      <p><strong>Q1:</strong> আমি কীভাবে অর্ডার করতে পারি?</p>
+      <p><strong>A:</strong> দোকান পেজে গিয়ে পছন্দের গাছটি কার্টে যোগ করে চেকআউট করুন। প্রয়োজন হলে আমাদের WhatsApp/ফোনে যোগাযোগ করুন।</p>
+
+      <p><strong>Q2:</strong> ডেলিভারিতে কতক্ষণ সময় লাগে?</p>
+      <p><strong>A:</strong> ঢাকা শহরের মধ্যে সাধারণত ১-২ দিন, দেশের অন্যান্য এলাকায় ২-৫ কাজের দিন লাগতে পারে (কুরিয়ার স্যাটতার উপর নির্ভর করে)।</p>
+
+      <p><strong>Q3:</strong> গাছ ক্ষতিগ্রস্ত অবস্থায় পেলে কী করতে হবে?</p>
+      <p><strong>A:</strong> ছবি ও বিস্তারিত তথ্য onlinedocs75@gmail.com-এ পাঠালে ২৪-৪৮ ঘণ্টার মধ্যে আমরা রিপ্লাই ও সমাধান দেব।</p>
+    </div>
+  </div>
+
 </section>
+
+
+
+
+
+
+
 
 <footer>
   <h2 style="color:black;">Follow Me</h2>

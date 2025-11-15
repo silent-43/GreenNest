@@ -5,6 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GreenNest - Categories</title>
   <link rel="stylesheet" href="style.css">
+
+
+
+
+
+<style>
+
+/* Section Title */
+#categories h2 {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2d6a4f;
+  font-weight: 700;
+  animation: fadeDown 1.2s ease-in-out;
+}
+
+/* Category Grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  padding: 1rem;
+}
+
+/* Category Card */
+.category-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeUp 1s ease forwards;
+  opacity: 0;
+}
+
+/* Card Hover Effect */
+.category-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+/* Card Title */
+.category-card h3 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  color: #1b4332;
+  font-weight: 600;
+}
+
+/* Subtree List */
+.category-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+/* Subtree List Items */
+.category-card ul li {
+  background: #e9f5ee;
+  margin: 0.6rem 0;
+  padding: 0.8rem 1rem;
+  border-radius: 0.8rem;
+  transition: background 0.3s, transform 0.3s;
+  animation: slideIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* Subtree Hover Animation */
+.category-card ul li:hover {
+  background: #c7f9cc;
+  transform: translateX(8px);
+}
+
+/* Anchor Links */
+.category-card ul li a {
+  text-decoration: none;
+  color: #2d6a4f;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-25px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 <body>
 
@@ -12,61 +123,79 @@
 
 <header>
   <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="categories.html">Categories</a>
-    <a href="care.html">Care Tips</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html">হোম</a>
+    <a href="shop.html">দোকান</a>
+    <a href="categories.html">বিভাগসমূহ</a>
+    <a href="care.html">যত্নের পরামর্শ</a>
+    <a href="about.html">আমাদের সম্পর্কে</a>
+    <a href="contact.html">যোগাযোগ</a>
   </nav>
 </header>
 
+
+
+
+
+
+
 <section id="categories">
-  <h2>Plant Categories 🌱</h2>
-  <div class="category-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:2rem; margin-top:2rem;">
-    
-    <div class="category-card" style="background:#fff; border-radius:1rem; padding:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-      <h3>🌳 Trees</h3>
+  <h2>গাছের বিভাগসমূহ 🌱</h2>
+
+  <div class="category-grid">
+
+    <!-- Trees -->
+    <div class="category-card">
+      <h3>🌳 গাছ (Trees)</h3>
       <ul>
-        <li><a href="./Trees HTML Pages/fruit trees.html">Fruit Trees</a></li>
-        <li><a href="./Trees HTML Pages/shade trees.html">Shade Trees</a></li>
+        <li><a href="./fruit trees.html">ফলের গাছ</a></li>
+        <li><a href="./shade trees.html">ছায়ার গাছ</a></li>
       </ul>
     </div>
 
-    <div class="category-card" style="background:#fff; border-radius:1rem; padding:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-      <h3>🌸 Flowering Plants</h3>
+    <!-- Flowering Plants -->
+    <div class="category-card">
+      <h3>🌸 ফুলের গাছ</h3>
       <ul>
-        <li><a href="./Trees HTML Pages/indoors flowers.html">Indoor Flowers</a></li>
-        <li><a href="./Trees HTML Pages/outdoors flowers.html">Outdoor Flowers</a></li>
+        <li><a href="./indoors flowers.html">ইনডোর ফুল</a></li>
+        <li><a href="./outdoors flowers.html">আউটডোর ফুল</a></li>
       </ul>
     </div>
 
-    <div class="category-card" style="background:#fff; border-radius:1rem; padding:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-      <h3>🌿 Indoor Plants</h3>
+    <!-- Indoor Plants -->
+    <div class="category-card">
+      <h3>🌿 ইনডোর গাছ</h3>
       <ul>
-        <li><a href="./Trees HTML Pages/ferns.html">Ferns</a></li>
-        <li><a href="./Trees HTML Pages/succulents.html">Succulents</a></li>
+        <li><a href="./ferns.html">ফার্ন</a></li>
+        <li><a href="./succulents.html">সাকুলেন্টস</a></li>
       </ul>
     </div>
 
-    <div class="category-card" style="background:#fff; border-radius:1rem; padding:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-      <h3>🌱 Outdoor Plants</h3>
+    <!-- Outdoor Plants -->
+    <div class="category-card">
+      <h3>🌱 আউটডোর গাছ</h3>
       <ul>
-        <li><a href="./Trees HTML Pages/vegetables.html">Vegetables</a></li>
-        <li><a href="./Trees HTML Pages/herbs.html">Herbs</a></li>
+        <li><a href="./vegetables.html">সবজি গাছ</a></li>
+        <li><a href="./herbs.html">হার্বস</a></li>
       </ul>
     </div>
 
-    <div class="category-card" style="background:#fff; border-radius:1rem; padding:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-      <h3>🌵 Bonsai</h3>
+    <!-- Bonsai -->
+    <div class="category-card">
+      <h3>🌵 বনসাই</h3>
       <ul>
-        <li><a href="./Trees HTML Pages/mini-bonsai.html">Mini Bonsai</a></li>
-        <li><a href="./Trees HTML Pages/premium-bonsai.html">Premium Bonsai</a></li>
+        <li><a href="./mini-bonsai.html">মিনি বনসাই</a></li>
+        <li><a href="./premium-bonsai.html">প্রিমিয়াম বনসাই</a></li>
       </ul>
     </div>
 
   </div>
 </section>
+
+
+
+
+
+
 
 <footer>
   <h2 style="color:black;">Follow Me</h2>
@@ -77,9 +206,6 @@
   </div>
   <p>© 2025 GreenNest. All rights reserved.</p>
 </footer>
-
-
-
 
 
 </body>

@@ -30,7 +30,7 @@ footer h2 { margin-bottom:10px; }
 <style>
   /* ---------- Care Section ---------- */
 #care {
-    background: #e6f7f1; /* soft green background */
+    background: #e6f7f1;
     padding: 60px 20px;
 }
 
@@ -71,6 +71,8 @@ footer h2 { margin-bottom:10px; }
     transform: translateY(-10px);
     box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
+
+
 
 /* ---------- Share Story Section ---------- */
 #share-story {
@@ -196,13 +198,13 @@ button[type="submit"]:hover {
 
 <style>
 #featured {
-  font-size: clamp(1.2rem, 4vw, 2rem); /* Chhoto font size */
+  font-size: clamp(1.2rem, 4vw, 2rem); 
   font-weight: 700;
   text-align: center;
   color: #28a745;
   margin: 20px auto;
-  padding: 10px 20px; /* Chhoto padding */
-  border: 6px solid #06ec3c; /* Thin border */
+  padding: 10px 20px; 
+  border: 6px solid #06ec3c; 
   border-radius: 10px;
   background-color: rgba(40,167,69,0.1);
   max-width: 20%;
@@ -213,10 +215,10 @@ button[type="submit"]:hover {
 @keyframes featuredBounce {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; /* subtle glow */
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; 
   }
   50% {
-    transform: scale(1.03); /* gentle bounce */
+    transform: scale(1.03); 
     box-shadow: 0 0 8px #4dff4d, 0 0 14px #4dff4d;
   }
   100% {
@@ -247,7 +249,7 @@ button[type="submit"]:hover {
 }
 
 #hero-title span {
-  color: #14c114; /* Highlight span */
+  color: #14c114; 
 }
 
 /* H2 Bounce + Glow */
@@ -321,20 +323,6 @@ button[type="submit"]:hover {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style>
 #greennest-footer {
   text-align: center;
@@ -401,15 +389,6 @@ button[type="submit"]:hover {
   100% { text-shadow: 0 0 15px rgba(40,167,69,0.6); }
 }
 </style>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -504,15 +483,15 @@ button[type="submit"]:hover {
 
 <header>
   <nav class="nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="./shop.html">Shop Plants</a>
-    <a href="./categories.html">Categories</a>
-    <a href="./care.html">Plant Care</a>
-    <a href="./about.html">About</a>
-    <a href="./contact.html">Contact Us</a>
-    <a href="./profile.html">My Profile</a>
+    <a href="index.html" class="active">হোম</a>
+    <a href="./shop.html">গাছ কিনুন</a>
+    <a href="./categories.html">গাছের ধরন</a>
+    <a href="./care.html">পরিচর্যা পরামর্শ</a>
+    <a href="./about.html">আমাদের সম্পর্কে</a>
+    <a href="./contact.html">যোগাযোগ করুন</a>
+    <a href="./profile.html">আমার প্রোফাইল</a>
+    <a href="./cart.html"> আমার কার্ট </a>
   </nav>
-  <button id="logoutBtn">Logout</button>
 </header>
 <br>
 
@@ -525,8 +504,10 @@ button[type="submit"]:hover {
 
 
   <div class="hero-content">
-  <h2 id="hero-title">Welcome to <span>GreenNest</span></h2>
-  <h3 id="hero-subtitle">Your one-stop platform for plants, trees & daily care 🌱</h3>
+ <h2 id="hero-title">স্বাগতম <span>GreenNest</span>-এ</h2>
+<h3 id="hero-subtitle">GreenNest আপনার জন্য নিয়ে এসেছে গাছ, গাছপালা এবং দৈনন্দিন যত্নের সবকিছু—একই প্ল্যাটফর্মে 🌱  
+আমাদের সাহায্যে সহজেই আপনার ঘর, বাগান বা অফিসকে সবুজ ও প্রাণবন্ত করুন।</h3>
+
 </div>
 
 
@@ -539,16 +520,17 @@ button[type="submit"]:hover {
 <br>
 <br>
 
+
+
+
+
+
+
+
 <section id="shop">
-  <h2 id="featured" style="text-align:center;">Featured Plants 🌿</h2>
+  <h2 id="featured" style="text-align:center;">বিশেষ গাছপালা 🌿</h2>
 
 <br>
-
-
-
-
-
-
 
 
 
@@ -557,244 +539,258 @@ button[type="submit"]:hover {
 
   <div class="product-card">
     <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
-    <h3>Ficus Tree</h3>
-    <p>Indoor tree, moderate sunlight.</p>
-    <p>Price: $25</p>
-    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":25,"image":"./pictures of index/ficus tree.jpg"}'>Add to Cart</button>
+    <h3>ফিকাস গাছ</h3>
+    <p>ঘরের ভেতরের গাছ, মাঝারি রোদ প্রয়োজন।</p>
+    <p>মূল্য: ৳৩২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":320,"image":"./pictures of index/ficus tree.jpg"}'>কার্টে যোগ করুন</button>
   </div>
 
-  
-
-    <div class="product-card">
-      <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
-      <h3>Snake Plant</h3>
-      <p>Price: $18</p>
-      <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":18,"image":"./images/Snake Plant.webp"}'>Add to Cart</button>
-    </div>
-    <div class="product-card">
-      <img src="./pictures of index/Bonsai.webp" alt="Bonsai Tree">
-      <h3>Bonsai Tree</h3>
-      <p>Price: $40</p>
-      <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":40,"image":"./images/Bonsai.webp"}'>Add to Cart</button>
-    </div>
-    <div class="product-card">
-      <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
-      <h3>Peace Lily</h3>
-      <p>Price: $22</p>
-      <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":22,"image":"./images/Peace Lily.jpg"}'>Add to Cart</button>
-    </div>
-    <div class="product-card">
-      <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
-      <h3>Aloe Vera</h3>
-      <p>Price: $15</p>
-      <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":15,"image":"./images/aloe vera.webp"}'>Add to Cart</button>
-    </div>
-    
-  <div class="product-card">
-    <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
-    <h3>Ficus Tree</h3>
-    <p>Indoor tree, moderate sunlight.</p>
-    <p>Price: $25</p>
-    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":25,"image":"./pictures of index/ficus tree.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/rose plants.avif" alt="Rose Plant">
-    <h3>Rose Plant</h3>
-    <p>Blooms with beautiful red roses.</p>
-    <p>Price: $15</p>
-    <button class="addToCartBtn" data-product='{"name":"Rose Plant","price":15,"image":"./pictures of index/rose plants.avif"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
-    <h3>Aloe Vera</h3>
-    <p>Easy to maintain succulent plant.</p>
-    <p>Price: $10</p>
-    <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":10,"image":"./pictures of index/aloe vera.webp"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/money plant.webp" alt="Money Plant">
-    <h3>Money Plant</h3>
-    <p>Brings prosperity and purifies air.</p>
-    <p>Price: $12</p>
-    <button class="addToCartBtn" data-product='{"name":"Money Plant","price":12,"image":"./pictures of index/money plant.webp"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/tulsi plant.png" alt="Tulsi Plant">
-    <h3>Tulsi Plant</h3>
-    <p>Sacred plant known for its medicinal properties.</p>
-    <p>Price: $8</p>
-    <button class="addToCartBtn" data-product='{"name":"Tulsi Plant","price":8,"image":"./pictures of index/tulsi plant.png"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Lavender.webp" alt="Lavender">
-    <h3>Lavender</h3>
-    <p>Fragrant herb that soothes and relaxes.</p>
-    <p>Price: $18</p>
-    <button class="addToCartBtn" data-product='{"name":"Lavender","price":18,"image":"./pictures of index/Lavender.webp"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Lucky Bamboo.jpg" alt="Lucky Bamboo">
-    <h3>Lucky Bamboo</h3>
-    <p>Symbol of good luck and prosperity.</p>
-    <p>Price: $14</p>
-    <button class="addToCartBtn" data-product='{"name":"Lucky Bamboo","price":14,"image":"./pictures of index/Lucky Bamboo.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
-    <h3>Snake Plant</h3>
-    <p>Excellent air purifier for indoor spaces.</p>
-    <p>Price: $16</p>
-    <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":16,"image":"./pictures of index/Snake Plant.webp"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
-    <h3>Peace Lily</h3>
-    <p>Beautiful indoor plant with white blooms.</p>
-    <p>Price: $20</p>
-    <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":20,"image":"./pictures of index/Peace Lily.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Hibiscus.webp" alt="Hibiscus">
-    <h3>Hibiscus</h3>
-    <p>Bright tropical flowers loved by pollinators.</p>
-    <p>Price: $13</p>
-    <button class="addToCartBtn" data-product='{"name":"Hibiscus","price":13,"image":"./pictures of index/Hibiscus.webp"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Jasmine.jpg" alt="Jasmine">
-    <h3>Jasmine</h3>
-    <p>Sweet-scented plant ideal for gardens.</p>
-    <p>Price: $15</p>
-    <button class="addToCartBtn" data-product='{"name":"Jasmine","price":15,"image":"./pictures of index/Jasmine.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Bonsai.webp" alt="Bonsai">
-    <h3>Bonsai Tree</h3>
-    <p>Miniature tree for elegant home decor.</p>
-    <p>Price: $25</p>
-    <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":25,"image":"./pictures of index/Bonsai.webp"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Cactus.webp" alt="Cactus">
-    <h3>Cactus</h3>
-    <p>Low-maintenance plant perfect for desks.</p>
-    <p>Price: $9</p>
-    <button class="addToCartBtn" data-product='{"name":"Cactus","price":9,"image":"./pictures of index/Cactus.webp"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Orchid.jpg" alt="Orchid">
-    <h3>Orchid</h3>
-    <p>Elegant flowers for modern interiors.</p>
-    <p>Price: $22</p>
-    <button class="addToCartBtn" data-product='{"name":"Orchid","price":22,"image":"./pictures of index/Orchid.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Pothos.webp" alt="Pothos">
-    <h3>Pothos</h3>
-    <p>Hardy vine plant for air purification.</p>
-    <p>Price: $11</p>
-    <button class="addToCartBtn" data-product='{"name":"Pothos","price":11,"image":"./pictures of index/Pothos.webp"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Fern.jpg" alt="Fern">
-    <h3>Fern</h3>
-    <p>Lovely green foliage for humid areas.</p>
-    <p>Price: $10</p>
-    <button class="addToCartBtn" data-product='{"name":"Fern","price":10,"image":"./pictures of index/Fern.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Banana Plant.jpg" alt="Banana Plant">
-    <h3>Banana Plant</h3>
-    <p>Tropical plant with large vibrant leaves.</p>
-    <p>Price: $17</p>
-    <button class="addToCartBtn" data-product='{"name":"Banana Plant","price":17,"image":"./pictures of index/Banana Plant.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Coleus.jpg" alt="Coleus">
-    <h3>Coleus</h3>
-    <p>Colorful foliage plant for bright corners.</p>
-    <p>Price: $9</p>
-    <button class="addToCartBtn" data-product='{"name":"Coleus","price":9,"image":"./pictures of index/Coleus.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Rosemary.jpg" alt="Rosemary">
-    <h3>Rosemary</h3>
-    <p>Aromatic herb used for cooking and fragrance.</p>
-    <p>Price: $12</p>
-    <button class="addToCartBtn" data-product='{"name":"Rosemary","price":12,"image":"./pictures of index/Rosemary.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Mint.jpg" alt="Mint">
-    <h3>Mint</h3>
-    <p>Fresh herb for teas and garnishing.</p>
-    <p>Price: $8</p>
-    <button class="addToCartBtn" data-product='{"name":"Mint","price":8,"image":"./pictures of index/Mint.jpg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Ficus.webp" alt="Ficus">
-    <h3>Ficus</h3>
-    <p>Popular indoor plant with glossy leaves.</p>
-    <p>Price: $18</p>
-    <button class="addToCartBtn" data-product='{"name":"Ficus","price":18,"image":"./pictures of index/Ficus.webp"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/Croton.jpeg" alt="Croton">
-    <h3>Croton</h3>
-    <p>Vibrant leaves in shades of yellow and red.</p>
-    <p>Price: $15</p>
-    <button class="addToCartBtn" data-product='{"name":"Croton","price":15,"image":"./pictures of index/Croton.jpeg"}'>Add to Cart</button>
-  </div>
-
-  <div class="product-card">
-    <img src="./pictures of index/ZZ Plant.jpg" alt="ZZ Plant">
-    <h3>ZZ Plant</h3>
-    <p>Low-light tolerant and easy to grow.</p>
-    <p>Price: $19</p>
-    <button class="addToCartBtn" data-product='{"name":"ZZ Plant","price":19,"image":"./pictures of index/ZZ Plant.jpg"}'>Add to Cart</button>
-  </div>
 
 
 <div class="product-card">
-    <img src="./pictures of index/Pothos.webp" alt="Pothos">
-    <h3>Pothos</h3>
-    <p>Hardy vine plant for air purification.</p>
-    <p>Price: $11</p>
-    <button class="addToCartBtn" data-product='{"name":"Pothos","price":11,"image":"./pictures of index/Pothos.webp"}'>Add to Cart</button>
-  </div>
+  <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
+  <h3>স্নেক প্ল্যান্ট</h3>
+  <p>ঘরের বায়ু বিশুদ্ধ করার জন্য দারুণ, কম আলোতেও বেঁচে থাকে।</p>
+  <p>মূল্য: ৳২৯০</p>
+  <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":290,"image":"./images/Snake Plant.webp"}'>কার্টে যোগ করুন</button>
+</div>
 
+<div class="product-card">
+  <img src="./pictures of index/Bonsai.webp" alt="Bonsai Tree">
+  <h3>বনসাই গাছ</h3>
+  <p>মিনিয়েচার গাছ, ঘর বা অফিস সাজানোর জন্য চমৎকার।</p>
+  <p>মূল্য: ৳৬৮০</p>
+  <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":680,"image":"./images/Bonsai.webp"}'>কার্টে যোগ করুন</button>
+</div>
 
-  <div class="product-card">
-    <img src="./pictures of index/more plants.jpg" alt="More Plants" style="object-fit:cover; height:180px;">
-    <h3>Explore More Plants 🌿</h3>
-    <p>Check out our full collection of amazing plants and find your perfect green companion!</p>
-    <a href="./shop.html" style="display:inline-block; margin-top:10px; background:linear-gradient(90deg,#00BFA6,#00E7B0); color:white; padding:8px 15px; border-radius:15px; text-decoration:none; font-weight:600;">Visit Shop Plants</a>
+<div class="product-card">
+  <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
+  <h3>পিস লিলি</h3>
+  <p>সাদা ফুলসহ সুন্দর ঘরোয়া গাছ, বায়ু শোধন করে।</p>
+  <p>মূল্য: ৳৫৭০</p>
+  <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":570,"image":"./images/Peace Lily.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
+  <h3>এলোভেরা</h3>
+  <p>সহজে পরিচর্যা করা যায়, ঘরের জন্য আদর্শ।</p>
+  <p>মূল্য: ৳৬৫০</p>
+  <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":650,"image":"./images/aloe vera.webp"}'>কার্টে যোগ করুন</button>
 </div>
 
 
 
+
+
+
+
+  <div class="product-card">
+    <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
+    <h3>ফিকাস গাছ</h3>
+    <p>ঘরের ভেতরের গাছ, মাঝারি রোদ প্রয়োজন।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":500,"image":"./pictures of index/ficus tree.jpg"}'>কার্টে যোগ করুন</button>
   </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/rose plants.avif" alt="Rose Plant">
+    <h3>গোলাপ গাছ</h3>
+    <p>সুন্দর লাল গোলাপ ফোটে।</p>
+    <p>মূল্য: ৳৬৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Rose Plant","price":675,"image":"./pictures of index/rose plants.avif"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
+    <h3>এলোভেরা</h3>
+    <p>সহজে পরিচর্যা করা যায়।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":620,"image":"./pictures of index/aloe vera.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/money plant.webp" alt="Money Plant">
+    <h3>মানি প্ল্যান্ট</h3>
+    <p>সমৃদ্ধি আনে এবং বায়ু পরিষ্কার করে।</p>
+    <p>মূল্য: ৳৬৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"Money Plant","price":690,"image":"./pictures of index/money plant.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/tulsi plant.png" alt="Tulsi Plant">
+    <h3>তুলসী গাছ</h3>
+    <p>ঔষধি গুণসম্পন্ন পবিত্র গাছ।</p>
+    <p>মূল্য: ৳৫২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Tulsi Plant","price":520,"image":"./pictures of index/tulsi plant.png"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lavender.webp" alt="Lavender">
+    <h3>ল্যাভেন্ডার</h3>
+    <p>সুগন্ধযুক্ত হার্ব যা মন শান্ত করে।</p>
+    <p>মূল্য: ৳৬১০</p>
+    <button class="addToCartBtn" data-product='{"name":"Lavender","price":610,"image":"./pictures of index/Lavender.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lucky Bamboo.jpg" alt="Lucky Bamboo">
+    <h3>লাকি ব্যাম্বু</h3>
+    <p>সৌভাগ্য এবং সমৃদ্ধির প্রতীক।</p>
+    <p>মূল্য: ৳৫৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Lucky Bamboo","price":575,"image":"./pictures of index/Lucky Bamboo.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
+    <h3>স্নেক প্ল্যান্ট</h3>
+    <p>ঘরের বায়ু বিশুদ্ধ করার জন্য দারুণ।</p>
+    <p>মূল্য: ৳৬০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":600,"image":"./pictures of index/Snake Plant.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
+    <h3>পিস লিলি</h3>
+    <p>সাদা ফুলসহ সুন্দর ঘরোয়া গাছ।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":620,"image":"./pictures of index/Peace Lily.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Hibiscus.webp" alt="Hibiscus">
+    <h3>জবা ফুল</h3>
+    <p>উজ্জ্বল ট্রপিক্যাল ফুল, পরাগায়নকারীরা পছন্দ করে।</p>
+    <p>মূল্য: ৳৫৫০</p>
+    <button class="addToCartBtn" data-product='{"name":"Hibiscus","price":550,"image":"./pictures of index/Hibiscus.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Jasmine.jpg" alt="Jasmine">
+    <h3>জুঁই ফুল</h3>
+    <p>মিষ্টি ঘ্রাণযুক্ত বাগানের আদর্শ গাছ।</p>
+    <p>মূল্য: ৳৬৩০</p>
+    <button class="addToCartBtn" data-product='{"name":"Jasmine","price":630,"image":"./pictures of index/Jasmine.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Bonsai.webp" alt="Bonsai">
+    <h3>বনসাই গাছ</h3>
+    <p>মিনিয়েচার গাছ, ঘর সাজানোর জন্য চমৎকার।</p>
+    <p>মূল্য: ৳৬৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":690,"image":"./pictures of index/Bonsai.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Cactus.webp" alt="Cactus">
+    <h3>ক্যাকটাস</h3>
+    <p>কম যত্নে বেঁচে থাকা ডেস্কের উপযোগী গাছ।</p>
+    <p>মূল্য: ৳৩২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Cactus","price":320,"image":"./pictures of index/Cactus.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Orchid.jpg" alt="Orchid">
+    <h3>অর্কিড</h3>
+    <p>আধুনিক ইন্টেরিয়রের জন্য মার্জিত ফুল।</p>
+    <p>মূল্য: ৳৬৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Orchid","price":675,"image":"./pictures of index/Orchid.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Pothos.webp" alt="Pothos">
+    <h3>পথোস</h3>
+    <p>বায়ু বিশুদ্ধ করার জন্য উপযোগী লতানো গাছ।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Pothos","price":500,"image":"./pictures of index/Pothos.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Fern.jpg" alt="Fern">
+    <h3>ফার্ন</h3>
+    <p>আর্দ্র স্থানের জন্য সবুজ পাতার সুন্দর গাছ।</p>
+    <p>মূল্য: ৳৫২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Fern","price":520,"image":"./pictures of index/Fern.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Banana Plant.jpg" alt="Banana Plant">
+    <h3>কলা গাছ</h3>
+    <p>বড় উজ্জ্বল পাতাযুক্ত ট্রপিক্যাল গাছ।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Banana Plant","price":620,"image":"./pictures of index/Banana Plant.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Coleus.jpg" alt="Coleus">
+    <h3>কোলিয়াস</h3>
+    <p>রঙিন পাতার জন্য জনপ্রিয়।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Coleus","price":500,"image":"./pictures of index/Coleus.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Rosemary.jpg" alt="Rosemary">
+    <h3>রোজমেরি</h3>
+    <p>সুগন্ধি হার্ব, রান্না ও সুগন্ধির কাজে লাগে।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Rosemary","price":620,"image":"./pictures of index/Rosemary.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Mint.jpg" alt="Mint">
+    <h3>পুদিনা</h3>
+    <p>চা ও সাজানোর কাজে ব্যবহৃত তাজা হার্ব।</p>
+    <p>মূল্য: ৳৫২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Mint","price":520,"image":"./pictures of index/Mint.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Ficus.webp" alt="Ficus">
+    <h3>ফিকাস</h3>
+    <p>ঝকঝকে পাতাযুক্ত জনপ্রিয় ঘরোয়া গাছ।</p>
+    <p>মূল্য: ৳৬৫০</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus","price":650,"image":"./pictures of index/Ficus.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Croton.jpeg" alt="Croton">
+    <h3>ক্রোটন</h3>
+    <p>হলুদ-লাল রঙের উজ্জ্বল পাতাযুক্ত গাছ।</p>
+    <p>মূল্য: ৳৫৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Croton","price":575,"image":"./pictures of index/Croton.jpeg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/ZZ Plant.jpg" alt="ZZ Plant">
+    <h3>জেডজেড প্ল্যান্ট</h3>
+    <p>কম আলোতেও ভালো জন্মে, খুব সহজে পরিচর্যা করা যায়।</p>
+    <p>মূল্য: ৳৬৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"ZZ Plant","price":690,"image":"./pictures of index/ZZ Plant.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Pothos.webp" alt="Pothos">
+    <h3>পথোস</h3>
+    <p>বায়ু বিশুদ্ধ করার জন্য উপযোগী লতানো গাছ।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Pothos","price":500,"image":"./pictures of index/Pothos.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/more plants.jpg" alt="More Plants" style="object-fit:cover; height:180px;">
+    <h3>আরও গাছপালা দেখুন 🌿</h3>
+    <p>আমাদের বিশাল সংগ্রহ থেকে আপনার পছন্দের সবুজ সঙ্গী খুঁজে নিন!</p>
+    <a href="./shop.html" style="display:inline-block; margin-top:10px; background:linear-gradient(90deg,#00BFA6,#00E7B0); color:white; padding:8px 15px; border-radius:15px; text-decoration:none; font-weight:600;">শপে যান</a>
+  </div>
+
+</div>
+
 </section>
+
+
+
+
 
 
 
@@ -805,7 +801,7 @@ button[type="submit"]:hover {
 
 <!-- Care Section -->
 <section id="care">
-  <h2 style="text-align:center;" id="caretitle">Daily Plant Care 🌱</h2>
+  <h2 style="text-align:center;" id="caretitle">দৈনন্দিন গাছের যত্ন 🌱</h2>
   <div class="care-cards">
 
    <div class="card">
@@ -814,17 +810,16 @@ button[type="submit"]:hover {
         border: 2px solid rgba(14, 195, 96, 0.929); 
         padding: 5px 10px; 
         border-radius: 8px; 
-        text-decoration: none;">Watering</a>
+        text-decoration: none;">পানি দেওয়া</a>
   </h3>
-  <p><b>click here to see more</b></p>
+  <p><b>আরও দেখার জন্য এখানে ক্লিক করুন</b></p>
   <br>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
     <img src="./pictures of index/watering.jpeg" alt="Watering" style="width: 150px; height: auto; border-radius: 10px;">
     <img src="./pictures of index/watering1.jpeg" alt="Watering" style="width: 150px; height: auto; border-radius: 10px;">
   </div>
-  <p>Different plants need different amounts of water. Know your plant!</p>
+  <p>প্রত্যেক গাছের পানির চাহিদা আলাদা। আপনার গাছের প্রয়োজন অনুযায়ী পানি দিন।</p>
 </div>
-
 
 <div class="card">
   <h3>
@@ -832,18 +827,16 @@ button[type="submit"]:hover {
         border: 2px solid rgba(14, 195, 96, 0.929); 
         padding: 5px 10px; 
         border-radius: 8px; 
-        text-decoration: none;">Sunlight</a>
+        text-decoration: none;">সূর্যালোক</a>
   </h3>
-  <p><b>click here to see more</b></p>
+  <p><b>আরও দেখার জন্য এখানে ক্লিক করুন</b></p>
   <br>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
     <img src="./pictures of index/sunlight.jpg" alt="Sunlight" style="width: 150px; height: auto; border-radius: 10px;">
     <img src="./pictures of index/sunlight1.jpg" alt="Sunlight" style="width: 150px; height: auto; border-radius: 10px;">
   </div>
-  <p>Indoor plants require indirect sunlight, outdoor plants need full sunlight.</p>
+  <p>অন্দর গাছের জন্য পরোক্ষ সূর্যালোক প্রয়োজন, বাহিরের গাছ সম্পূর্ণ সূর্যালোক পেতে ভালোবাসে।</p>
 </div>
-
-
 
 <div class="card">
   <h3>
@@ -851,36 +844,34 @@ button[type="submit"]:hover {
         border: 2px solid rgba(14, 195, 96, 0.929); 
         padding: 5px 10px; 
         border-radius: 8px; 
-        text-decoration: none;">Fertilization</a>
+        text-decoration: none;">সার দেওয়া</a>
   </h3>
-  <p><b>click here to see more</b></p>
+  <p><b>আরও দেখার জন্য এখানে ক্লিক করুন</b></p>
   <br>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
     <img src="./pictures of index/Fertilization.jpg" alt="Fertilization" style="width: 150px; height: auto; border-radius: 10px;">
     <img src="./pictures of index/Fertilization1.jpg" alt="Fertilization" style="width: 150px; height: auto; border-radius: 10px;">
   </div>
-  <p>Use organic fertilizers weekly to keep plants healthy and green.</p>
+  <p>গাছ সবুজ ও সুস্থ রাখতে জৈব সার সপ্তাহে ব্যবহার করুন।</p>
 </div>
 
-
-
-  <div class="card">
+<div class="card">
   <h3>
     <a href="./pest-control.html" style="color: rgba(7, 11, 241, 0.929); 
         border: 2px solid rgba(14, 195, 96, 0.929); 
         padding: 5px 10px; 
         border-radius: 8px; 
-        text-decoration: none;">Pest Control</a>
+        text-decoration: none;">পোকামাকড় নিয়ন্ত্রণ</a>
   </h3>
-  <p><b>click here to see more</b></p>
+  <p><b>আরও দেখার জন্য এখানে ক্লিক করুন</b></p>
   <br>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
     <img src="./pictures of index/Pest Control.jpg" alt="Pest Control" style="width: 150px; height: auto; border-radius: 10px;">
     <img src="./pictures of index/Pest Control1.webp" alt="Pest Control" style="width: 150px; height: auto; border-radius: 10px;">
   </div>
-  <p>Use natural remedies to prevent insects without harming the plant.</p>
+  <p>গাছকে ক্ষতিগ্রস্ত না করে পোকামাকড় প্রতিরোধ করতে প্রাকৃতিক উপায় ব্যবহার করুন।</p>
+</div>
 
-  </div>
 </section>
 
 
@@ -891,47 +882,66 @@ button[type="submit"]:hover {
 
 
 
-
-
-
 <div>
 <div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 
 
 
 
 <section id="share-story">
-  <h2 id="storytitle">Share Your Plant Story 💌</h2>
-  <p><b>Share your favorite plant stories or growth journey with us!</b></p>
+  <h2 id="storytitle">আপনার গাছের গল্প শেয়ার করুন 💌</h2>
+  <p><b>আপনার প্রিয় গাছের গল্প বা বৃদ্ধি যাত্রা আমাদের সাথে শেয়ার করুন!</b></p>
 
   <form id="storyForm" enctype="multipart/form-data">
     <div class="form-group">
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" placeholder="Enter your name">
+      <label for="name">আপনার নাম</label>
+      <input type="text" id="name" name="name" placeholder="আপনার নাম লিখুন">
     </div>
 
     <div class="form-group">
-      <label for="story">Story</label>
-      <textarea id="story" name="story" rows="5" placeholder="Write your story..."></textarea>
+      <label for="story">গল্প</label>
+      <textarea id="story" name="story" rows="5" placeholder="আপনার গল্প লিখুন..."></textarea>
     </div>
 
     <div class="form-group">
-      <label>🎤 Or Record a Voice Message</label>
+      <label>🎤 অথবা ভয়েস মেসেজ রেকর্ড করুন</label>
       <div class="voice-controls">
-        <button type="button" id="startRecord">Start Recording</button>
-        <button type="button" id="stopRecord" disabled>Stop Recording</button>
+        <button type="button" id="startRecord">রেকর্ডিং শুরু করুন</button>
+        <button type="button" id="stopRecord" disabled>রেকর্ডিং বন্ধ করুন</button>
         <audio id="audioPlayback" controls style="display:none;"></audio>
       </div>
     </div>
 
-    <button type="submit">Submit 🌿</button>
+    <button type="submit">জমা দিন 🌿</button>
   </form>
 
-  <h3>All Stories</h3>
+  <h3>সব গল্প</h3>
   <div id="storiesList"></div>
 </section>
+
+
+
+
+
+
+
 
 <style>
   #share-story { max-width:600px; margin:40px auto; padding:20px; background:#f0fff0; border-radius:10px; }
@@ -1043,13 +1053,6 @@ fetchStories();
 
 
 
-
-
-
-
-
-
-
 </div>
 
 
@@ -1061,12 +1064,16 @@ fetchStories();
 
 
 
+
+
+
+
+
+
+
+
 <br>
 <br>
-
-
-
-
 
 
 
