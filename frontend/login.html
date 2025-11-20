@@ -20,16 +20,8 @@
 
   /* Fade-in animation for page */
   @keyframes fadeInPage {
-    0% {
-      opacity: 0;
-      transform: scale(0.9);
-      filter: blur(8px);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-      filter: blur(0);
-    }
+    0% { opacity: 0; transform: scale(0.9); filter: blur(8px); }
+    100% { opacity: 1; transform: scale(1); filter: blur(0); }
   }
 
   /* Container card */
@@ -54,9 +46,14 @@
   }
 
   /* Inputs with subtle glow */
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
   input {
-    width: 100%;
-    padding: 12px 14px;
+    width: 80%;
+    padding: 12px 40px 12px 14px;
     margin: 10px 0;
     border: 2px solid #ddd;
     border-radius: 10px;
@@ -69,6 +66,17 @@
     border-color: #5563DE;
     box-shadow: 0 0 10px rgba(85,99,222,0.4);
     transform: scale(1.02);
+  }
+
+  /* Eye icon inside input */
+  .eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
   }
 
   /* Button animation */
@@ -95,6 +103,7 @@
   #message {
     margin-top: 15px;
     font-weight: 500;
+    color: red;
   }
 
   p {
@@ -109,23 +118,15 @@
     transition: 0.3s;
   }
 
-  a:hover {
-    text-decoration: underline;
-  }
+  a:hover { text-decoration: underline; }
 
   /* Floating animation for card */
   @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
   }
 
-  .container:hover {
-    animation: float 2s ease-in-out infinite;
-  }
+  .container:hover { animation: float 2s ease-in-out infinite; }
 </style>
 </head>
 <body>
@@ -133,48 +134,70 @@
 <div class="container">
   <h1>Welcome Back 🌿</h1>
   <form id="loginForm">
-    <input type="email" id="email" placeholder="Email" required><br/>
-    <input type="password" id="password" placeholder="Password" required><br/>
+    <div class="input-group">
+      <input type="email" id="email" placeholder="Email" required>
+    </div>
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Password" required>
+      <span id="togglePassword" class="eye-icon">👁️</span>
+    </div>
     <button type="submit">Login</button>
   </form>
+  <br>
+<a href="forgot.html" class="forgot">Forgot Password?</a>
 
-  <p id="message" style="color:red;"></p>
+  <p id="message"></p>
   <p>Don’t have an account? <a href="register.html">Register here</a></p>
 </div>
 
 <script>
   const BACKEND_URL = "http://127.0.0.1:5000";
 
-  // Already logged in? redirect
+  // Check session
   fetch(`${BACKEND_URL}/check-session`, { credentials: "include" })
     .then(res => res.json())
-    .then(data => {
-      if(data.loggedIn) window.location.href = "index.html";
-    });
+    .then(data => { if(data.loggedIn) window.location.href = "index.html"; });
 
+  // Show/hide password
+  const password = document.getElementById("password");
+  const togglePassword = document.getElementById("togglePassword");
+  togglePassword.addEventListener("click", () => {
+    if(password.type === "password"){
+      password.type = "text";
+      togglePassword.textContent = "🙈";
+    } else {
+      password.type = "password";
+      togglePassword.textContent = "👁️";
+    }
+  });
+
+  // Login submit
   document.getElementById("loginForm").addEventListener("submit", async (e)=>{
     e.preventDefault();
     const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const passwordValue = password.value;
 
     try{
       const res = await fetch(`${BACKEND_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password: passwordValue })
       });
-
       const data = await res.json();
+
+      const msg = document.getElementById("message");
       if(data.success){
-        document.getElementById("message").style.color = "green";
-        document.getElementById("message").innerText = "Login successful! Redirecting...";
+        msg.style.color = "green";
+        msg.innerText = "Login successful! Redirecting...";
         setTimeout(()=>{ window.location.href = "index.html"; },1500);
       } else {
-        document.getElementById("message").innerText = data.message;
+        msg.style.color = "red";
+        msg.innerText = data.message;
       }
     } catch(err){
       console.error(err);
+      document.getElementById("message").style.color = "red";
       document.getElementById("message").innerText = "Server error!";
     }
   });

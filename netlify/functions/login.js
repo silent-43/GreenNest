@@ -30,3 +30,37 @@ export async function handler(event) {
     await client.end();
   }
 }
+
+
+
+
+
+
+
+async function sendOTP() {
+  const email = document.getElementById("email").value;
+
+  const res = await fetch("http://localhost:5000/send-otp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email })
+  });
+
+  const data = await res.json();
+  document.getElementById("msg").innerText = data.message;
+}
+
+async function resetPassword() {
+  const email = document.getElementById("email").value;
+  const otp = document.getElementById("otp").value;
+  const newpass = document.getElementById("newpass").value;
+
+  const res = await fetch("http://localhost:5000/reset-password", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, otp, newpass })
+  });
+
+  const data = await res.json();
+  document.getElementById("msg").innerText = data.message;
+}

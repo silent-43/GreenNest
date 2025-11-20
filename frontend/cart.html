@@ -36,6 +36,7 @@ button.removeBtn:hover { background:#FF1A1A; transform:scale(1.05); }
     <a href="contact.html">যোগাযোগ করুন</a>
     <a href="profile.html">প্রোফাইল</a>
   </nav>
+  <button id="logoutBtn">লগ আউট</button>
 </header>
 
 <div class="cart-container">
@@ -73,8 +74,10 @@ async function loadCart(){
   let total = 0;
 
   if(data.success && data.cart.length > 0){
-    data.cart.forEach((item,index)=>{
-      total += item.price;
+    data.cart.forEach((item, index)=>{
+      const qty = item.quantity || 1;
+      total += item.price * qty;
+
       const div = document.createElement("div");
       div.className = "cart-item";
       div.innerHTML = `
@@ -82,27 +85,31 @@ async function loadCart(){
         <div class="cart-item-details">
           <h3>${item.name}</h3>
           <p>মূল্য: ${item.price} টাকা</p>
+          <p>পরিমাণ: ${qty}</p>
         </div>
-        <button class="removeBtn" data-index="${index}">সরান</button>
+        <button class="removeBtn" data-productid="${item.productId}">সরান</button>
       `;
       cartDiv.appendChild(div);
     });
+
     document.getElementById("totalAmount").textContent = total;
 
+    // Remove button
     document.querySelectorAll(".removeBtn").forEach(btn=>{
       btn.addEventListener("click", async ()=>{
-        const idx = parseInt(btn.dataset.index);
+        const productId = btn.dataset.productid;
         const res = await fetch(`${BACKEND}/remove-from-cart`, {
           method:"POST",
           credentials:"include",
           headers:{ "Content-Type":"application/json" },
-          body: JSON.stringify({index:idx})
+          body: JSON.stringify({ productId })
         });
         const data = await res.json();
         if(data.success) loadCart();
         else alert("আইটেম সরানো সম্ভব হয়নি।");
       });
     });
+
   } else {
     cartDiv.innerHTML = "<p class='empty-cart'>আপনার কার্ট এখন খালি।</p>";
     document.getElementById("totalAmount").textContent = "০";

@@ -542,18 +542,18 @@ button[type="submit"]:hover {
     <h3>ফিকাস গাছ</h3>
     <p>ঘরের ভেতরের গাছ, মাঝারি রোদ প্রয়োজন।</p>
     <p>মূল্য: ৳৩২০</p>
-    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":320,"image":"./pictures of index/ficus tree.jpg"}'>কার্টে যোগ করুন</button>
+    <button class="addToCartBtn" data-product='{"productId":"p001","name":"Ficus Tree","price":320,"image":"./pictures of index/ficus tree.jpg"}'>কার্টে যোগ করুন</button>
   </div>
 
 
+    <div class="product-card">
+    <img src="./pictures of index/Snake Plant.webp" alt="Ficus Tree">
+    <h3>স্নেক প্ল্যান্ট</h3>
+    <p>ঘরের বায়ু বিশুদ্ধ করার জন্য দারুণ, কম আলোতেও বেঁচে থাকে।</p>
+    <p>মূল্য: ৳২৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":290,"image":"./pictures of index/Snake Plant.webp"}'>কার্টে যোগ করুন</button>
+  </div>
 
-<div class="product-card">
-  <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
-  <h3>স্নেক প্ল্যান্ট</h3>
-  <p>ঘরের বায়ু বিশুদ্ধ করার জন্য দারুণ, কম আলোতেও বেঁচে থাকে।</p>
-  <p>মূল্য: ৳২৯০</p>
-  <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":290,"image":"./images/Snake Plant.webp"}'>কার্টে যোগ করুন</button>
-</div>
 
 <div class="product-card">
   <img src="./pictures of index/Bonsai.webp" alt="Bonsai Tree">
@@ -1098,37 +1098,56 @@ fetchStories();
 
 
 
+
 <script>
 const BACKEND="http://127.0.0.1:5000";
 
-// SESSION CHECK
-fetch(`${BACKEND}/check-session`, { credentials:"include" })
-.then(res=>res.json())
-.then(data=> { if(!data.loggedIn) window.location.href="login.html"; });
+document.addEventListener("DOMContentLoaded", ()=> {
 
-// LOGOUT
-document.getElementById("logoutBtn").addEventListener("click", async()=>{
-  const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
-  const data = await res.json();
-  if(data.success) window.location.href="login.html";
-  else alert("Logout failed.");
-});
-
-// ADD TO CART
-document.querySelectorAll(".addToCartBtn").forEach(btn=>{
-  btn.addEventListener("click", async()=>{
-    const product = JSON.parse(btn.dataset.product);
-    const res = await fetch(`${BACKEND}/add-to-cart`, {
-      method:"POST",
-      credentials:"include",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify(product)
-    });
-    const data = await res.json();
-    if(data.success) alert(`${product.name} added to cart!`);
-    else alert("Failed to add to cart.");
+  // SESSION CHECK
+  fetch(`${BACKEND}/check-session`, { credentials:"include" })
+  .then(res=>res.json())
+  .then(data=> { 
+    if(!data.loggedIn) window.location.href="login.html"; 
   });
+
+  // LOGOUT
+  const logoutBtn = document.getElementById("logoutBtn");
+  if(logoutBtn){
+    logoutBtn.addEventListener("click", async()=>{
+      const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+      const data = await res.json();
+      if(data.success) window.location.href="login.html";
+      else alert("Logout failed.");
+    });
+  }
+
+  // ADD TO CART
+  document.querySelectorAll(".addToCartBtn").forEach(btn=>{
+    btn.addEventListener("click", async()=>{
+      const product = JSON.parse(btn.dataset.product);
+
+      const res = await fetch(`${BACKEND}/add-to-cart`, {
+        method:"POST",
+        credentials:"include",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(product)
+      });
+
+      const data = await res.json();
+      if(data.success) alert(`${product.name} added to cart!`);
+      else alert("Failed to add to cart.");
+    });
+  });
+
 });
 </script>
+
+
+
+
+
+
+
 </body>
 </html>
