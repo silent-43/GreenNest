@@ -1,0 +1,114 @@
+/* style.css */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+  color: #333;
+}
+
+/* Header + Navbar */
+#bsm {
+  text-align: center;
+  color: #0B8457;
+  margin: 1.2rem 0 0.3rem;
+  font-size: 2rem;
+}
+
+header {
+  background: #0B8457;
+  padding: 0.8rem 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #D4EFDF;
+  text-decoration: underline;
+}
+
+/* Section + Grid */
+section {
+  padding: 2rem 5%;
+  text-align: center;
+}
+
+section h2 {
+  color: #0B8457;
+  font-size: 1.8rem;
+}
+
+section p {
+  color: #444;
+  max-width: 600px;
+  margin: 0.5rem auto 1.5rem;
+  line-height: 1.6;
+}
+
+/* Plant Cards */
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.plant-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.plant-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.8rem;
+}
+
+/* Footer */
+footer {
+  background: #0B8457;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+}
+
+footer .btn {
+  display: inline-block;
+  margin: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  background: #fff;
+  color: #0B8457;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+footer .btn:hover {
+  background: #D4EFDF;
+}
+
+footer p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}

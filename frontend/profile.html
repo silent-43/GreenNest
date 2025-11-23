@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ব্যবহারকারীর প্রোফাইল 🌿 GreenNest</title>
+<style>
+body { font-family:'Poppins', sans-serif; margin:0; background: #d2d4d5; color:#333; }
+header { background: linear-gradient(90deg,#00BFA6,#00C897,#00E7B0); padding:15px 30px; display:flex; justify-content: space-between; align-items:center; }
+.nav a { color:white; text-decoration:none; margin:0 15px; font-weight:600; }
+.nav a:hover, .nav a.active { text-decoration:underline; }
+#logoutBtn { background:white; color:#00BFA6; border:none; border-radius:20px; padding:9px 18px; font-weight:600; cursor:pointer; }
+
+.profile-container, .cart-container { max-width:700px; margin:40px auto; background:rgb(247, 251, 252); border-radius:20px; padding:30px; box-shadow:0 10px 25px rgba(0,0,0,0.1); text-align:center; }
+
+.profile-container h2, .cart-container h2 { text-align:center; margin-bottom:20px; color:#06fa06; }
+
+.form-group { margin-bottom:15px; text-align:left; }
+label { font-weight:600; color:#00695C; display:block; margin-bottom:5px; }
+input, textarea { width:100%; padding:10px; border-radius:10px; border:2px solid #B2DFDB; font-size:15px; transition:0.3s; }
+input:focus, textarea:focus { border-color:#00A884; outline:none; box-shadow:0 0 8px rgba(0,168,132,0.4); }
+
+button { display:block; margin:15px auto 0; background:linear-gradient(90deg,#00BFA6,#00E7B0); color:white; border:none; border-radius:15px; padding:10px 20px; font-size:16px; font-weight:600; cursor:pointer; transition:0.3s; }
+button:hover { transform:scale(1.05); background:linear-gradient(90deg,#00E7B0,#00BFA6); }
+
+#profilePicPreview { width:120px; height:120px; border-radius:50%; object-fit:cover; margin:10px auto; display:block; border:2px solid #B2DFDB; }
+
+.profile-links { display: flex; justify-content: center; gap: 20px; margin-top: 25px; }
+.profile-links a { text-decoration: none; background: linear-gradient(90deg,#00BFA6,#00E7B0); color: white; padding: 10px 25px; border-radius: 25px; font-weight: 600; transition: 0.3s; }
+.profile-links a:hover { transform: scale(1.05); background: linear-gradient(90deg,#00E7B0,#00BFA6); }
+
+/* কার্ট স্টাইল */
+.cart-item { display:flex; align-items:center; margin-bottom:15px; border-bottom:1px solid #ddd; padding-bottom:10px; }
+.cart-item img { width:100px; height:100px; object-fit:cover; border-radius:15px; margin-right:20px; }
+.cart-item-details { flex:1; }
+button.removeBtn { background:red; padding:5px 10px; border:none; border-radius:10px; color:white; cursor:pointer; margin-left:10px; transition:0.2s; }
+button.removeBtn:hover { transform:scale(1.05); }
+.total { text-align:right; font-weight:600; margin-top:20px; }
+#checkoutBtn { background:#00BFA6; color:white; border:none; border-radius:20px; padding:10px 20px; cursor:pointer; margin-top:15px; font-weight:600; transition:0.2s; }
+#checkoutBtn:hover { background:#00E7B0; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html">হোম</a>
+    <a href="./shop.html">গাছ কিনুন</a>
+    <a href="./categories.html">গাছের ধরন</a>
+    <a href="./care.html">পরিচর্যা পরামর্শ</a>
+    <a href="./about.html">আমাদের সম্পর্কে</a>
+    <a href="./contact.html">যোগাযোগ করুন</a>
+  </nav>
+  <button id="logoutBtn">লগ আউট</button>
+</header>
+
+<!-- প্রোফাইল সেকশন -->
+<div class="profile-container">
+<h2>ব্যবহারকারীর প্রোফাইল</h2>
+<img id="profilePicPreview" src="./pictures of index/default-profile.png" alt="প্রোফাইল ছবি">
+
+<form id="profileForm" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="name">নাম</label>
+    <input type="text" id="name" name="name" placeholder="আপনার নাম লিখুন">
+  </div>
+  <div class="form-group">
+    <label for="email">ইমেল</label>
+    <input type="email" id="email" name="email" placeholder="আপনার ইমেল লিখুন">
+  </div>
+  <div class="form-group">
+    <label for="phone">ফোন নম্বর</label>
+    <input type="text" id="phone" name="phone" placeholder="আপনার ফোন নম্বর লিখুন">
+  </div>
+  <div class="form-group">
+    <label for="address">ঠিকানা</label>
+    <textarea id="address" name="address" rows="3" placeholder="আপনার ঠিকানা লিখুন"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="profilePic">প্রোফাইল ছবি</label>
+    <input type="file" id="profilePic" name="profilePic" accept="image/*">
+  </div>
+  <button type="submit">প্রোফাইল সংরক্ষণ করুন</button>
+</form>
+
+<div class="profile-links">
+  <a href="./cart.html">🛒 আমার কার্ট</a>
+  <a href="./orders.html">📦 আমার অর্ডারসমূহ</a>
+</div>
+</div>
+
+<!-- কার্ট সেকশন -->
+<div class="cart-container">
+<h2>আমার কার্ট</h2>
+<div id="cartItems"></div>
+<p class="total">মোট: ৳<span id="totalAmount">০</span></p>
+<button id="checkoutBtn">অর্ডার করুন</button>
+</div>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// সংখ্যা বাংলায় রূপান্তর
+function toBanglaNumber(str){
+  const bnNums = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  return str.toString().replace(/\d/g, d => bnNums[d]);
+}
+
+// সেশন চেক
+fetch(`${BACKEND}/check-session`, { credentials: "include" })
+  .then(res => res.json())
+  .then(data => { if (!data.loggedIn) window.location.href = "login.html"; });
+
+// লগআউট
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  const res = await fetch(`${BACKEND}/logout`, { method: "POST", credentials: "include" });
+  const data = await res.json();
+  if (data.success) window.location.href = "login.html";
+});
+
+// প্রোফাইল লোড
+async function loadProfile() {
+  const res = await fetch(`${BACKEND}/get-profile`, { credentials: "include" });
+  const data = await res.json();
+  if (data.success) {
+    const p = data.profile;
+    document.getElementById("name").value = p.name || "";
+    document.getElementById("email").value = p.email || "";
+    document.getElementById("phone").value = p.phone ? toBanglaNumber(p.phone) : "";
+    document.getElementById("address").value = p.address || "";
+    if (p.profilePic) document.getElementById("profilePicPreview").src = BACKEND + p.profilePic;
+  }
+}
+
+// প্রোফাইল ছবি প্রিভিউ
+document.getElementById("profilePic").addEventListener("change", e => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => document.getElementById("profilePicPreview").src = reader.result;
+    reader.readAsDataURL(file);
+  }
+});
+
+// প্রোফাইল সংরক্ষণ
+document.getElementById("profileForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const res = await fetch(`${BACKEND}/update-profile`, {
+    method: "POST",
+    body: formData,
+    credentials: "include",
+  });
+  const data = await res.json();
+  alert(data.success ? "প্রোফাইল সফলভাবে সংরক্ষণ করা হয়েছে!" : "সংরক্ষণ ব্যর্থ হয়েছে।");
+  loadProfile();
+});
+
+// কার্ট লোড
+async function loadCart(){
+  const res = await fetch(`${BACKEND}/get-cart`, { credentials:"include" });
+  const data = await res.json();
+  const cartDiv = document.getElementById("cartItems");
+  cartDiv.innerHTML = "";
+  let total = 0;
+
+  if(data.success && data.cart.length > 0){
+    data.cart.forEach((item,index)=>{
+      total += item.price;
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <div class="cart-item-details">
+          <h3>${item.name}</h3>
+          <p>মূল্য: ৳${toBanglaNumber(item.price)}</p>
+        </div>
+        <button class="removeBtn" data-index="${index}">মুছে ফেলুন</button>
+      `;
+      cartDiv.appendChild(div);
+    });
+    document.getElementById("totalAmount").textContent = toBanglaNumber(total);
+
+    document.querySelectorAll(".removeBtn").forEach(btn=>{
+      btn.addEventListener("click", async ()=>{
+        const idx = parseInt(btn.dataset.index);
+        const res = await fetch(`${BACKEND}/remove-from-cart`, {
+          method:"POST",
+          credentials:"include",
+          headers:{ "Content-Type":"application/json" },
+          body: JSON.stringify({index:idx})
+        });
+        const data = await res.json();
+        if(data.success) loadCart();
+        else alert("আইটেম মুছতে ব্যর্থ হয়েছে।");
+      });
+    });
+  } else {
+    cartDiv.innerHTML = "<p>আপনার কার্ট খালি।</p>";
+    document.getElementById("totalAmount").textContent = toBanglaNumber(0);
+  }
+}
+
+// চেকআউট
+document.getElementById("checkoutBtn").addEventListener("click", async ()=>{
+  const res = await fetch(`${BACKEND}/checkout`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success){
+    alert("অর্ডার সফলভাবে সম্পন্ন হয়েছে!");
+    loadCart();
+  } else alert("অর্ডার ব্যর্থ হয়েছে: " + (data.message || ""));
+});
+
+loadProfile();
+loadCart();
+</script>
+
+</body>
+</html>

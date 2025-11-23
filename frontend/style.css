@@ -1,0 +1,80 @@
+/* RESET & BASE */
+* {
+  margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif;
+}
+
+body { background:#f0f5f0; color:#1f2937; line-height:1.6; }
+
+/* GLOWING HEADING */
+#bsm {
+  font-size: clamp(2.5rem, 8vw, 100px);
+  font-weight: 800; text-align:center;
+  color: #2fae2f;
+  margin: 20px auto; padding: 20px 40px;
+  border: 4px solid #2fae2f;
+  border-radius: 20px; background-color: rgba(0,255,0,0.1);
+  animation: glow 2s infinite alternate;
+  display: block; max-width:90%;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 10px #2fae2f,0 0 20px #2fae2f; transform:scale(1);}
+  50% { box-shadow: 0 0 25px #2fae2f,0 0 50px #2fae2f; transform:scale(1.05);}
+  100% { box-shadow: 0 0 10px #2fae2f,0 0 20px #2fae2f; transform:scale(1);}
+}
+
+/* NAVBAR */
+header { background:#fff; position:sticky; top:0; z-index:50; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:1rem 0; }
+.nav { display:grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); gap:10px; max-width:900px; margin:0 auto; text-align:center; }
+.nav a { display:block; text-decoration:none; color:#1f2937; font-weight:600; padding:.75rem 1rem; border-radius:10px; transition:0.3s; background:#d0f5d0; }
+.nav a:hover { background:#2fae2f; color:#fff; transform:translateY(-2px); }
+
+/* Sections */
+section { padding:4rem 1rem; text-align:center; }
+h2 { font-size:2.5rem; font-weight:800; margin-bottom:1rem; color:#2fae2f; }
+p { font-size:1.125rem; margin-top:0.5rem; }
+
+/* Hero Section */
+#hero { display:flex; flex-wrap:wrap; justify-content:space-between; gap:2rem; padding:2rem; background:#e0f5e0; border-radius:20px; }
+.hero-content { flex:1; min-width:280px; }
+.hero-content h2 span { color:#1f6e1f; }
+.hero-image img { max-width:100%; border-radius:12px; }
+
+/* Categories Section */
+.category-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:2rem; margin-top:2rem; }
+.category-card { background:#fff; border-radius:1rem; padding:1.5rem; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:left; transition:.3s; }
+.category-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+.category-card h3 { margin-bottom:1rem; color:#2fae2f; }
+.category-card ul { list-style:none; padding-left:0; }
+.category-card ul li { margin:8px 0; }
+.category-card ul li a { color:#1f6e1f; text-decoration:none; font-weight:600; }
+.category-card ul li a:hover { text-decoration:underline; }
+
+/* Product Grid */
+.product-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:2rem; margin-top:2rem; }
+.product-card { background:#fff; border-radius:1rem; padding:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center; }
+.product-card img { width:100%; border-radius:12px; margin-bottom:1rem; }
+.product-card button { padding:.75rem 1.5rem; background:#2fae2f; color:#fff; border:none; border-radius:1rem; cursor:pointer; transition:.3s; }
+.product-card button:hover { background:#1f6e1f; }
+
+/* Plant Care */
+.care-cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1.5rem; margin-top:2rem; }
+.care-cards .card { background:#fff; padding:1.5rem; border-radius:1rem; box-shadow:0 2px 6px rgba(0,0,0,0.05); }
+
+/* Share Story */
+#share-story { background: linear-gradient(135deg,#2fae2f,#a0f5a0); color:#fff; padding:60px 20px; }
+#share-story input, #share-story textarea { width:100%; padding:12px; border-radius:10px; border:none; margin-bottom:10px; }
+#share-story button { background:#fff; color:#2fae2f; padding:15px 30px; border-radius:30px; cursor:pointer; transition:.3s; }
+#share-story button:hover { background:#1f6e1f; color:#fff; }
+
+/* Footer */
+footer { background:#2fae2f; color:#fff; padding:40px 20px; text-align:center; }
+footer a { color:#fff; text-decoration:none; margin:0 5px; }
+footer .social-buttons { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; }
+footer .social-buttons .btn { background:#fff; color:#2fae2f; padding:12px 25px; border-radius:20px; font-weight:bold; transition:.3s; }
+footer .social-buttons .btn:hover { background:#1f6e1f; color:#fff; transform:scale(1.1); }
+
+/* Responsive */
+@media(max-width:768px){ 
+  #hero { flex-direction:column; } 
+}

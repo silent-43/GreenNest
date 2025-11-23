@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenNest - Shop</title>
+<link rel="stylesheet" href="style.css">
+
+
+
+<style>
+#bsm {
+  font-size: clamp(2.5rem, 8vw, 100px);
+  font-weight: 800;
+  text-align: center;
+  color: #0ee80eee;
+  margin: 10px auto;
+  padding: 10px 30px;
+  border: 8px solid #06ef5f;
+  border-radius: 20px;
+  background-color: rgba(0,255,0,0.1);
+  animation: glowBounce 2s infinite alternate ease-in-out;
+  display: block;
+  max-width: 80%;
+}
+
+@keyframes glowBounce {
+  0% {
+    box-shadow: 0 0 10px #2fae2f, 0 0 20px #2fae2f;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 18px #4dff4d, 0 0 35px #4dff4d;
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 10px #2fae2f, 0 0 20px #2fae2f;
+    transform: scale(1);
+  }
+}
+</style>
+
+
+
+
+<style>
+#allPlants {
+  font-size: clamp(1.2rem, 4vw, 2rem); 
+  font-weight: 700;
+  text-align: center;
+  color: #1af60ff2;
+  margin: 20px auto;
+  padding: 10px 20px; 
+  border: 6px solid #0de727; 
+  border-radius: 10px;
+  background-color: rgba(40,167,69,0.1);
+  max-width: 20%;
+  display: block;
+  animation: allPlantsBounce 2s infinite alternate ease-in-out;
+}
+
+@keyframes allPlantsBounce {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; 
+  }
+  50% {
+    transform: scale(1.02); 
+    box-shadow: 0 0 8px #4dff4d, 0 0 14px #4dff4d;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745;
+  }
+}
+</style>
+
+
+
+
+<style>
+#greennest-footer {
+  text-align: center;
+  padding: 30px 10px;
+  background-color: whitesmoke;
+  color: #000;
+  border-top: 2px solid rgba(14, 195, 96, 0.6);
+  border-radius: 15px 15px 0 0;
+  backdrop-filter: blur(5px);
+  animation: fadeInFooter 1.5s ease-in-out;
+}
+
+#greennest-footer h2 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px rgba(40,167,69,0.3);
+  animation: glowTitle 2s infinite alternate ease-in-out;
+}
+
+#greennest-footer .social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#greennest-footer .social-buttons a {
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(120deg, #06ec3c, #28a745);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+#greennest-footer .social-buttons a:hover {
+  transform: scale(1.1);
+  background: linear-gradient(120deg, #28a745, #06ec3c);
+  box-shadow: 0 0 15px rgba(40,167,69,0.5);
+}
+
+#greennest-footer p {
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 15px;
+}
+
+@keyframes fadeInFooter {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowTitle {
+  0% { text-shadow: 0 0 5px rgba(40,167,69,0.2); }
+  100% { text-shadow: 0 0 15px rgba(40,167,69,0.6); }
+}
+</style>
+
+
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html">হোম</a>
+    <a href="categories.html">গাছের ধরন</a>
+    <a href="care.html">পরিচর্যা পরামর্শ</a>
+    <a href="about.html">আমাদের সম্পর্কে</a>
+    <a href="contact.html">যোগাযোগ করুন</a>
+    <a href="profile.html">প্রোফাইল</a>
+  </nav>
+  
+</header>
+<br>
+<h1 id="bsm">GreenNest 🌿</h1>
+
+
+
+
+
+
+
+
+
+
+
+<section id="products">
+  <h2 id="allPlants" style="text-align:center;">সকল গাছ 🌿</h2>
+  <div class="product-grid">
+
+
+
+
+
+
+
+
+
+   <div class="product-card">
+  <img src="./pics of shop/ফিডল লিফ ফিগ.jpg" alt="Fiddle Leaf Fig">
+  <h3>ফিডল লিফ ফিগ</h3>
+  <p>বড় চকচকে পাতা, স্টাইলিশ ঘরোয়া গাছ।</p>
+  <p>মূল্য: ৳৫৫০</p>
+  <button class="addToCartBtn" data-product='{"name":"ফিডল লিফ ফিগ","price":550,"image":"./pics of shop/ফিডল লিফ ফিগ.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+
+    <div class="product-card">
+  <img src="./pics of shop/চাইনিজ এভারগ্রিন.jpg" alt="Dragon Tree">
+  <h3>ড্রাগন ট্রি</h3>
+  <p>লাল প্রান্তযুক্ত পাতা সহ আকর্ষণীয় ঘরোয়া গাছ।</p>
+  <p>মূল্য: ৳৫২০</p>
+  <button class="addToCartBtn" data-product='{"name":"Dragon Tree","price":520,"image":"./pics of shop/চাইনিজ এভারগ্রিন.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/ব্যাম্বু পাম.jpg" alt="Bamboo Palm">
+  <h3>ব্যাম্বু পাম</h3>
+  <p>কোণায় রাখা যায় এমন বায়ু পরিশোধক গাছ।</p>
+  <p>মূল্য: ৳৪৮০</p>
+  <button class="addToCartBtn" data-product='{"name":"Bamboo Palm","price":480,"image":"./pics of shop/ব্যাম্বু পাম.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/কালাথিয়া.jpg" alt="Calathea">
+  <h3>কালাথিয়া</h3>
+  <p>প্যাটার্নযুক্ত পাতা সহ সাজানোর গাছ।</p>
+  <p>মূল্য: ৳৫০০</p>
+  <button class="addToCartBtn" data-product='{"name":"Calathea","price":500,"image":"./pics of shop/কালাথিয়া.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/ফিলোডেন্ড্রন.jpg" alt="Philodendron">
+  <h3>ফিলোডেন্ড্রন</h3>
+  <p>সহজ যত্নের লতানো ঘরোয়া গাছ।</p>
+  <p>মূল্য: ৳৪৫০</p>
+  <button class="addToCartBtn" data-product='{"name":"Philodendron","price":450,"image":"./pics of shop/ফিলোডেন্ড্রন.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/মনস্টেরা.jpg" alt="Monstera">
+  <h3>মনস্টেরা</h3>
+  <p>বড় ট্রপিক্যাল পাতা, আইকনিক ঘরোয়া গাছ।</p>
+  <p>মূল্য: ৳৬৫০</p>
+  <button class="addToCartBtn" data-product='{"name":"Monstera","price":650,"image":"./pics of shop/মনস্টেরা.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/স্পাইডার প্ল্যান্ট.webp" alt="Spider Plant">
+  <h3>স্পাইডার প্ল্যান্ট</h3>
+  <p>সহজ যত্নের ঝুলানো গাছ।</p>
+  <p>মূল্য: ৳৪০০</p>
+  <button class="addToCartBtn" data-product='{"name":"Spider Plant","price":400,"image":"./pics of shop/স্পাইডার প্ল্যান্ট.webp"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/গোল্ডেন পাথোস.webp" alt="Golden Pothos">
+  <h3>গোল্ডেন পাথোস</h3>
+  <p>লতানো গাছ, তাক বা পাত্রের জন্য উপযুক্ত।</p>
+  <p>মূল্য: ৳৪২০</p>
+  <button class="addToCartBtn" data-product='{"name":"Golden Pothos","price":420,"image":"./pics of shop/গোল্ডেন পাথোস.webp"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/অ্যানথুরিয়াম.jpg" alt="Anthurium">
+  <h3>অ্যানথুরিয়াম</h3>
+  <p>হৃদয়াকৃতির ফুল, মার্জিত ঘরোয়া গাছ।</p>
+  <p>মূল্য: ৳৫৫০</p>
+  <button class="addToCartBtn" data-product='{"name":"Anthurium","price":550,"image":"./pics of shop/অ্যানথুরিয়াম.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/পার্লার পাম.jpg" alt="Parlor Palm">
+  <h3>পার্লার পাম</h3>
+  <p>কমপ্যাক্ট পাম, ঘরের জন্য উপযুক্ত।</p>
+  <p>মূল্য: ৳৪৮০</p>
+  <button class="addToCartBtn" data-product='{"name":"Parlor Palm","price":480,"image":"./pics of shop/পার্লার পাম.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/চাইনিজ এভারগ্রিন.jpg" alt="Chinese Evergreen">
+  <h3>চাইনিজ এভারগ্রিন</h3>
+  <p>সহজ যত্নের, বৈচিত্র্যপূর্ণ পাতা সহ গাছ।</p>
+  <p>মূল্য: ৳৪৫০</p>
+  <button class="addToCartBtn" data-product='{"name":"Chinese Evergreen","price":450,"image":"./pics of shop/চাইনিজ এভারগ্রিন.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/অ্যাগ্লাওনেমা.jpg" alt="Aglaonema">
+  <h3>অ্যাগ্লাওনেমা</h3>
+  <p>কম আলোতেও ভালো, সাজানোর জন্য উপযুক্ত।</p>
+  <p>মূল্য: ৳৫০০</p>
+  <button class="addToCartBtn" data-product='{"name":"Aglaonema","price":500,"image":"./pics of shop/অ্যাগ্লাওনেমা.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/বার্ড অব প্যারাডাইজ.jpg" alt="Bird of Paradise">
+  <h3>বার্ড অব প্যারাডাইজ</h3>
+  <p>ট্রপিক্যাল গাছ, অনন্য ফুল সহ।</p>
+  <p>মূল্য: ৳৬৮০</p>
+  <button class="addToCartBtn" data-product='{"name":"Bird of Paradise","price":680,"image":"./pics of shop/বার্ড অব প্যারাডাইজ.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/ফিডল লিফ ফিগ1.jpg" alt="Fiddle Leaf Fig">
+  <h3>ফিডল লিফ ফিগ</h3>
+  <p>বড় চকচকে পাতা, স্টাইলিশ ঘরোয়া গাছ।</p>
+  <p>মূল্য: ৳৬০০</p>
+  <button class="addToCartBtn" data-product='{"name":"Fiddle Leaf Fig","price":600,"image":"./pics of shop/ফিডল লিফ ফিগ1.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/সানসেভিয়ারিয়া.jpg" alt="Sansevieria">
+  <h3>সানসেভিয়ারিয়া</h3>
+  <p>স্নেক প্ল্যান্ট প্রজাতি, বায়ু পরিশোধক।</p>
+  <p>মূল্য: ৳৪৫০</p>
+  <button class="addToCartBtn" data-product='{"name":"Sansevieria","price":450,"image":"./pics of shop/সানসেভিয়ারিয়া.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/অলোকাসিয়া.jpg" alt="Alocasia">
+  <h3>অলোকাসিয়া</h3>
+  <p>ড্রাম্যাটিক পাতা সহ সাজানোর গাছ।</p>
+  <p>মূল্য: ৳৫৭০</p>
+  <button class="addToCartBtn" data-product='{"name":"Alocasia","price":570,"image":"./pics of shop/অলোকাসিয়া.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/ড্রাসেনা.avif" alt="Dracaena">
+  <h3>ড্রাসেনা</h3>
+  <p>কম আলোতে জন্মায় এমন জনপ্রিয় ঘরোয়া গাছ।</p>
+  <p>মূল্য: ৳৫০০</p>
+  <button class="addToCartBtn" data-product='{"name":"Dracaena","price":500,"image":"./pics of shop/ড্রাসেনা.avif"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/অর্নামেন্টাল পেপার.jpg" alt="Ornamental Pepper">
+  <h3>অর্নামেন্টাল পেপার</h3>
+  <p>রঙিন মরিচ, কোনোকোনায় সৌন্দর্য আনে।</p>
+  <p>মূল্য: ৳৩৮০</p>
+  <button class="addToCartBtn" data-product='{"name":"Ornamental Pepper","price":380,"image":"./pics of shop/অর্নামেন্টাল পেপার.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/কালাঞ্চোয়ে.jpg" alt="Kalanchoe">
+  <h3>কালাঞ্চোয়ে</h3>
+  <p>উজ্জ্বল ফুলের সাকুলেন্ট, কম যত্নে।</p>
+  <p>মূল্য: ৳৪২০</p>
+  <button class="addToCartBtn" data-product='{"name":"Kalanchoe","price":420,"image":"./pics of shop/কালাঞ্চোয়ে.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/পেপেরোমিয়া.jpg" alt="Peperomia">
+  <h3>পেপেরোমিয়া</h3>
+  <p>কমপ্যাক্ট ঘরোয়া গাছ, অনন্য পাতা সহ।</p>
+  <p>মূল্য: ৳৪০০</p>
+  <button class="addToCartBtn" data-product='{"name":"Peperomia","price":400,"image":"./pics of shop/পেপেরোমিয়া.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pics of shop/শেফফ্লেরা.jpg" alt="Schefflera">
+  <h3>শেফফ্লেরা</h3>
+  <p>ছাতা আকৃতির চকচকে পাতা।</p>
+  <p>মূল্য: ৳৫২০</p>
+  <button class="addToCartBtn" data-product='{"name":"Schefflera","price":520,"image":"./pics of shop/শেফফ্লেরা.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <div class="product-card">
+    <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
+    <h3>ফিকাস গাছ</h3>
+    <p>ঘরের ভেতরের গাছ, মাঝারি রোদ প্রয়োজন।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":500,"image":"./pictures of index/ficus tree.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/rose plants.avif" alt="Rose Plant">
+    <h3>গোলাপ গাছ</h3>
+    <p>সুন্দর লাল গোলাপ ফোটে।</p>
+    <p>মূল্য: ৳৬৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Rose Plant","price":675,"image":"./pictures of index/rose plants.avif"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
+    <h3>এলোভেরা</h3>
+    <p>সহজে পরিচর্যা করা যায়।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":620,"image":"./pictures of index/aloe vera.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/money plant.webp" alt="Money Plant">
+    <h3>মানি প্ল্যান্ট</h3>
+    <p>সমৃদ্ধি আনে এবং বায়ু পরিষ্কার করে।</p>
+    <p>মূল্য: ৳৬৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"Money Plant","price":690,"image":"./pictures of index/money plant.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/tulsi plant.png" alt="Tulsi Plant">
+    <h3>তুলসী গাছ</h3>
+    <p>ঔষধি গুণসম্পন্ন পবিত্র গাছ।</p>
+    <p>মূল্য: ৳৫২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Tulsi Plant","price":520,"image":"./pictures of index/tulsi plant.png"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lavender.webp" alt="Lavender">
+    <h3>ল্যাভেন্ডার</h3>
+    <p>সুগন্ধযুক্ত হার্ব যা মন শান্ত করে।</p>
+    <p>মূল্য: ৳৬১০</p>
+    <button class="addToCartBtn" data-product='{"name":"Lavender","price":610,"image":"./pictures of index/Lavender.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lucky Bamboo.jpg" alt="Lucky Bamboo">
+    <h3>লাকি ব্যাম্বু</h3>
+    <p>সৌভাগ্য এবং সমৃদ্ধির প্রতীক।</p>
+    <p>মূল্য: ৳৫৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Lucky Bamboo","price":575,"image":"./pictures of index/Lucky Bamboo.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
+    <h3>স্নেক প্ল্যান্ট</h3>
+    <p>ঘরের বায়ু বিশুদ্ধ করার জন্য দারুণ।</p>
+    <p>মূল্য: ৳৬০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":600,"image":"./pictures of index/Snake Plant.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
+    <h3>পিস লিলি</h3>
+    <p>সাদা ফুলসহ সুন্দর ঘরোয়া গাছ।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":620,"image":"./pictures of index/Peace Lily.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Hibiscus.webp" alt="Hibiscus">
+    <h3>জবা ফুল</h3>
+    <p>উজ্জ্বল ট্রপিক্যাল ফুল, পরাগায়নকারীরা পছন্দ করে।</p>
+    <p>মূল্য: ৳৫৫০</p>
+    <button class="addToCartBtn" data-product='{"name":"Hibiscus","price":550,"image":"./pictures of index/Hibiscus.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Jasmine.jpg" alt="Jasmine">
+    <h3>জুঁই ফুল</h3>
+    <p>মিষ্টি ঘ্রাণযুক্ত বাগানের আদর্শ গাছ।</p>
+    <p>মূল্য: ৳৬৩০</p>
+    <button class="addToCartBtn" data-product='{"name":"Jasmine","price":630,"image":"./pictures of index/Jasmine.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Bonsai.webp" alt="Bonsai">
+    <h3>বনসাই গাছ</h3>
+    <p>মিনিয়েচার গাছ, ঘর সাজানোর জন্য চমৎকার।</p>
+    <p>মূল্য: ৳৬৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":690,"image":"./pictures of index/Bonsai.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Cactus.webp" alt="Cactus">
+    <h3>ক্যাকটাস</h3>
+    <p>কম যত্নে বেঁচে থাকা ডেস্কের উপযোগী গাছ।</p>
+    <p>মূল্য: ৳৩২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Cactus","price":320,"image":"./pictures of index/Cactus.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Orchid.jpg" alt="Orchid">
+    <h3>অর্কিড</h3>
+    <p>আধুনিক ইন্টেরিয়রের জন্য মার্জিত ফুল।</p>
+    <p>মূল্য: ৳৬৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Orchid","price":675,"image":"./pictures of index/Orchid.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Pothos.webp" alt="Pothos">
+    <h3>পথোস</h3>
+    <p>বায়ু বিশুদ্ধ করার জন্য উপযোগী লতানো গাছ।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Pothos","price":500,"image":"./pictures of index/Pothos.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Fern.jpg" alt="Fern">
+    <h3>ফার্ন</h3>
+    <p>আর্দ্র স্থানের জন্য সবুজ পাতার সুন্দর গাছ।</p>
+    <p>মূল্য: ৳৫২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Fern","price":520,"image":"./pictures of index/Fern.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Banana Plant.jpg" alt="Banana Plant">
+    <h3>কলা গাছ</h3>
+    <p>বড় উজ্জ্বল পাতাযুক্ত ট্রপিক্যাল গাছ।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Banana Plant","price":620,"image":"./pictures of index/Banana Plant.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Coleus.jpg" alt="Coleus">
+    <h3>কোলিয়াস</h3>
+    <p>রঙিন পাতার জন্য জনপ্রিয়।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Coleus","price":500,"image":"./pictures of index/Coleus.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Rosemary.jpg" alt="Rosemary">
+    <h3>রোজমেরি</h3>
+    <p>সুগন্ধি হার্ব, রান্না ও সুগন্ধির কাজে লাগে।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Rosemary","price":620,"image":"./pictures of index/Rosemary.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Mint.jpg" alt="Mint">
+    <h3>পুদিনা</h3>
+    <p>চা ও সাজানোর কাজে ব্যবহৃত তাজা হার্ব।</p>
+    <p>মূল্য: ৳৫২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Mint","price":520,"image":"./pictures of index/Mint.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Ficus.webp" alt="Ficus">
+    <h3>ফিকাস</h3>
+    <p>ঝকঝকে পাতাযুক্ত জনপ্রিয় ঘরোয়া গাছ।</p>
+    <p>মূল্য: ৳৬৫০</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus","price":650,"image":"./pictures of index/Ficus.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Croton.jpeg" alt="Croton">
+    <h3>ক্রোটন</h3>
+    <p>হলুদ-লাল রঙের উজ্জ্বল পাতাযুক্ত গাছ।</p>
+    <p>মূল্য: ৳৫৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Croton","price":575,"image":"./pictures of index/Croton.jpeg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/ZZ Plant.jpg" alt="ZZ Plant">
+    <h3>জেডজেড প্ল্যান্ট</h3>
+    <p>কম আলোতেও ভালো জন্মে, খুব সহজে পরিচর্যা করা যায়।</p>
+    <p>মূল্য: ৳৬৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"ZZ Plant","price":690,"image":"./pictures of index/ZZ Plant.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Pothos.webp" alt="Pothos">
+    <h3>পথোস</h3>
+    <p>বায়ু বিশুদ্ধ করার জন্য উপযোগী লতানো গাছ।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Pothos","price":500,"image":"./pictures of index/Pothos.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+
+
+
+
+
+
+
+    
+
+  </div>
+</section>
+
+
+
+
+
+
+
+<footer id="greennest-footer">
+  <h2>Follow Me</h2>
+  <div class="social-buttons">
+    <a href="https://www.facebook.com/share/1BDccttJnA/">
+      🌐 Facebook
+    </a>
+    <a href="https://youtube.com/@silent_alone_st?si=0jozvVrRfoGj6ZsX">
+      ▶️ YouTube
+    </a>
+    <a href="https://www.linkedin.com/public-profile/settings">
+      💼 LinkedIn
+    </a>
+  </div>
+  <p>© 2025 GreenNest. All rights reserved.</p>
+</footer>
+
+
+
+
+<!-- ... তোমার shop.html content ... -->
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// SESSION CHECK
+fetch(`${BACKEND}/check-session`, { credentials:"include" })
+.then(res=>res.json())
+.then(data=> { if(!data.loggedIn) window.location.href="login.html"; });
+
+// LOGOUT
+document.getElementById("logoutBtn")?.addEventListener("click", async()=>{
+  const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success) window.location.href="login.html";
+  else alert("Logout failed.");
+});
+
+// ADD TO CART with debug
+document.querySelectorAll(".addToCartBtn").forEach(btn=>{
+  btn.addEventListener("click", async ()=>{
+    const product = JSON.parse(btn.dataset.product);
+    console.log("Adding product:", product); // <-- debug
+    const res = await fetch(`${BACKEND}/add-to-cart`, {
+      method:"POST",
+      credentials:"include",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(product)
+    });
+    const data = await res.json();
+    console.log("Server response:", data); // <-- debug
+    if(data.success) alert(`${product.name} added to cart!`);
+    else alert("Failed to add to cart.");
+  });
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+</body>
+</html>

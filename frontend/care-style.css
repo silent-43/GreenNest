@@ -1,0 +1,30 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f8f5;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(120deg, #A6E3E9, #C1EFFF);
+  text-align: center;
+  padding: 30px 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  color: #2fae2f;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+main {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}

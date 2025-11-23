@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমার কার্ট 🌿 GreenNest</title>
+<style>
+body { font-family:'Poppins', sans-serif; margin:0; background:#f0f8f5; color:#333; }
+header { background: linear-gradient(90deg,#00BFA6,#00C897,#00E7B0); padding:15px 30px; display:flex; justify-content: space-between; align-items:center; }
+.nav a { color:white; text-decoration:none; margin:0 15px; font-weight:600; }
+.nav a:hover, .nav a.active { text-decoration:underline; }
+#logoutBtn { background:white; color:#00BFA6; border:none; border-radius:20px; padding:8px 18px; font-weight:600; cursor:pointer; transition:0.2s; }
+#logoutBtn:hover { background:#e6ffe9; }
+.cart-container { max-width:900px; margin:40px auto; background:white; border-radius:20px; padding:30px; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
+.cart-container h2 { text-align:center; margin-bottom:30px; color:#00BFA6; }
+.cart-item { display:flex; align-items:center; margin-bottom:15px; border-bottom:1px solid #ddd; padding-bottom:10px; }
+.cart-item img { width:100px; height:100px; object-fit:cover; border-radius:15px; margin-right:20px; }
+.cart-item-details { flex:1; }
+button.removeBtn { background:#FF4C4C; padding:5px 10px; border:none; border-radius:10px; color:white; cursor:pointer; margin-left:10px; transition:0.2s; }
+button.removeBtn:hover { background:#FF1A1A; transform:scale(1.05); }
+.total { text-align:right; font-weight:700; margin-top:20px; font-size:1.2rem; color:#00BFA6; }
+#checkoutBtn { background:#00BFA6; color:white; border:none; border-radius:20px; padding:12px 25px; cursor:pointer; margin-top:15px; font-weight:600; font-size:1rem; transition:0.2s; display:block; margin-left:auto; }
+#checkoutBtn:hover { background:#00E7B0; }
+.empty-cart { text-align:center; font-size:1.1rem; color:#777; margin-top:20px; }
+
+/* Payment modal */
+.modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.5); display:none; align-items:center; justify-content:center; z-index:999; }
+.modal { background:white; width:90%; max-width:520px; border-radius:12px; padding:20px; box-shadow:0 8px 30px rgba(0,0,0,0.2); }
+.modal h3 { color:#006f56; margin-top:0; }
+.field { margin-bottom:12px; }
+.field label { display:block; font-size:0.95rem; margin-bottom:6px; color:#333; }
+.field input { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #d0d0d0; font-size:1rem; }
+.small { font-size:0.85rem; color:#666; }
+.row { display:flex; gap:10px; }
+.row .field { flex:1; }
+.pay-actions { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:10px; }
+.btn { padding:10px 14px; border-radius:10px; border:none; cursor:pointer; font-weight:600; }
+.btn.secondary { background:#f0f0f0; color:#333; }
+.btn.primary { background:#00BFA6; color:white; }
+.status { margin-top:10px; font-weight:600; }
+
+/* small info row */
+.demo-toggle { display:flex; align-items:center; gap:8px; margin-bottom:10px; color:#555; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html">হোম</a>
+    <a href="shop.html">গাছ কিনুন</a>
+    <a href="categories.html">গাছের ধরন</a>
+    <a href="care.html">পরিচর্যা পরামর্শ</a>
+    <a href="about.html">আমাদের সম্পর্কে</a>
+    <a href="contact.html">যোগাযোগ করুন</a>
+    <a href="profile.html">প্রোফাইল</a>
+  </nav>
+  <button id="logoutBtn">লগ আউট</button>
+</header>
+
+<div class="cart-container">
+  <h2>আমার কার্ট</h2>
+  <div id="cartItems"></div>
+  <p class="total">মোট মূল্য: <span id="totalAmount">০</span> টাকা</p>
+  <button id="checkoutBtn">অর্ডার করুন</button>
+</div>
+
+<!-- Payment Modal -->
+<div id="paymentBackdrop" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="payTitle">
+    <h3 id="payTitle">পেমেন্ট করুন</h3>
+
+    <div class="demo-toggle">
+      <input type="checkbox" id="demoMode" checked>
+      <label for="demoMode" class="small">Mark The Box</label>
+    </div>
+
+    <div id="paymentForm">
+      <div class="field">
+        <label>কার্ডধারীর নাম</label>
+        <input id="cardName" type="text" placeholder="নাম (যেমন: Md. Rahim)">
+      </div>
+
+      <div class="field">
+        <label>কার্ড নম্বর</label>
+        <input id="cardNumber" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="19">
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>মেয়াদ শেষ (MM/YY)</label>
+          <input id="exp" type="text" placeholder="08/26" maxlength="5">
+        </div>
+        <div class="field">
+          <label>CVC</label>
+          <input id="cvc" type="text" inputmode="numeric" placeholder="123" maxlength="4">
+        </div>
+      </div>
+
+    
+    </div>
+
+    <div class="pay-actions">
+      <button id="closePay" class="btn secondary">বাতিল</button>
+      <div style="text-align:right;">
+        <button id="payBtn" class="btn primary">পেমেন্ট করতে ক্লিক করুন</button>
+      </div>
+    </div>
+
+    <p id="payStatus" class="status"></p>
+  </div>
+</div>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// ------------------ সেশন চেক ------------------
+async function checkSession(){
+  try {
+    const res = await fetch(`${BACKEND}/check-session`, { credentials:"include" });
+    const data = await res.json();
+    if(!data.loggedIn) window.location.href="login.html";
+  } catch(e){
+    // ব্যাকএন্ড না চললে ডেমো মোডে রাখতে পারি — কিন্তু লগইন রিডাইরেক্ট করবো না
+    console.warn("Session check failed:", e);
+  }
+}
+checkSession();
+
+// ------------------ লগআউট ------------------
+document.getElementById("logoutBtn").addEventListener("click", async()=>{
+  try {
+    const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+    const data = await res.json();
+    if(data.success) window.location.href="login.html";
+    else alert("লগ আউট করা সম্ভব হয়নি। আবার চেষ্টা করুন।");
+  } catch(e){
+    alert("লগআউট করার সময়ে সমস্যা হয়েছে।");
+  }
+});
+
+// ------------------ কার্ট লোড ------------------
+async function loadCart(){
+  const cartDiv = document.getElementById("cartItems");
+  cartDiv.innerHTML = "";
+  let total = 0;
+
+  try {
+    const res = await fetch(`${BACKEND}/get-cart`, { credentials:"include" });
+    const data = await res.json();
+
+    if(data.success && data.cart && data.cart.length > 0){
+      data.cart.forEach((item, index)=>{
+        const qty = item.quantity || 1;
+        total += item.price * qty;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-details">
+            <h3>${item.name}</h3>
+            <p>মূল্য: ${item.price} টাকা</p>
+            <p>পরিমাণ: ${qty}</p>
+          </div>
+          <button class="removeBtn" data-productid="${item.productId}">সরান</button>
+        `;
+        cartDiv.appendChild(div);
+      });
+
+      document.getElementById("totalAmount").textContent = total;
+
+      // Remove button
+      document.querySelectorAll(".removeBtn").forEach(btn=>{
+        btn.addEventListener("click", async ()=>{
+          const productId = btn.dataset.productid;
+          try {
+            const res = await fetch(`${BACKEND}/remove-from-cart`, {
+              method:"POST",
+              credentials:"include",
+              headers:{ "Content-Type":"application/json" },
+              body: JSON.stringify({ productId })
+            });
+            const data = await res.json();
+            if(data.success) loadCart();
+            else alert("আইটেম সরানো সম্ভব হয়নি।");
+          } catch(e){
+            alert("আইটেম সরাতে সমস্যা। সার্ভার উপলব্ধ নেই।");
+          }
+        });
+      });
+
+    } else {
+      cartDiv.innerHTML = "<p class='empty-cart'>আপনার কার্ট এখন খালি।</p>";
+      document.getElementById("totalAmount").textContent = "০";
+    }
+  } catch(e){
+    // ব্যাকএন্ড না থাকলে ডেমো কার্ট দেখাই (ফলে dev-friendly)
+    console.warn("get-cart failed:", e);
+    cartDiv.innerHTML = `
+      <div class="cart-item">
+        <img src="https://via.placeholder.com/100" alt="Demo plant">
+        <div class="cart-item-details">
+          <h3>ডেমো গাছ</h3>
+          <p>মূল্য: ২০০ টাকা</p>
+          <p>পরিমাণ: 1</p>
+        </div>
+      </div>
+    `;
+    document.getElementById("totalAmount").textContent = "২০০";
+  }
+}
+
+// ------------------ চেকআউট বোতাম -> পেমেন্ট মোডাল ------------------
+const checkoutBtn = document.getElementById("checkoutBtn");
+const paymentBackdrop = document.getElementById("paymentBackdrop");
+const closePay = document.getElementById("closePay");
+const payBtn = document.getElementById("payBtn");
+const payStatus = document.getElementById("payStatus");
+const demoCheckbox = document.getElementById("demoMode");
+
+checkoutBtn.addEventListener("click", async ()=>{
+  // Ensure cart has items (check total)
+  const total = Number(document.getElementById("totalAmount").textContent) || 0;
+  if(total <= 0){
+    alert("আপনার কার্ট খালি। আগে আইটেম যোগ করুন।");
+    return;
+  }
+  payStatus.textContent = "";
+  paymentBackdrop.style.display = "flex";
+});
+
+closePay.addEventListener("click", ()=> {
+  paymentBackdrop.style.display = "none";
+});
+
+// কার্ড ইনপুট ফরম্যাট ফাংশন (simple)
+document.getElementById("cardNumber").addEventListener("input", (e)=>{
+  let v = e.target.value.replace(/\D/g, '').slice(0,16);
+  v = v.replace(/(.{4})/g, '$1 ').trim();
+  e.target.value = v;
+});
+document.getElementById("exp").addEventListener("input", (e)=>{
+  let v = e.target.value.replace(/\D/g, '').slice(0,4);
+  if(v.length >= 3) v = v.slice(0,2) + '/' + v.slice(2);
+  e.target.value = v;
+});
+
+// পেমেন্ট প্রসেসিং
+payBtn.addEventListener("click", async ()=>{
+  payStatus.textContent = "";
+  const name = document.getElementById("cardName").value.trim();
+  const cardNumber = document.getElementById("cardNumber").value.replace(/\s/g,'');
+  const exp = document.getElementById("exp").value.trim();
+  const cvc = document.getElementById("cvc").value.trim();
+  const total = Number(document.getElementById("totalAmount").textContent) || 0;
+
+  // Simple validation
+  if(!name || cardNumber.length < 12 || !/^\d{2}\/\d{2}$/.test(exp) || cvc.length < 3){
+    payStatus.style.color = "crimson";
+    payStatus.textContent = "অনুগ্রহ করে সঠিক কার্ড ডিটেইলস দিন।";
+    return;
+  }
+
+  payBtn.disabled = true;
+  payBtn.textContent = "পেমেন্ট প্রসেসিং...";
+
+  const demo = demoCheckbox.checked;
+
+  try {
+    if(demo){
+      // Demo: সিমুলেটেড টোকেন তৈরি করে লোকালি সফলতা দেখাই
+      payStatus.style.color = "#333";
+      payStatus.textContent = "ডেমো মোডে — পেমেন্ট সিমুলেট করা হচ্ছে...";
+      await new Promise(r => setTimeout(r, 2000)); // ২ সেকেন্ড
+      const fakeResponse = { success: true, transactionId: "DEMO-" + Date.now() };
+
+      if(fakeResponse.success){
+        payStatus.style.color = "#0a7";
+        payStatus.textContent = "পেমেন্ট সফল! Trans ID: " + fakeResponse.transactionId;
+        // এখন /checkout কল করে কার্ট ক্লিয়ার করা যেতে পারে
+        await finalizeOrder();
+      } else {
+        payStatus.style.color = "crimson";
+        payStatus.textContent = "পেমেন্ট ব্যর্থ হয়েছে।";
+      }
+
+    } else {
+      // ব্যাকএন্ডে পাঠাও — ব্যাকএন্ডকে /process-payment endpoint সরবরাহ করতে হবে
+      const payload = {
+        name, cardLast4: cardNumber.slice(-4), exp, cvc: cvc.replace(/\d/g,'*'), // নিরাপত্তার জন্য cvc masking; বাস্তবে টোকেনাইজ করতে হবে
+        amount: total
+      };
+
+      const res = await fetch(`${BACKEND}/process-payment`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      if(data.success){
+        payStatus.style.color = "#0a7";
+        payStatus.textContent = "পেমেন্ট সফল! Trans ID: " + (data.transactionId || "N/A");
+        await finalizeOrder();
+      } else {
+        payStatus.style.color = "crimson";
+        payStatus.textContent = "পেমেন্ট ব্যর্থ: " + (data.message || "Unknown error");
+      }
+    }
+  } catch(e){
+    console.error("Payment error:", e);
+    payStatus.style.color = "crimson";
+    payStatus.textContent = "পেমেন্ট করার সময় ত্রুটি হলো (সার্ভার অনুপলব্ধ)।";
+  } finally {
+    payBtn.disabled = false;
+    payBtn.textContent = "পেমেন্ট করতে ক্লিক করুন";
+  }
+});
+
+// Checkout finalization: backend /checkout to clear cart or show order created
+async function finalizeOrder(){
+  try {
+    const res = await fetch(`${BACKEND}/checkout`, { method:"POST", credentials:"include" });
+    const data = await res.json();
+    if(data.success){
+      // show success, hide modal, reload cart
+      setTimeout(()=> {
+        alert("অর্ডার সফলভাবে সম্পন্ন হয়েছে! ধন্যবাদ।");
+        paymentBackdrop.style.display = "none";
+        loadCart();
+      }, 500);
+    } else {
+      // যদি ব্যাকএন্ড না থাকে তখন শুধু লোকালি কার্ট ক্লিয়ার
+      console.warn("checkout endpoint failed or returned false:", data);
+      alert("অর্ডার তৈরি হলো, কিন্তু সার্ভারে ক্লিয়ার করতে পারেনি। (ডেমো মোডে)।");
+      paymentBackdrop.style.display = "none";
+      loadCart();
+    }
+  } catch(e){
+    console.warn("checkout call failed:", e);
+    // ডেমো ফ্লো — শুধু UI আপডেট
+    alert("অর্ডার সফল (লোকালি)।");
+    paymentBackdrop.style.display = "none";
+    loadCart();
+  }
+}
+
+// প্রথম লোড
+loadCart();
+</script>
+
+</body>
+</html>

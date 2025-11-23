@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenNest 🌿 Home</title>
+<style>
+body { font-family: 'Poppins', sans-serif; margin:0; background: linear-gradient(120deg, #E3FDFD, #C1EFFF, #A6E3E9); color:#333; overflow-x:hidden; }
+header { background: linear-gradient(90deg,#00BFA6,#00C897,#00E7B0); padding:15px 30px; display:flex; justify-content: space-between; align-items:center; position: sticky; top:0; z-index:100; }
+.nav a { color:white; text-decoration:none; margin:0 15px; font-weight:600; }
+.nav a:hover, .nav a.active { text-decoration:underline; }
+#logoutBtn { background:white; color:#00BFA6; border:none; border-radius:20px; padding:8px 18px; font-weight:600; cursor:pointer; }
+#logoutBtn:hover { background:#00BFA6; color:white; transform:scale(1.05); }
+#hero { display:flex; flex-wrap:wrap; justify-content:space-around; align-items:flex-start; width:90%; max-width:1200px; margin:20px auto; gap:30px; }
+.hero-content h2 span { color:#00BFA6; }
+.hero-image img { width:100%; max-width:400px; border-radius:20px; }
+.product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; width:90%; margin:20px auto; }
+.product-card { background:white; border-radius:20px; padding:15px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition: transform 0.3s; }
+.product-card:hover { transform: translateY(-5px); }
+.product-card img { width:100%; height:180px; object-fit:cover; border-radius:15px; margin-bottom:10px; }
+.product-card button { margin-top:10px; background:linear-gradient(90deg,#00BFA6,#00E7B0); border:none; color:white; padding:8px 15px; border-radius:15px; font-weight:600; cursor:pointer; transition:0.3s; }
+.product-card button:hover { transform:scale(1.05); background:linear-gradient(90deg,#00E7B0,#00BFA6); }
+footer { text-align:center; background:#00BFA6; color:white; padding:30px 20px; margin-top:50px; border-radius:25px 25px 0 0; }
+footer h2 { margin-bottom:10px; }
+.social-buttons a { display:inline-block; background:white; color:#00BFA6; padding:8px 15px; margin:5px; border-radius:10px; text-decoration:none; font-weight:600; transition:0.3s; }
+.social-buttons a:hover { background:#003C3C; color:white; transform:scale(1.05); }
+</style>
+
+
+<style>
+  /* ---------- Care Section ---------- */
+#care {
+    background: #e6f7f1;
+    padding: 60px 20px;
+}
+
+#care h2 {
+    text-align: center;
+    color: #007a5e;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.care-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.card h3 {
+    color: #00bfa6;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+
+
+/* ---------- Share Story Section ---------- */
+#share-story {
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#share-story h2 {
+    color: #007a5e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#share-story p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+#share-story form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #007a5e;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #00bfa6;
+    box-shadow: 0 0 8px rgba(0,191,166,0.2);
+    outline: none;
+}
+
+button[type="submit"] {
+    background: #00bfa6;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #00e7b0;
+    transform: translateY(-3px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    #care h2,
+    #share-story h2 {
+        font-size: 1.7rem;
+    }
+
+    .card {
+        padding: 20px 15px;
+    }
+}
+
+</style>
+
+
+
+<style>
+#bsm {
+  font-size: clamp(2.5rem, 8vw, 100px);
+  font-weight: 800;
+  text-align: center;
+  color: #0ee80eee;
+  margin: 20px auto;
+  padding: 20px 40px;
+  border: 8px solid #06ef5f;
+  border-radius: 20px;
+  background-color: rgba(0,255,0,0.1);
+  animation: glowBounce 2s infinite alternate ease-in-out;
+  display: block;
+  max-width: 80%;
+}
+
+@keyframes glowBounce {
+  0% {
+    box-shadow: 0 0 10px #2fae2f, 0 0 20px #2fae2f;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 18px #4dff4d, 0 0 35px #4dff4d;
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 10px #2fae2f, 0 0 20px #2fae2f;
+    transform: scale(1);
+  }
+}
+</style>
+
+
+
+
+
+
+<style>
+#featured {
+  font-size: clamp(1.2rem, 4vw, 2rem); 
+  font-weight: 700;
+  text-align: center;
+  color: #28a745;
+  margin: 20px auto;
+  padding: 10px 20px; 
+  border: 6px solid #06ec3c; 
+  border-radius: 10px;
+  background-color: rgba(40,167,69,0.1);
+  max-width: 20%;
+  display: block;
+  animation: featuredBounce 2s infinite alternate ease-in-out;
+}
+
+@keyframes featuredBounce {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; 
+  }
+  50% {
+    transform: scale(1.03); 
+    box-shadow: 0 0 8px #4dff4d, 0 0 14px #4dff4d;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+<style>
+/* H2 Style + Animation */
+#hero-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  text-align: center;
+  color: #160fec;
+  margin: 20px auto;
+  max-width: 90%;
+  display: block;
+  animation: titleBounce 2s infinite alternate ease-in-out;
+}
+
+#hero-title span {
+  color: #14c114; 
+}
+
+/* H2 Bounce + Glow */
+@keyframes titleBounce {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 3px #2fae2f;
+  }
+  50% {
+    transform: scale(1.04);
+    text-shadow: 0 0 10px #4dff4d;
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 3px #2fae2f;
+  }
+}
+
+/* H3 Style + Subtle Fade */
+#hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 800;
+  text-align: center;
+  color: #f312d1;
+  margin: 10px auto;
+  max-width: 85%;
+  display: block;
+  animation: subtitleFade 3s infinite alternate ease-in-out;
+}
+
+@keyframes subtitleFade {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+</style>
+
+
+
+<style>
+#caretitle {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  color: #28a745;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: 6px solid #06ec3c;
+  border-radius: 10px;
+  background-color: rgba(40,167,69,0.1);
+  max-width: 25%;
+  display: block;
+  animation: careBounce 2s infinite alternate ease-in-out;
+}
+
+@keyframes careBounce {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 8px #4dff4d, 0 0 14px #4dff4d;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 3px #28a745, 0 0 6px #28a745;
+  }
+}
+</style>
+
+
+
+<style>
+#greennest-footer {
+  text-align: center;
+  padding: 30px 10px;
+  background-color: whitesmoke;
+  color: #000;
+  border-top: 2px solid rgba(14, 195, 96, 0.6);
+  border-radius: 15px 15px 0 0;
+  backdrop-filter: blur(5px);
+  animation: fadeInFooter 1.5s ease-in-out;
+}
+
+#greennest-footer h2 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px rgba(40,167,69,0.3);
+  animation: glowTitle 2s infinite alternate ease-in-out;
+}
+
+#greennest-footer .social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#greennest-footer .social-buttons a {
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(120deg, #06ec3c, #28a745);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+#greennest-footer .social-buttons a:hover {
+  transform: scale(1.1);
+  background: linear-gradient(120deg, #28a745, #06ec3c);
+  box-shadow: 0 0 15px rgba(40,167,69,0.5);
+}
+
+#greennest-footer p {
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 15px;
+}
+
+@keyframes fadeInFooter {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowTitle {
+  0% { text-shadow: 0 0 5px rgba(40,167,69,0.2); }
+  100% { text-shadow: 0 0 15px rgba(40,167,69,0.6); }
+}
+</style>
+
+
+
+<style>
+  #share-story {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+#storytitle {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  color: #28a745;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: 4px solid #06ec3c;
+  border-radius: 10px;
+  background-color: rgba(40,167,69,0.1);
+  display: block;
+  animation: featuredBounce 2s infinite alternate ease-in-out;
+  width: 72%;              
+  max-width: 700px; 
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.voice-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.voice-controls button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.voice-controls button:hover {
+  background-color: #218838;
+}
+
+@keyframes featuredBounce {
+  0% { transform: scale(1); box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; }
+  50% { transform: scale(1.02); box-shadow: 0 0 8px #4dff4d, 0 0 14px #4dff4d; }
+  100% { transform: scale(1); box-shadow: 0 0 3px #28a745, 0 0 6px #28a745; }
+}
+
+</style>
+
+
+
+
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="active">হোম</a>
+    <a href="./shop.html">গাছ কিনুন</a>
+    <a href="./categories.html">গাছের ধরন</a>
+    <a href="./care.html">পরিচর্যা পরামর্শ</a>
+    <a href="./about.html">আমাদের সম্পর্কে</a>
+    <a href="./contact.html">যোগাযোগ করুন</a>
+    <a href="./profile.html">আমার প্রোফাইল</a>
+    <a href="./cart.html"> আমার কার্ট </a>
+  </nav>
+</header>
+<br>
+
+<h1 id="bsm">GreenNest 🌿</h1>
+
+<br>
+<br>
+
+<section id="hero">
+
+
+  <div class="hero-content">
+ <h2 id="hero-title">স্বাগতম <span>GreenNest</span>-এ</h2>
+<h3 id="hero-subtitle">GreenNest আপনার জন্য নিয়ে এসেছে গাছ, গাছপালা এবং দৈনন্দিন যত্নের সবকিছু—একই প্ল্যাটফর্মে 🌱  
+আমাদের সাহায্যে সহজেই আপনার ঘর, বাগান বা অফিসকে সবুজ ও প্রাণবন্ত করুন।</h3>
+
+</div>
+
+
+  <div class="hero-image">
+    <img src="./pictures of index/GreenNest plant Showcase.webp" alt="Plants Showcase">
+  </div>
+</section>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
+<section id="shop">
+  <h2 id="featured" style="text-align:center;">বিশেষ গাছপালা 🌿</h2>
+
+<br>
+
+
+
+
+<div class="product-grid">
+
+  <div class="product-card">
+    <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
+    <h3>ফিকাস গাছ</h3>
+    <p>ঘরের ভেতরের গাছ, মাঝারি রোদ প্রয়োজন।</p>
+    <p>মূল্য: ৳৩২০</p>
+    <button class="addToCartBtn" data-product='{"productId":"p001","name":"Ficus Tree","price":320,"image":"./pictures of index/ficus tree.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+
+    <div class="product-card">
+    <img src="./pictures of index/Snake Plant.webp" alt="Ficus Tree">
+    <h3>স্নেক প্ল্যান্ট</h3>
+    <p>ঘরের বায়ু বিশুদ্ধ করার জন্য দারুণ, কম আলোতেও বেঁচে থাকে।</p>
+    <p>মূল্য: ৳২৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":290,"image":"./pictures of index/Snake Plant.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+
+<div class="product-card">
+  <img src="./pictures of index/Bonsai.webp" alt="Bonsai Tree">
+  <h3>বনসাই গাছ</h3>
+  <p>মিনিয়েচার গাছ, ঘর বা অফিস সাজানোর জন্য চমৎকার।</p>
+  <p>মূল্য: ৳৬৮০</p>
+  <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":680,"image":"./images/Bonsai.webp"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
+  <h3>পিস লিলি</h3>
+  <p>সাদা ফুলসহ সুন্দর ঘরোয়া গাছ, বায়ু শোধন করে।</p>
+  <p>মূল্য: ৳৫৭০</p>
+  <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":570,"image":"./images/Peace Lily.jpg"}'>কার্টে যোগ করুন</button>
+</div>
+
+<div class="product-card">
+  <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
+  <h3>এলোভেরা</h3>
+  <p>সহজে পরিচর্যা করা যায়, ঘরের জন্য আদর্শ।</p>
+  <p>মূল্য: ৳৬৫০</p>
+  <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":650,"image":"./images/aloe vera.webp"}'>কার্টে যোগ করুন</button>
+</div>
+
+
+
+
+
+
+
+  <div class="product-card">
+    <img src="./pictures of index/ficus tree.jpg" alt="Ficus Tree">
+    <h3>ফিকাস গাছ</h3>
+    <p>ঘরের ভেতরের গাছ, মাঝারি রোদ প্রয়োজন।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus Tree","price":500,"image":"./pictures of index/ficus tree.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/rose plants.avif" alt="Rose Plant">
+    <h3>গোলাপ গাছ</h3>
+    <p>সুন্দর লাল গোলাপ ফোটে।</p>
+    <p>মূল্য: ৳৬৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Rose Plant","price":675,"image":"./pictures of index/rose plants.avif"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/aloe vera.webp" alt="Aloe Vera">
+    <h3>এলোভেরা</h3>
+    <p>সহজে পরিচর্যা করা যায়।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Aloe Vera","price":620,"image":"./pictures of index/aloe vera.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/money plant.webp" alt="Money Plant">
+    <h3>মানি প্ল্যান্ট</h3>
+    <p>সমৃদ্ধি আনে এবং বায়ু পরিষ্কার করে।</p>
+    <p>মূল্য: ৳৬৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"Money Plant","price":690,"image":"./pictures of index/money plant.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/tulsi plant.png" alt="Tulsi Plant">
+    <h3>তুলসী গাছ</h3>
+    <p>ঔষধি গুণসম্পন্ন পবিত্র গাছ।</p>
+    <p>মূল্য: ৳৫২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Tulsi Plant","price":520,"image":"./pictures of index/tulsi plant.png"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lavender.webp" alt="Lavender">
+    <h3>ল্যাভেন্ডার</h3>
+    <p>সুগন্ধযুক্ত হার্ব যা মন শান্ত করে।</p>
+    <p>মূল্য: ৳৬১০</p>
+    <button class="addToCartBtn" data-product='{"name":"Lavender","price":610,"image":"./pictures of index/Lavender.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Lucky Bamboo.jpg" alt="Lucky Bamboo">
+    <h3>লাকি ব্যাম্বু</h3>
+    <p>সৌভাগ্য এবং সমৃদ্ধির প্রতীক।</p>
+    <p>মূল্য: ৳৫৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Lucky Bamboo","price":575,"image":"./pictures of index/Lucky Bamboo.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Snake Plant.webp" alt="Snake Plant">
+    <h3>স্নেক প্ল্যান্ট</h3>
+    <p>ঘরের বায়ু বিশুদ্ধ করার জন্য দারুণ।</p>
+    <p>মূল্য: ৳৬০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Snake Plant","price":600,"image":"./pictures of index/Snake Plant.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Peace Lily.jpg" alt="Peace Lily">
+    <h3>পিস লিলি</h3>
+    <p>সাদা ফুলসহ সুন্দর ঘরোয়া গাছ।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Peace Lily","price":620,"image":"./pictures of index/Peace Lily.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Hibiscus.webp" alt="Hibiscus">
+    <h3>জবা ফুল</h3>
+    <p>উজ্জ্বল ট্রপিক্যাল ফুল, পরাগায়নকারীরা পছন্দ করে।</p>
+    <p>মূল্য: ৳৫৫০</p>
+    <button class="addToCartBtn" data-product='{"name":"Hibiscus","price":550,"image":"./pictures of index/Hibiscus.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Jasmine.jpg" alt="Jasmine">
+    <h3>জুঁই ফুল</h3>
+    <p>মিষ্টি ঘ্রাণযুক্ত বাগানের আদর্শ গাছ।</p>
+    <p>মূল্য: ৳৬৩০</p>
+    <button class="addToCartBtn" data-product='{"name":"Jasmine","price":630,"image":"./pictures of index/Jasmine.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Bonsai.webp" alt="Bonsai">
+    <h3>বনসাই গাছ</h3>
+    <p>মিনিয়েচার গাছ, ঘর সাজানোর জন্য চমৎকার।</p>
+    <p>মূল্য: ৳৬৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"Bonsai Tree","price":690,"image":"./pictures of index/Bonsai.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Cactus.webp" alt="Cactus">
+    <h3>ক্যাকটাস</h3>
+    <p>কম যত্নে বেঁচে থাকা ডেস্কের উপযোগী গাছ।</p>
+    <p>মূল্য: ৳৩২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Cactus","price":320,"image":"./pictures of index/Cactus.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Orchid.jpg" alt="Orchid">
+    <h3>অর্কিড</h3>
+    <p>আধুনিক ইন্টেরিয়রের জন্য মার্জিত ফুল।</p>
+    <p>মূল্য: ৳৬৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Orchid","price":675,"image":"./pictures of index/Orchid.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Pothos.webp" alt="Pothos">
+    <h3>পথোস</h3>
+    <p>বায়ু বিশুদ্ধ করার জন্য উপযোগী লতানো গাছ।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Pothos","price":500,"image":"./pictures of index/Pothos.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Fern.jpg" alt="Fern">
+    <h3>ফার্ন</h3>
+    <p>আর্দ্র স্থানের জন্য সবুজ পাতার সুন্দর গাছ।</p>
+    <p>মূল্য: ৳৫২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Fern","price":520,"image":"./pictures of index/Fern.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Banana Plant.jpg" alt="Banana Plant">
+    <h3>কলা গাছ</h3>
+    <p>বড় উজ্জ্বল পাতাযুক্ত ট্রপিক্যাল গাছ।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Banana Plant","price":620,"image":"./pictures of index/Banana Plant.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Coleus.jpg" alt="Coleus">
+    <h3>কোলিয়াস</h3>
+    <p>রঙিন পাতার জন্য জনপ্রিয়।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Coleus","price":500,"image":"./pictures of index/Coleus.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Rosemary.jpg" alt="Rosemary">
+    <h3>রোজমেরি</h3>
+    <p>সুগন্ধি হার্ব, রান্না ও সুগন্ধির কাজে লাগে।</p>
+    <p>মূল্য: ৳৬২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Rosemary","price":620,"image":"./pictures of index/Rosemary.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Mint.jpg" alt="Mint">
+    <h3>পুদিনা</h3>
+    <p>চা ও সাজানোর কাজে ব্যবহৃত তাজা হার্ব।</p>
+    <p>মূল্য: ৳৫২০</p>
+    <button class="addToCartBtn" data-product='{"name":"Mint","price":520,"image":"./pictures of index/Mint.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Ficus.webp" alt="Ficus">
+    <h3>ফিকাস</h3>
+    <p>ঝকঝকে পাতাযুক্ত জনপ্রিয় ঘরোয়া গাছ।</p>
+    <p>মূল্য: ৳৬৫০</p>
+    <button class="addToCartBtn" data-product='{"name":"Ficus","price":650,"image":"./pictures of index/Ficus.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Croton.jpeg" alt="Croton">
+    <h3>ক্রোটন</h3>
+    <p>হলুদ-লাল রঙের উজ্জ্বল পাতাযুক্ত গাছ।</p>
+    <p>মূল্য: ৳৫৭৫</p>
+    <button class="addToCartBtn" data-product='{"name":"Croton","price":575,"image":"./pictures of index/Croton.jpeg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/ZZ Plant.jpg" alt="ZZ Plant">
+    <h3>জেডজেড প্ল্যান্ট</h3>
+    <p>কম আলোতেও ভালো জন্মে, খুব সহজে পরিচর্যা করা যায়।</p>
+    <p>মূল্য: ৳৬৯০</p>
+    <button class="addToCartBtn" data-product='{"name":"ZZ Plant","price":690,"image":"./pictures of index/ZZ Plant.jpg"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/Pothos.webp" alt="Pothos">
+    <h3>পথোস</h3>
+    <p>বায়ু বিশুদ্ধ করার জন্য উপযোগী লতানো গাছ।</p>
+    <p>মূল্য: ৳৫০০</p>
+    <button class="addToCartBtn" data-product='{"name":"Pothos","price":500,"image":"./pictures of index/Pothos.webp"}'>কার্টে যোগ করুন</button>
+  </div>
+
+  <div class="product-card">
+    <img src="./pictures of index/more plants.jpg" alt="More Plants" style="object-fit:cover; height:180px;">
+    <h3>আরও গাছপালা দেখুন 🌿</h3>
+    <p>আমাদের বিশাল সংগ্রহ থেকে আপনার পছন্দের সবুজ সঙ্গী খুঁজে নিন!</p>
+    <a href="./shop.html" style="display:inline-block; margin-top:10px; background:linear-gradient(90deg,#00BFA6,#00E7B0); color:white; padding:8px 15px; border-radius:15px; text-decoration:none; font-weight:600;">শপে যান</a>
+  </div>
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Care Section -->
+<section id="care">
+  <h2 style="text-align:center;" id="caretitle">দৈনন্দিন গাছের যত্ন 🌱</h2>
+  <div class="care-cards">
+
+   <div class="card">
+  <h3>
+    <a href="watering.html" style="color: rgba(7, 11, 241, 0.929); 
+        border: 2px solid rgba(14, 195, 96, 0.929); 
+        padding: 5px 10px; 
+        border-radius: 8px; 
+        text-decoration: none;">পানি দেওয়া</a>
+  </h3>
+  <p><b>আরও দেখার জন্য এখানে ক্লিক করুন</b></p>
+  <br>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <img src="./pictures of index/watering.jpeg" alt="Watering" style="width: 150px; height: auto; border-radius: 10px;">
+    <img src="./pictures of index/watering1.jpeg" alt="Watering" style="width: 150px; height: auto; border-radius: 10px;">
+  </div>
+  <p>প্রত্যেক গাছের পানির চাহিদা আলাদা। আপনার গাছের প্রয়োজন অনুযায়ী পানি দিন।</p>
+</div>
+
+<div class="card">
+  <h3>
+    <a href="./sunlight.html" style="color: rgba(7, 11, 241, 0.929); 
+        border: 2px solid rgba(14, 195, 96, 0.929); 
+        padding: 5px 10px; 
+        border-radius: 8px; 
+        text-decoration: none;">সূর্যালোক</a>
+  </h3>
+  <p><b>আরও দেখার জন্য এখানে ক্লিক করুন</b></p>
+  <br>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <img src="./pictures of index/sunlight.jpg" alt="Sunlight" style="width: 150px; height: auto; border-radius: 10px;">
+    <img src="./pictures of index/sunlight1.jpg" alt="Sunlight" style="width: 150px; height: auto; border-radius: 10px;">
+  </div>
+  <p>অন্দর গাছের জন্য পরোক্ষ সূর্যালোক প্রয়োজন, বাহিরের গাছ সম্পূর্ণ সূর্যালোক পেতে ভালোবাসে।</p>
+</div>
+
+<div class="card">
+  <h3>
+    <a href="./fertilization.html" style="color: rgba(7, 11, 241, 0.929); 
+        border: 2px solid rgba(14, 195, 96, 0.929); 
+        padding: 5px 10px; 
+        border-radius: 8px; 
+        text-decoration: none;">সার দেওয়া</a>
+  </h3>
+  <p><b>আরও দেখার জন্য এখানে ক্লিক করুন</b></p>
+  <br>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <img src="./pictures of index/Fertilization.jpg" alt="Fertilization" style="width: 150px; height: auto; border-radius: 10px;">
+    <img src="./pictures of index/Fertilization1.jpg" alt="Fertilization" style="width: 150px; height: auto; border-radius: 10px;">
+  </div>
+  <p>গাছ সবুজ ও সুস্থ রাখতে জৈব সার সপ্তাহে ব্যবহার করুন।</p>
+</div>
+
+<div class="card">
+  <h3>
+    <a href="./pest-control.html" style="color: rgba(7, 11, 241, 0.929); 
+        border: 2px solid rgba(14, 195, 96, 0.929); 
+        padding: 5px 10px; 
+        border-radius: 8px; 
+        text-decoration: none;">পোকামাকড় নিয়ন্ত্রণ</a>
+  </h3>
+  <p><b>আরও দেখার জন্য এখানে ক্লিক করুন</b></p>
+  <br>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <img src="./pictures of index/Pest Control.jpg" alt="Pest Control" style="width: 150px; height: auto; border-radius: 10px;">
+    <img src="./pictures of index/Pest Control1.webp" alt="Pest Control" style="width: 150px; height: auto; border-radius: 10px;">
+  </div>
+  <p>গাছকে ক্ষতিগ্রস্ত না করে পোকামাকড় প্রতিরোধ করতে প্রাকৃতিক উপায় ব্যবহার করুন।</p>
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<div>
+<div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+<section id="share-story">
+  <h2 id="storytitle">আপনার গাছের গল্প শেয়ার করুন 💌</h2>
+  <p><b>আপনার প্রিয় গাছের গল্প বা বৃদ্ধি যাত্রা আমাদের সাথে শেয়ার করুন!</b></p>
+
+  <form id="storyForm" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name">আপনার নাম</label>
+      <input type="text" id="name" name="name" placeholder="আপনার নাম লিখুন">
+    </div>
+
+    <div class="form-group">
+      <label for="story">গল্প</label>
+      <textarea id="story" name="story" rows="5" placeholder="আপনার গল্প লিখুন..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>🎤 অথবা ভয়েস মেসেজ রেকর্ড করুন</label>
+      <div class="voice-controls">
+        <button type="button" id="startRecord">রেকর্ডিং শুরু করুন</button>
+        <button type="button" id="stopRecord" disabled>রেকর্ডিং বন্ধ করুন</button>
+        <audio id="audioPlayback" controls style="display:none;"></audio>
+      </div>
+    </div>
+
+    <button type="submit">জমা দিন 🌿</button>
+  </form>
+
+  <h3>সব গল্প</h3>
+  <div id="storiesList"></div>
+</section>
+
+
+
+
+
+
+
+
+<style>
+  #share-story { max-width:600px; margin:40px auto; padding:20px; background:#f0fff0; border-radius:10px; }
+  .form-group { margin-bottom:15px; }
+  input, textarea { width:100%; padding:8px; border-radius:5px; border:1px solid #ccc; }
+  button { padding:10px 15px; border:none; border-radius:5px; background:#2fae2f; color:white; cursor:pointer; }
+  button:disabled { background:#aaa; }
+  #storiesList { margin-top:20px; }
+  .story-item { border:1px solid #2fae2f; border-radius:8px; padding:10px; margin-bottom:10px; background:#e6ffe6; }
+  .story-item audio { margin-top:5px; width:100%; }
+</style>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+const startBtn = document.getElementById("startRecord");
+const stopBtn = document.getElementById("stopRecord");
+const audioPlayback = document.getElementById("audioPlayback");
+const storiesList = document.getElementById("storiesList");
+
+// Voice recording
+startBtn.addEventListener("click", async () => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+    mediaRecorder.onstop = () => {
+      const audioBlob = new Blob(audioChunks, { type: "audio/mp3" });
+      const audioURL = URL.createObjectURL(audioBlob);
+      audioPlayback.src = audioURL;
+      audioPlayback.style.display = "block";
+      audioPlayback.blob = audioBlob;
+    };
+    mediaRecorder.start();
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+  } catch (err) {
+    alert("Microphone access denied or unavailable!");
+  }
+});
+
+stopBtn.addEventListener("click", () => {
+  mediaRecorder.stop();
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
+});
+
+// Submit story
+const form = document.getElementById("storyForm");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const story = document.getElementById("story").value.trim();
+
+  if (!name && !story && !audioPlayback.blob) {
+    alert("Please provide name, story or voice message!");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("story", story);
+  if (audioPlayback.blob) formData.append("voice", audioPlayback.blob, "voice.mp3");
+
+  try {
+    const res = await fetch("/share-story", { method: "POST", body: formData });
+    const result = await res.json();
+    if (result.success) {
+      alert("✅ Story saved successfully!");
+      form.reset();
+      audioPlayback.style.display = "none";
+      audioPlayback.blob = null;
+      fetchStories();
+    } else {
+      alert("❌ " + result.message);
+    }
+  } catch (err) {
+    console.error(err);
+    alert("⚠️ Unable to save story.");
+  }
+});
+
+// Fetch all stories
+async function fetchStories() {
+  try {
+    const res = await fetch("/get-stories");
+    const data = await res.json();
+    if (data.success) {
+      storiesList.innerHTML = "";
+      data.stories.forEach(s => {
+        const div = document.createElement("div");
+        div.className = "story-item";
+        div.innerHTML = `
+          <p><b>${s.name || "Anonymous"}</b> (${new Date(s.date).toLocaleString()})</p>
+          <p>${s.story || ""}</p>
+          ${s.voiceUrl ? `<audio controls src="${s.voiceUrl}"></audio>` : ""}
+        `;
+        storiesList.appendChild(div);
+      });
+    }
+  } catch(err) { console.error(err); }
+}
+
+// Initial fetch
+fetchStories();
+</script>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+
+
+<footer id="greennest-footer">
+  <h2>Follow Me</h2>
+  <div class="social-buttons">
+    <a href="https://www.facebook.com/share/1BDccttJnA/">
+      🌐 Facebook
+    </a>
+    <a href="https://youtube.com/@silent_alone_st?si=0jozvVrRfoGj6ZsX">
+      ▶️ YouTube
+    </a>
+    <a href="https://www.linkedin.com/public-profile/settings">
+      💼 LinkedIn
+    </a>
+  </div>
+  <p>© 2025 GreenNest. All rights reserved.</p>
+</footer>
+
+
+
+
+
+
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+document.addEventListener("DOMContentLoaded", ()=> {
+
+  // SESSION CHECK
+  fetch(`${BACKEND}/check-session`, { credentials:"include" })
+  .then(res=>res.json())
+  .then(data=> { 
+    if(!data.loggedIn) window.location.href="login.html"; 
+  });
+
+  // LOGOUT
+  const logoutBtn = document.getElementById("logoutBtn");
+  if(logoutBtn){
+    logoutBtn.addEventListener("click", async()=>{
+      const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+      const data = await res.json();
+      if(data.success) window.location.href="login.html";
+      else alert("Logout failed.");
+    });
+  }
+
+  // ADD TO CART
+  document.querySelectorAll(".addToCartBtn").forEach(btn=>{
+    btn.addEventListener("click", async()=>{
+      const product = JSON.parse(btn.dataset.product);
+
+      const res = await fetch(`${BACKEND}/add-to-cart`, {
+        method:"POST",
+        credentials:"include",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(product)
+      });
+
+      const data = await res.json();
+      if(data.success) alert(`${product.name} added to cart!`);
+      else alert("Failed to add to cart.");
+    });
+  });
+
+});
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

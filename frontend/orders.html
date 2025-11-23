@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমার অর্ডারসমূহ 🌿 GreenNest</title>
+<style>
+body { font-family:'Poppins', sans-serif; margin:0; background: #f0f8f5; color:#333; }
+header { background: linear-gradient(90deg,#00BFA6,#00C897,#00E7B0); padding:15px 30px; display:flex; justify-content: space-between; align-items:center; }
+.nav a { color:white; text-decoration:none; margin:0 15px; font-weight:600; }
+.nav a:hover, .nav a.active { text-decoration:underline; }
+#logoutBtn { background:white; color:#00BFA6; border:none; border-radius:20px; padding:8px 18px; font-weight:600; cursor:pointer; }
+
+.orders-container { max-width:900px; margin:40px auto; background:white; border-radius:20px; padding:30px; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
+.orders-container h2 { text-align:center; margin-bottom:20px; color:#00BFA6; }
+.order-card { border:1px solid #B2DFDB; border-radius:15px; padding:15px; margin-bottom:15px; }
+.order-card button { background:linear-gradient(90deg,#00BFA6,#00E7B0); color:white; border:none; border-radius:10px; padding:5px 10px; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html">হোম</a>
+    <a href="shop.html">গাছ কিনুন</a>
+    <a href="categories.html">গাছের ধরন</a>
+    <a href="care.html">পরিচর্যা পরামর্শ</a>
+    <a href="about.html">আমাদের সম্পর্কে</a>
+    <a href="contact.html">যোগাযোগ করুন</a>
+    <a href="profile.html">প্রোফাইল</a>
+  </nav>
+</header>
+
+<div class="orders-container">
+<h2>আমার অর্ডারসমূহ</h2>
+<div id="ordersList">
+<!-- অর্ডারসমূহ এখানে লোড হবে -->
+</div>
+</div>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// বাংলা সংখ্যা ফাংশন
+function toBanglaNumber(str){
+  const bnNums = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  return str.toString().replace(/\d/g, d => bnNums[d]);
+}
+
+// সেশন চেক
+async function checkSession(){
+  const res = await fetch(`${BACKEND}/check-session`, { credentials:"include" });
+  const data = await res.json();
+  if(!data.loggedIn) window.location.href="login.html";
+}
+checkSession();
+
+// লগআউট
+document.getElementById("logoutBtn").addEventListener("click", async()=>{
+  const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success) window.location.href="login.html"; else alert("লগ আউট ব্যর্থ হয়েছে।");
+});
+
+// অর্ডার লোড
+async function loadOrders(){
+  const res = await fetch(`${BACKEND}/my-orders`, { credentials:"include" });
+  const data = await res.json();
+  const ordersList = document.getElementById("ordersList");
+  ordersList.innerHTML="";
+  
+  if(data.orders && data.orders.length>0){
+    data.orders.forEach(order=>{
+      const div = document.createElement("div");
+      div.className="order-card";
+      div.innerHTML=`
+        <h3>অর্ডার #${toBanglaNumber(order.id)}</h3>
+        <p>আইটেমসমূহ: ${order.items.map(i=>i.name).join(", ")}</p>
+        <p>মোট: ৳${toBanglaNumber(order.total)}</p>
+        <button onclick="cancelOrder(${order.id})">অর্ডার বাতিল করুন</button>
+      `;
+      ordersList.appendChild(div);
+    });
+  } else {
+    ordersList.innerHTML="<p>কোনও অর্ডার নেই।</p>";
+  }
+}
+
+// অর্ডার বাতিল
+async function cancelOrder(orderId){
+  if(!confirm("আপনি কি সত্যিই এই অর্ডার বাতিল করতে চান?")) return;
+  const res = await fetch(`${BACKEND}/cancel-order/${orderId}`, { method:"POST", credentials:"include" });
+  const data = await res.json();
+  if(data.success){ 
+    alert("অর্ডার বাতিল করা হয়েছে!");
+    loadOrders();  // বাতিল করার পরে পুনরায় লোড
+  } 
+  else alert("অর্ডার বাতিল করতে ব্যর্থ হয়েছে।");
+}
+
+// প্রতি ৫ সেকেন্ডে নতুন অর্ডার চেক
+setInterval(loadOrders, 5000);
+
+// প্রথম লোড
+loadOrders();
+</script>
+
+</body>
+</html>
