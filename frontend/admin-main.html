@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard 🌿 GreenNest</title>
+<style>
+/* Global */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin:0;
+  background: #f0f8f5;
+  color: #333;
+}
+header {
+  background: #00BFA6;
+  color: white;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top:0;
+  z-index:100;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+header h1 {
+  margin:0;
+  font-size:2.2rem;
+  font-weight:700;
+}
+nav a {
+  color:white;
+  text-decoration:none;
+  margin-left:25px;
+  font-weight:600;
+  font-size:1.1rem;
+}
+nav a:hover {
+  text-decoration:underline;
+}
+#logoutBtn {
+  background:white;
+  color:#00BFA6;
+  border:none;
+  border-radius:25px;
+  padding:12px 25px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+#logoutBtn:hover {
+  background:#00C897;
+  color:white;
+  transform:scale(1.05);
+}
+
+/* Container */
+.main-container {
+  width:95%;
+  max-width:1600px;
+  margin:40px auto;
+}
+
+/* Hero Stats */
+.hero-stats {
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  margin-bottom:50px;
+}
+.stat-card {
+  flex:1 1 300px;
+  background:white;
+  border-radius:25px;
+  padding:40px 30px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow:0 20px 45px rgba(0,0,0,0.12);
+}
+.stat-card h2 {
+  font-size:1.6rem;
+  color:#00BFA6;
+  margin-bottom:15px;
+}
+.stat-card p {
+  font-size:2.5rem;
+  font-weight:700;
+}
+
+/* Cards & Tables */
+.card {
+  background:white;
+  border-radius:25px;
+  padding:30px 25px;
+  margin-bottom:50px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  overflow-x:auto;
+  transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+.card h2 {
+  color:#00BFA6;
+  margin-bottom:25px;
+  font-size:1.8rem;
+}
+
+/* Table */
+.table {
+  width:100%;
+  border-collapse:collapse;
+}
+.table th, .table td {
+  padding:15px 18px;
+  border:1px solid #ccc;
+  text-align:left;
+  font-size:1.1rem;
+}
+.table th {
+  background:#00BFA6;
+  color:white;
+  font-weight:600;
+}
+.table tr:hover { background:#e0f7f2; }
+
+/* Buttons */
+button {
+  background:#00BFA6;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover { background:#00E7B0; }
+
+/* Tabs */
+.tabs {
+  display:flex;
+  gap:25px;
+  margin-bottom:30px;
+}
+.tabs button {
+  background: #00BFA6;
+  color:white;
+  font-size:1.1rem;
+  padding:12px 25px;
+  border-radius:20px;
+  font-weight:600;
+}
+.tabs button.active {
+  background:#00E7B0;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .hero-stats { flex-direction:column; }
+  header { flex-direction:column; align-items:flex-start; }
+  nav { margin-top:15px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Admin Dashboard 🌿 GreenNest</h1>
+  <nav>
+    <button id="logoutBtn">Logout</button>
+  </nav>
+</header>
+
+<div class="main-container">
+
+  <!-- Hero Stats -->
+  <div class="hero-stats" id="statsSection">
+    <div class="stat-card">
+      <h2>Total Users</h2>
+      <p id="totalUsers">0</p>
+    </div>
+    <div class="stat-card">
+      <h2>Total Orders</h2>
+      <p id="totalOrders">0</p>
+    </div>
+    <div class="stat-card">
+      <h2>Total Revenue</h2>
+      <p id="totalRevenue">৳0</p>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="active" id="viewUsersBtn">Users</button>
+    <button id="viewOrdersBtn">Orders</button>
+  </div>
+
+  <!-- Users Section -->
+  <div class="card" id="usersSection">
+    <h2>Registered Users</h2>
+    <table class="table" id="usersTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Orders Section -->
+  <div class="card" id="ordersSection" style="display:none;">
+    <h2>Orders</h2>
+    <table class="table" id="ordersTable">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>User</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// SESSION CHECK + ROLE VALIDATION
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch(`${BACKEND}/check-session`, { credentials:"include" });
+    const data = await res.json();
+
+    if(!data.loggedIn || data.user.role !== "admin"){
+      alert("Access denied. Only admins allowed.");
+      window.location.href="login.html";
+    } else {
+      loadDashboard();
+    }
+  } catch(err){ console.error(err); }
+
+  // LOGOUT
+  document.getElementById("logoutBtn").addEventListener("click", async ()=>{
+    const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+    const data = await res.json();
+    if(data.success) window.location.href="login.html";
+    else alert("Logout failed.");
+  });
+
+  // Tabs
+  document.getElementById("viewUsersBtn").addEventListener("click", ()=>{
+    document.getElementById("usersSection").style.display="block";
+    document.getElementById("ordersSection").style.display="none";
+    setActiveTab("viewUsersBtn");
+  });
+  document.getElementById("viewOrdersBtn").addEventListener("click", ()=>{
+    document.getElementById("usersSection").style.display="none";
+    document.getElementById("ordersSection").style.display="block";
+    setActiveTab("viewOrdersBtn");
+  });
+});
+
+function setActiveTab(id){
+  document.querySelectorAll(".tabs button").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
+
+// Load Dashboard
+async function loadDashboard(){
+  try {
+    // Users
+    const usersRes = await fetch(`${BACKEND}/get-users`, { credentials:"include" });
+    const usersData = await usersRes.json();
+    if(usersData.success){
+      document.getElementById("totalUsers").innerText = usersData.users.length;
+      const tbody = document.querySelector("#usersTable tbody");
+      tbody.innerHTML = "";
+      usersData.users.forEach(u=>{
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${u.name}</td><td>${u.email}</td><td>${u.role}</td><td><button onclick="deleteUser('${u._id}')">Delete</button></td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Orders
+    const ordersRes = await fetch(`${BACKEND}/get-orders`, { credentials:"include" });
+    const ordersData = await ordersRes.json();
+    if(ordersData.success){
+      document.getElementById("totalOrders").innerText = ordersData.orders.length;
+      let revenue = ordersData.orders.reduce((sum,o)=>sum+o.totalPrice,0);
+      document.getElementById("totalRevenue").innerText = `৳${revenue}`;
+      const tbody = document.querySelector("#ordersTable tbody");
+      tbody.innerHTML = "";
+      ordersData.orders.forEach(o=>{
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${o._id}</td><td>${o.userName}</td><td>${o.productName}</td><td>${o.quantity}</td><td>৳${o.totalPrice}</td><td>${o.status}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+  } catch(err){ console.error(err); }
+}
+
+// DELETE USER
+async function deleteUser(userId){
+  if(!confirm("Are you sure to delete this user?")) return;
+  try{
+    const res = await fetch(`${BACKEND}/delete-user/${userId}`, { method:"DELETE", credentials:"include" });
+    const data = await res.json();
+    if(data.success) loadDashboard();
+    else alert("Failed to delete user.");
+  } catch(err){ console.error(err); }
+}
+</script>
+
+</body>
+</html>

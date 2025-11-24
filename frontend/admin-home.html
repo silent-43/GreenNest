@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Home 🌿 GreenNest</title>
+<style>
+body { font-family:'Poppins', sans-serif; margin:0; background:#f5f5f5; color:#333; }
+header { background:#00BFA6; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+header h1 { margin:0; font-size:1.5rem; }
+nav a { color:white; text-decoration:none; margin-left:20px; font-weight:600; }
+nav a:hover { text-decoration:underline; }
+#logoutBtn { background:white; color:#00BFA6; border:none; border-radius:20px; padding:8px 18px; font-weight:600; cursor:pointer; }
+#logoutBtn:hover { background:#00C897; color:white; transform:scale(1.05); }
+.container { width:90%; max-width:1200px; margin:30px auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+.card { background:white; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
+.card h2 { color:#00BFA6; margin-bottom:10px; }
+.card p { font-size:1.2rem; font-weight:600; }
+.table { width:100%; border-collapse:collapse; margin-top:20px; }
+.table th, .table td { padding:10px 15px; border:1px solid #ccc; text-align:left; }
+.table th { background:#00BFA6; color:white; }
+button { background:#00BFA6; color:white; border:none; padding:8px 15px; border-radius:8px; cursor:pointer; transition:0.3s; }
+button:hover { background:#00E7B0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Admin Home 🌿</h1>
+  <nav>
+    <a href="admin.html">Go to Full Dashboard</a>
+    <button id="logoutBtn">Logout</button>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="card">
+    <h2>Total Users</h2>
+    <p id="totalUsers">0</p>
+  </div>
+  <div class="card">
+    <h2>Total Orders</h2>
+    <p id="totalOrders">0</p>
+  </div>
+  <div class="card">
+    <h2>Total Revenue</h2>
+    <p id="totalRevenue">৳0</p>
+  </div>
+  <div class="card" style="grid-column:1/-1">
+    <h2>Recent Orders</h2>
+    <table class="table" id="recentOrdersTable">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>User</th>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// SESSION CHECK
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch(`${BACKEND}/check-session`, { credentials:"include" });
+    const data = await res.json();
+
+    if(!data.loggedIn || data.user.role !== "admin") {
+      alert("Access denied. Only admins allowed.");
+      window.location.href="login.html";
+    } else {
+      loadDashboard();
+    }
+  } catch(err){ console.error(err); }
+
+  document.getElementById("logoutBtn").addEventListener("click", async ()=>{
+    const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+    const data = await res.json();
+    if(data.success) window.location.href="login.html";
+    else alert("Logout failed.");
+  });
+});
+
+async function loadDashboard() {
+  try {
+    // Users
+    const usersRes = await fetch(`${BACKEND}/get-users`, { credentials:"include" });
+    const usersData = await usersRes.json();
+    if(usersData.success) document.getElementById("totalUsers").innerText = usersData.users.length;
+
+    // Orders
+    const ordersRes = await fetch(`${BACKEND}/get-orders`, { credentials:"include" });
+    const ordersData = await ordersRes.json();
+    if(ordersData.success) {
+      document.getElementById("totalOrders").innerText = ordersData.orders.length;
+
+      let revenue = ordersData.orders.reduce((sum,o)=>sum+o.totalPrice,0);
+      document.getElementById("totalRevenue").innerText = `৳${revenue}`;
+
+      // recent 5 orders
+      const tbody = document.querySelector("#recentOrdersTable tbody");
+      tbody.innerHTML = "";
+      ordersData.orders.slice(0,5).forEach(o=>{
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${o._id}</td><td>${o.userName}</td><td>${o.productName}</td><td>${o.quantity}</td><td>৳${o.totalPrice}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+  } catch(err){ console.error(err); }
+}
+</script>
+
+</body>
+</html>

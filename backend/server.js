@@ -1,3 +1,4 @@
+import User from "./models/user.js";
 import express from "express";
 import cors from "cors";
 import session from "express-session";
@@ -74,7 +75,12 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-const User = mongoose.model("User", userSchema);
+
+
+
+/*const User = mongoose.model("User", userSchema);*/
+
+
 
 
 
@@ -136,6 +142,26 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Login
 app.post("/login", async (req, res) => {
   try {
@@ -154,6 +180,29 @@ app.post("/login", async (req, res) => {
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Logout
 app.post("/logout", (req, res) => {
   req.session.destroy((err) => {
@@ -162,6 +211,20 @@ app.post("/logout", (req, res) => {
     res.json({ success: true, message: "Logged out successfully" });
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

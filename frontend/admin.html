@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard 🌿 GreenNest</title>
+<style>
+body { font-family:'Poppins', sans-serif; margin:0; background:#f5f5f5; color:#333; }
+header { background:#00BFA6; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+header h1 { margin:0; font-size:1.5rem; }
+nav a { color:white; text-decoration:none; margin-left:20px; font-weight:600; }
+nav a:hover { text-decoration:underline; }
+#logoutBtn { background:white; color:#00BFA6; border:none; border-radius:20px; padding:8px 18px; font-weight:600; cursor:pointer; }
+#logoutBtn:hover { background:#00C897; color:white; transform:scale(1.05); }
+.container { width:90%; max-width:1200px; margin:30px auto; }
+.card { background:white; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); margin-bottom:20px; }
+.card h2 { color:#00BFA6; margin-bottom:15px; }
+.table { width:100%; border-collapse:collapse; }
+.table th, .table td { padding:10px 15px; border:1px solid #ccc; text-align:left; }
+.table th { background:#00BFA6; color:white; }
+button { background:#00BFA6; color:white; border:none; padding:8px 15px; border-radius:8px; cursor:pointer; transition:0.3s; }
+button:hover { background:#00E7B0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Admin Dashboard 🌿</h1>
+  <nav>
+    <a href="#" id="viewUsersBtn">Users</a>
+    <a href="#" id="viewOrdersBtn">Orders</a>
+    <button id="logoutBtn">Logout</button>
+  </nav>
+</header>
+
+<div class="container">
+  <!-- Users Section -->
+  <div class="card" id="usersSection">
+    <h2>Registered Users</h2>
+    <table class="table" id="usersTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Orders Section -->
+  <div class="card" id="ordersSection" style="display:none;">
+    <h2>Orders</h2>
+    <table class="table" id="ordersTable">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>User</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const BACKEND="http://127.0.0.1:5000";
+
+// SESSION CHECK + ROLE VALIDATION
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch(`${BACKEND}/check-session`, { credentials:"include" });
+    const data = await res.json();
+
+    if(!data.loggedIn || data.user.role !== "admin") {
+      alert("Access denied. Only admins allowed.");
+      window.location.href="login.html";
+    } else {
+      fetchUsers();
+      fetchOrders();
+    }
+  } catch(err) { console.error(err); }
+
+  // LOGOUT
+  document.getElementById("logoutBtn").addEventListener("click", async ()=>{
+    const res = await fetch(`${BACKEND}/logout`, { method:"POST", credentials:"include" });
+    const data = await res.json();
+    if(data.success) window.location.href="login.html";
+    else alert("Logout failed.");
+  });
+
+  // Toggle sections
+  document.getElementById("viewUsersBtn").addEventListener("click", ()=>{
+    document.getElementById("usersSection").style.display="block";
+    document.getElementById("ordersSection").style.display="none";
+  });
+  document.getElementById("viewOrdersBtn").addEventListener("click", ()=>{
+    document.getElementById("usersSection").style.display="none";
+    document.getElementById("ordersSection").style.display="block";
+  });
+});
+
+// FETCH USERS
+async function fetchUsers() {
+  try {
+    const res = await fetch(`${BACKEND}/get-users`, { credentials:"include" });
+    const data = await res.json();
+    if(data.success) {
+      const tbody = document.querySelector("#usersTable tbody");
+      tbody.innerHTML = "";
+      data.users.forEach(u => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${u.name}</td>
+          <td>${u.email}</td>
+          <td>${u.role}</td>
+          <td><button onclick="deleteUser('${u._id}')">Delete</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  } catch(err) { console.error(err); }
+}
+
+// DELETE USER
+async function deleteUser(userId) {
+  if(!confirm("Are you sure to delete this user?")) return;
+  try {
+    const res = await fetch(`${BACKEND}/delete-user/${userId}`, { method:"DELETE", credentials:"include" });
+    const data = await res.json();
+    if(data.success) fetchUsers();
+    else alert("Failed to delete user.");
+  } catch(err) { console.error(err); }
+}
+
+// FETCH ORDERS
+async function fetchOrders() {
+  try {
+    const res = await fetch(`${BACKEND}/get-orders`, { credentials:"include" });
+    const data = await res.json();
+    if(data.success) {
+      const tbody = document.querySelector("#ordersTable tbody");
+      tbody.innerHTML = "";
+      data.orders.forEach(o => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${o._id}</td>
+          <td>${o.userName}</td>
+          <td>${o.productName}</td>
+          <td>${o.quantity}</td>
+          <td>৳${o.totalPrice}</td>
+          <td>${o.status}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  } catch(err) { console.error(err); }
+
+
+  
+}
+</script>
+
+
+
+
+
+</body>
+</html>

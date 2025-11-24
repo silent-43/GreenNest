@@ -51,9 +51,9 @@
     margin-bottom: 20px;
   }
 
-  input {
+  input, select {
     width: 80%;
-    padding: 12px 40px 12px 14px;
+    padding: 12px 14px;
     margin: 10px 0;
     border: 2px solid #ddd;
     border-radius: 10px;
@@ -62,7 +62,7 @@
     transition: all 0.3s ease;
   }
 
-  input:focus {
+  input:focus, select:focus {
     border-color: #5563DE;
     box-shadow: 0 0 10px rgba(85,99,222,0.4);
     transform: scale(1.02);
@@ -141,10 +141,25 @@
       <input type="password" id="password" placeholder="Password" required>
       <span id="togglePassword" class="eye-icon">👁️</span>
     </div>
-    <button type="submit">Login</button>
+
+    <!-- Role selection -->
+    <div class="input-group">
+      <select id="role">
+        <option value="user">User Login</option>
+        <option value="admin">Admin Login</option>
+      </select>
+      <div>
+        <a href="./admin-main.html">
+  <button type="button">Admin Login</button>
+</a>
+
+      </div>
+    </div>
+
+    <button type="submit">User Login</button>
   </form>
   <br>
-<a href="forgot.html" class="forgot">Forgot Password?</a>
+  <a href="forgot.html" class="forgot">Forgot Password?</a>
 
   <p id="message"></p>
   <p>Don’t have an account? <a href="register.html">Register here</a></p>
@@ -176,13 +191,14 @@
     e.preventDefault();
     const email = document.getElementById("email").value;
     const passwordValue = password.value;
+    const role = document.getElementById("role").value;
 
     try{
       const res = await fetch(`${BACKEND_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ email, password: passwordValue })
+        body: JSON.stringify({ email, password: passwordValue, role })
       });
       const data = await res.json();
 
@@ -190,7 +206,14 @@
       if(data.success){
         msg.style.color = "green";
         msg.innerText = "Login successful! Redirecting...";
-        setTimeout(()=>{ window.location.href = "index.html"; },1500);
+
+        // Redirect based on role
+        if(data.role === "admin"){
+          setTimeout(()=>{ window.location.href = "admin-dashboard.html"; }, 1200);
+        } else {
+          setTimeout(()=>{ window.location.href = "index.html"; }, 1200);
+        }
+
       } else {
         msg.style.color = "red";
         msg.innerText = data.message;

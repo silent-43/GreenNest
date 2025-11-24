@@ -39,13 +39,13 @@
   .input-group {
     position: relative;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
-  input {
+  input, select {
     width: 100%;
     padding: 12px 14px;
-    padding-right: 38px; /* eye icon space */
+    padding-right: 38px;
     border-radius: 10px;
     border: 2px solid #81c784;
     outline: none;
@@ -53,7 +53,7 @@
     font-size: 15px;
   }
 
-  input:focus {
+  input:focus, select:focus {
     border-color: #2e7d32;
     box-shadow: 0 0 5px #66bb6a;
   }
@@ -118,26 +118,26 @@
 
 <div class="container">
   <h1>🌿 Create Account</h1>
-<br>
-
   <form id="registerForm">
-    <input type="text" id="name" placeholder="Full Name" required><br/>
-    <br>
-    
-    <input type="email" id="email" placeholder="Email Address" required><br/>
-<br>
-
-    <!-- Password eye icon group -->
+    <div class="input-group">
+      <input type="text" id="name" placeholder="Full Name" required>
+    </div>
+    <div class="input-group">
+      <input type="email" id="email" placeholder="Email Address" required>
+    </div>
     <div class="input-group">
       <input type="password" id="password" placeholder="Password" required>
       <span id="togglePassword" class="eye-icon">👁️</span>
     </div>
-<br>
-
+    <div class="input-group">
+      <select id="role" required>
+        <option value="">Select Role</option>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
     <button type="submit">Register</button>
   </form>
-<br>
-
   <p id="message" style="color:red;"></p>
   <p>Already have an account? <a href="login.html">Login here</a></p>
 </div>
@@ -172,13 +172,20 @@
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const role = document.getElementById("role").value;
+
+    if (!role) {
+      document.getElementById("message").style.color = "red";
+      document.getElementById("message").innerText = "Please select a role!";
+      return;
+    }
 
     try {
-      const res = await fetch(`${BACKEND_URL}/signup`,{
+      const res = await fetch(`${BACKEND_URL}/signup`, {
         method:"POST",
         headers:{ "Content-Type":"application/json" },
         credentials: "include",
-        body:JSON.stringify({ name,email,password })
+        body: JSON.stringify({ name, email, password, role })
       });
 
       const data = await res.json();
